@@ -1,0 +1,15 @@
+C:\Users\phant\source\repos\PRN221_BookStore\BussinessObject\bin\Debug\net6.0\BussinessObject.deps.json
+C:\Users\phant\source\repos\PRN221_BookStore\BussinessObject\bin\Debug\net6.0\BussinessObject.dll
+C:\Users\phant\source\repos\PRN221_BookStore\BussinessObject\bin\Debug\net6.0\BussinessObject.pdb
+C:\Users\phant\source\repos\PRN221_BookStore\BussinessObject\bin\Debug\net6.0\DataAccess.dll
+C:\Users\phant\source\repos\PRN221_BookStore\BussinessObject\bin\Debug\net6.0\DataAccess.pdb
+C:\Users\phant\source\repos\PRN221_BookStore\BussinessObject\obj\Debug\net6.0\BussinessObject.csproj.AssemblyReference.cache
+C:\Users\phant\source\repos\PRN221_BookStore\BussinessObject\obj\Debug\net6.0\BussinessObject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\phant\source\repos\PRN221_BookStore\BussinessObject\obj\Debug\net6.0\BussinessObject.AssemblyInfoInputs.cache
+C:\Users\phant\source\repos\PRN221_BookStore\BussinessObject\obj\Debug\net6.0\BussinessObject.AssemblyInfo.cs
+C:\Users\phant\source\repos\PRN221_BookStore\BussinessObject\obj\Debug\net6.0\BussinessObject.csproj.CoreCompileInputs.cache
+C:\Users\phant\source\repos\PRN221_BookStore\BussinessObject\obj\Debug\net6.0\BussinessObject.csproj.CopyComplete
+C:\Users\phant\source\repos\PRN221_BookStore\BussinessObject\obj\Debug\net6.0\BussinessObject.dll
+C:\Users\phant\source\repos\PRN221_BookStore\BussinessObject\obj\Debug\net6.0\refint\BussinessObject.dll
+C:\Users\phant\source\repos\PRN221_BookStore\BussinessObject\obj\Debug\net6.0\BussinessObject.pdb
+C:\Users\phant\source\repos\PRN221_BookStore\BussinessObject\obj\Debug\net6.0\ref\BussinessObject.dll
