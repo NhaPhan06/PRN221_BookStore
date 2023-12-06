@@ -1,0 +1,62 @@
+@page
+@model Presentation.Pages.UserDetail.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>UserDetail</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="UserDetail.UserDetailId" />
+            <div class="form-group">
+                <label asp-for="UserDetail.UserId" class="control-label"></label>
+                <select asp-for="UserDetail.UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+                <span asp-validation-for="UserDetail.UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserDetail.Firstname" class="control-label"></label>
+                <input asp-for="UserDetail.Firstname" class="form-control" />
+                <span asp-validation-for="UserDetail.Firstname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserDetail.Lastname" class="control-label"></label>
+                <input asp-for="UserDetail.Lastname" class="form-control" />
+                <span asp-validation-for="UserDetail.Lastname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserDetail.City" class="control-label"></label>
+                <input asp-for="UserDetail.City" class="form-control" />
+                <span asp-validation-for="UserDetail.City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserDetail.Address" class="control-label"></label>
+                <input asp-for="UserDetail.Address" class="form-control" />
+                <span asp-validation-for="UserDetail.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserDetail.PhoneNumber" class="control-label"></label>
+                <input asp-for="UserDetail.PhoneNumber" class="form-control" />
+                <span asp-validation-for="UserDetail.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserDetail.Birthdate" class="control-label"></label>
+                <input asp-for="UserDetail.Birthdate" class="form-control" />
+                <span asp-validation-for="UserDetail.Birthdate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+

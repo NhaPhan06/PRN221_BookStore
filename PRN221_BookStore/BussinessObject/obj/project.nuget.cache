@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "u6OdIjh7OloHBI37alqPZl3eg2pa5JXPRtbc4FUY/Cm0IPFNR8dYYKkCIN44rRhHGh6nIdixny1s5ifljGQQcQ==",
+  "dgSpecHash": "Exd1oHvpE4+aJb5waeaVi860PdbmdMGbVYWn+99Fg66/jvrDiZ6OqeHWIYKMBlTsPLpd6HBJIQ9ULvXRgFqUFA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\phant\\source\\repos\\PRN221_BookStore\\BussinessObject\\BussinessObject.csproj",
+  "projectFilePath": "D:\\FPT\\PRN221_3w\\PRN221_BookStore\\PRN221_BookStore\\BussinessObject\\BussinessObject.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\phant\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\phant\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
@@ -45,10 +45,7 @@
     "C:\\Users\\phant\\.nuget\\packages\\system.security.permissions\\4.7.0\\system.security.permissions.4.7.0.nupkg.sha512",
     "C:\\Users\\phant\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
     "C:\\Users\\phant\\.nuget\\packages\\system.text.encoding.codepages\\4.7.0\\system.text.encoding.codepages.4.7.0.nupkg.sha512",
-    "C:\\Users\\phant\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512",
-    "C:\\Users\\phant\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.25\\microsoft.netcore.app.ref.6.0.25.nupkg.sha512",
-    "C:\\Users\\phant\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.25\\microsoft.windowsdesktop.app.ref.6.0.25.nupkg.sha512",
-    "C:\\Users\\phant\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.25\\microsoft.aspnetcore.app.ref.6.0.25.nupkg.sha512"
+    "C:\\Users\\phant\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512"
   ],
   "logs": []
 }

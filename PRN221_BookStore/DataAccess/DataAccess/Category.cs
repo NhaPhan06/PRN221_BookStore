@@ -10,7 +10,7 @@ namespace DataAccess.DataAccess
             Books = new HashSet<Book>();
         }
 
-        public int CategoryId { get; set; }
+        public Guid CategoryId { get; set; }
         public string Name { get; set; } = null!;
         public string? Description { get; set; }
 

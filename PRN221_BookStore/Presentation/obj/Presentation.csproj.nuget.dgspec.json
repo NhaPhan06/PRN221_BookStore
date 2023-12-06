@@ -1,35 +1,33 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\phant\\source\\repos\\PRN221_BookStore\\Presentation\\Presentation.csproj": {}
+    "D:\\FPT\\PRN221_3w\\PRN221_BookStore\\PRN221_BookStore\\Presentation\\Presentation.csproj": {}
   },
   "projects": {
-    "C:\\Users\\phant\\source\\repos\\PRN221_BookStore\\BussinessObject\\BussinessObject.csproj": {
+    "D:\\FPT\\PRN221_3w\\PRN221_BookStore\\PRN221_BookStore\\BussinessObject\\BussinessObject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\phant\\source\\repos\\PRN221_BookStore\\BussinessObject\\BussinessObject.csproj",
+        "projectUniqueName": "D:\\FPT\\PRN221_3w\\PRN221_BookStore\\PRN221_BookStore\\BussinessObject\\BussinessObject.csproj",
         "projectName": "BussinessObject",
-        "projectPath": "C:\\Users\\phant\\source\\repos\\PRN221_BookStore\\BussinessObject\\BussinessObject.csproj",
+        "projectPath": "D:\\FPT\\PRN221_3w\\PRN221_BookStore\\PRN221_BookStore\\BussinessObject\\BussinessObject.csproj",
         "packagesPath": "C:\\Users\\phant\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\phant\\source\\repos\\PRN221_BookStore\\BussinessObject\\obj\\",
+        "outputPath": "D:\\FPT\\PRN221_3w\\PRN221_BookStore\\PRN221_BookStore\\BussinessObject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\phant\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\phant\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\phant\\source\\repos\\PRN221_BookStore\\DataAccess\\DataAccess.csproj": {
-                "projectPath": "C:\\Users\\phant\\source\\repos\\PRN221_BookStore\\DataAccess\\DataAccess.csproj"
+              "D:\\FPT\\PRN221_3w\\PRN221_BookStore\\PRN221_BookStore\\DataAccess\\DataAccess.csproj": {
+                "projectPath": "D:\\FPT\\PRN221_3w\\PRN221_BookStore\\PRN221_BookStore\\DataAccess\\DataAccess.csproj"
               }
             }
           }
@@ -64,20 +62,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.25, 6.0.25]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.25, 6.0.25]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.25, 6.0.25]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -87,24 +71,22 @@
         }
       }
     },
-    "C:\\Users\\phant\\source\\repos\\PRN221_BookStore\\DataAccess\\DataAccess.csproj": {
+    "D:\\FPT\\PRN221_3w\\PRN221_BookStore\\PRN221_BookStore\\DataAccess\\DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\phant\\source\\repos\\PRN221_BookStore\\DataAccess\\DataAccess.csproj",
+        "projectUniqueName": "D:\\FPT\\PRN221_3w\\PRN221_BookStore\\PRN221_BookStore\\DataAccess\\DataAccess.csproj",
         "projectName": "DataAccess",
-        "projectPath": "C:\\Users\\phant\\source\\repos\\PRN221_BookStore\\DataAccess\\DataAccess.csproj",
+        "projectPath": "D:\\FPT\\PRN221_3w\\PRN221_BookStore\\PRN221_BookStore\\DataAccess\\DataAccess.csproj",
         "packagesPath": "C:\\Users\\phant\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\phant\\source\\repos\\PRN221_BookStore\\DataAccess\\obj\\",
+        "outputPath": "D:\\FPT\\PRN221_3w\\PRN221_BookStore\\PRN221_BookStore\\DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\phant\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\phant\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -151,20 +133,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.25, 6.0.25]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.25, 6.0.25]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.25, 6.0.25]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -174,32 +142,30 @@
         }
       }
     },
-    "C:\\Users\\phant\\source\\repos\\PRN221_BookStore\\Presentation\\Presentation.csproj": {
+    "D:\\FPT\\PRN221_3w\\PRN221_BookStore\\PRN221_BookStore\\Presentation\\Presentation.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\phant\\source\\repos\\PRN221_BookStore\\Presentation\\Presentation.csproj",
+        "projectUniqueName": "D:\\FPT\\PRN221_3w\\PRN221_BookStore\\PRN221_BookStore\\Presentation\\Presentation.csproj",
         "projectName": "Presentation",
-        "projectPath": "C:\\Users\\phant\\source\\repos\\PRN221_BookStore\\Presentation\\Presentation.csproj",
+        "projectPath": "D:\\FPT\\PRN221_3w\\PRN221_BookStore\\PRN221_BookStore\\Presentation\\Presentation.csproj",
         "packagesPath": "C:\\Users\\phant\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\phant\\source\\repos\\PRN221_BookStore\\Presentation\\obj\\",
+        "outputPath": "D:\\FPT\\PRN221_3w\\PRN221_BookStore\\PRN221_BookStore\\Presentation\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\phant\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\phant\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\phant\\source\\repos\\PRN221_BookStore\\BussinessObject\\BussinessObject.csproj": {
-                "projectPath": "C:\\Users\\phant\\source\\repos\\PRN221_BookStore\\BussinessObject\\BussinessObject.csproj"
+              "D:\\FPT\\PRN221_3w\\PRN221_BookStore\\PRN221_BookStore\\BussinessObject\\BussinessObject.csproj": {
+                "projectPath": "D:\\FPT\\PRN221_3w\\PRN221_BookStore\\PRN221_BookStore\\BussinessObject\\BussinessObject.csproj"
               }
             }
           }
@@ -213,6 +179,22 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[6.0.25, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.25, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.16, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -224,24 +206,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.25, 6.0.25]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[6.0.25, 6.0.25]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.25, 6.0.25]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.25, 6.0.25]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
