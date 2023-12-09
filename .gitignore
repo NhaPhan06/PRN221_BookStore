@@ -798,3 +798,6 @@ fabric.properties
 
 # End of https://www.toptal.com/developers/gitignore/api/csharp,aspnetcore,rider,visualstudio,visualstudiocode
 
+PRN221_BookStore/BussinessObject/obj
+PRN221_BookStore/DataAccess/obj
+PRN221_BookStore/Presentation/obj
