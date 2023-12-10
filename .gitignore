@@ -804,3 +804,4 @@ PRN221_BookStore/Presentation/obj
 PRN221_BookStore/BussinessObject/bin
 PRN221_BookStore/DataAccess/bin
 PRN221_BookStore/Presentation/bin
+Presentation/appsettings.json
