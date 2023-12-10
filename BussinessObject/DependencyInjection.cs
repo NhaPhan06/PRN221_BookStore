@@ -10,9 +10,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace BussinessObject;
 
-public static class DenpendencyInjection
+public static class DependencyInjection
 {
-    public static IServiceCollection AddDenpendencyInjection(this IServiceCollection services)
+    public static IServiceCollection AddDependencyInjection(this IServiceCollection services)
     {
 
 

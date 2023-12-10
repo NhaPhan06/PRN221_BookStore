@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDenpendencyInjection();
+builder.Services.AddDependencyInjection();
 
 //Add DB
 string connString = builder.Configuration.GetConnectionString("DatabaseConnection");
