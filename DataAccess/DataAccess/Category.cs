@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace DataAccess.DataAccess
-{
-    public partial class Category
-    {
-        public Category()
-        {
+﻿namespace DataAccess.DataAccess {
+    public class Category {
+        public Category() {
             Books = new HashSet<Book>();
         }
 
