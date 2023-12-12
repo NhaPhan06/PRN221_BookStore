@@ -134,7 +134,7 @@ namespace BusinessObject.Service.Implement {
 
             return Task.FromResult(query.Count());
         }
-        
+
         public void Add(Book book) {
             _unitOfWork.BookRepository.Add(book);
             _unitOfWork.Save();
