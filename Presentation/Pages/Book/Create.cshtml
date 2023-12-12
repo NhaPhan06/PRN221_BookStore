@@ -1,4 +1,5 @@
 @page
+@using BusinessObject.Model
 @model CreateModel
 
 @{
@@ -15,47 +16,49 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Book.Title" class="control-label"></label>
-                <input asp-for="Book.Title" class="form-control"/>
+                <input asp-for="Book.Title" required="required" class="form-control"/>
                 <span asp-validation-for="Book.Title" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Book.Author" class="control-label"></label>
-                <input asp-for="Book.Author" class="form-control"/>
+                <input asp-for="Book.Author" required="required" class="form-control"/>
                 <span asp-validation-for="Book.Author" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Book.Isbn" class="control-label"></label>
-                <input asp-for="Book.Isbn" class="form-control"/>
+                <input asp-for="Book.Isbn" required="required" class="form-control"/>
                 <span asp-validation-for="Book.Isbn" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Book.Price" class="control-label"></label>
-                <input asp-for="Book.Price" class="form-control"/>
+                <input asp-for="Book.Price" type="number" min="0"  required="required" class="form-control"/>
                 <span asp-validation-for="Book.Price" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Book.Description" class="control-label"></label>
-                <input asp-for="Book.Description" class="form-control"/>
+                <input asp-for="Book.Description" required="required" class="form-control"/>
                 <span asp-validation-for="Book.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Book.StockQuantity" class="control-label"></label>
-                <input asp-for="Book.StockQuantity" class="form-control"/>
+                <input asp-for="Book.StockQuantity" required="required" type="number" min="0" class="form-control"/>
                 <span asp-validation-for="Book.StockQuantity" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Book.ImageUrl" class="control-label"></label>
-                <input asp-for="Book.ImageUrl" class="form-control"/>
+                <input asp-for="Book.ImageUrl" required="required" class="form-control"/>
                 <span asp-validation-for="Book.ImageUrl" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Book.Status" class="control-label"></label>
-                <input asp-for="Book.Status" class="form-control"/>
-                <span asp-validation-for="Book.Status" class="text-danger"></span>
+                <select asp-for="Book.Status" required="required" class="form-control">
+                    <option value="@Status.Active">Active</option>
+                    <option value="@Status.Inactive">Inactive</option>
+                </select>
             </div>
             <div class="form-group">
                 <label asp-for="Book.CategoryId" class="control-label"></label>
-                <select asp-for="Book.CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                <select asp-for="Book.CategoryId" required="required" class="form-control" asp-items="ViewBag.CategoryId"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary"/>
