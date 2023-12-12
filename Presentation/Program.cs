@@ -8,7 +8,9 @@ builder.Services.AddDependencyInjection();
 
 //Add DB
 string connString = builder.Configuration.GetConnectionString("DatabaseConnection");
-builder.Services.AddDbContext<PRN_BookStoreContext>(options => { options.UseSqlServer(connString); });
+builder.Services.AddDbContext<PRN_BookStoreContext>(options => {
+    options.UseSqlServer(connString).EnableSensitiveDataLogging();
+});
 
 
 // Add services to the container.

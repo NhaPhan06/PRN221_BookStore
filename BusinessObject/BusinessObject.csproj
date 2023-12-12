@@ -8,11 +8,6 @@
 
 
     <ItemGroup>
-        <Folder Include="Model\"/>
-    </ItemGroup>
-
-
-    <ItemGroup>
         <ProjectReference Include="..\DataAccess\DataAccess.csproj"/>
     </ItemGroup>
 
