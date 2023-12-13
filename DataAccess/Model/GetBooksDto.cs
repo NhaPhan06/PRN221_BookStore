@@ -32,6 +32,7 @@
     }
 
     public struct BookCategory {
+        public const string All = "";
         public const string Programming = "Programming";
         public const string Science = "Science";
         public const string Engineering = "Engineering";
