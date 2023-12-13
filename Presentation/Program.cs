@@ -18,6 +18,8 @@ builder.Services.AddRazorPages();
 
 WebApplication app = builder.Build();
 
+builder.Services.AddSession();
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment()) {
     app.UseExceptionHandler("/Error");
@@ -27,7 +29,7 @@ if (!app.Environment.IsDevelopment()) {
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+app.UseSession();
 app.UseRouting();
 
 app.UseAuthorization();
