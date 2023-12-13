@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace BussinessObject.Mapper;
+namespace BussinessAccess.Mapper;
 
 public class ApplicationMapper: Profile
 {

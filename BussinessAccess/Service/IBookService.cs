@@ -1,4 +1,4 @@
-﻿namespace BussinessObject.Service;
+﻿namespace BussinessAccess.Service;
 
 public interface IBookService
 {

@@ -1,6 +1,6 @@
-﻿using BussinessObject.Mapper;
-using BussinessObject.Service;
-using BussinessObject.Service.Implement;
+﻿using BussinessAccess.Mapper;
+using BussinessAccess.Service;
+using BussinessAccess.Service.Implement;
 using DataAccess.Generic;
 using DataAccess.Generic.UnitOfWork;
 using DataAccess.Repository;
@@ -8,7 +8,7 @@ using DataAccess.Repository.Implement;
 using DataAccess.Repository.Implement.Generic;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BussinessObject;
+namespace BussinessAccess;
 
 public static class DenpendencyInjection
 {
