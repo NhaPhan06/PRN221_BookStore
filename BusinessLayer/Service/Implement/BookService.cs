@@ -28,5 +28,10 @@ namespace BusinessLayer.Service.Implement {
             _unitOfWork.BookRepository.Add(book);
             _unitOfWork.Save();
         }
+
+        public Task<Book?> GetDetail(string id) {
+            Task<Book?> result = _unitOfWork.BookRepository.GetDetail(id);
+            return result;
+        }
     }
 }
