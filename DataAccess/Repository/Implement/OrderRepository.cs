@@ -1,9 +1,37 @@
 ﻿using DataAccess.DataAccess;
 using DataAccess.Repository.Implement.Generic;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace DataAccess.Repository.Implement {
     public class OrderRepository : Generic<Order>, IOrderRepository {
+        public readonly PRN_BookStoreContext _context;
         public OrderRepository(PRN_BookStoreContext context) : base(context) {
+            _context = context;
+            
         }
+
+        public List<Order> GetAllOrder() => _context.Set<Order>().Include(c => c.User).ToList();
+
+        public Order GetOrderById(Guid id)
+        {
+            var orders = _context.Set<Order>().FirstOrDefault(c => c.OrderId == id);
+            return orders;
+        }
+
+        public void SaveChange()
+        {
+            _context.SaveChanges();
+        }
+
+        public List<Order> Search() => _context.Orders.ToList();
+
+        public Order UpdateOrder(Order order)
+        {
+            _context.Set<Order>().Update(order);
+            return order;
+        }
+
+        
     }
 }
