@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace DataAccess.DataAccess
-{
-    public partial class Order
-    {
-        public Order()
-        {
+﻿namespace DataAccess.DataAccess {
+    public class Order {
+        public Order() {
             OrderDetails = new HashSet<OrderDetail>();
         }
 

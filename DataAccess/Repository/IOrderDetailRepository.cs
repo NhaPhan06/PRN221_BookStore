@@ -1,9 +1,7 @@
 ﻿using DataAccess.DataAccess;
-using DataAccess.Generic;
+using DataAccess.Repository.Generic;
 
-namespace DataAccess.Repository;
-
-public interface IOrderDetailRepository : IGeneric<OrderDetail>
-{
-    
+namespace DataAccess.Repository {
+    public interface IOrderDetailRepository : IGeneric<OrderDetail> {
+    }
 }

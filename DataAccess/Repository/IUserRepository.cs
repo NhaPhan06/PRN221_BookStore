@@ -1,9 +1,7 @@
 ﻿using DataAccess.DataAccess;
-using DataAccess.Generic;
+using DataAccess.Repository.Generic;
 
-namespace DataAccess.Repository;
-
-public interface IUserRepository : IGeneric<User>
-{
-    
+namespace DataAccess.Repository {
+    public interface IUserRepository : IGeneric<User> {
+    }
 }

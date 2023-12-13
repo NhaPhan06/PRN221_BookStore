@@ -1,25 +1,25 @@
-using BussinessAccess;
+using BusinessLayer;
 using DataAccess;
-
 using Microsoft.EntityFrameworkCore;
 
-var builder = WebApplication.CreateBuilder(args);
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDenpendencyInjection();
+builder.Services.AddDependencyInjection();
 
 //Add DB
 string connString = builder.Configuration.GetConnectionString("DatabaseConnection");
-builder.Services.AddDbContext<PRN_BookStoreContext>(options => { options.UseSqlServer(connString); });
+builder.Services.AddDbContext<PRN_BookStoreContext>(options => {
+    options.UseSqlServer(connString).EnableSensitiveDataLogging();
+});
 
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-var app = builder.Build();
+WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
-{
+if (!app.Environment.IsDevelopment()) {
     app.UseExceptionHandler("/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();

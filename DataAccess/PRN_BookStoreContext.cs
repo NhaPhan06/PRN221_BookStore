@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using DataAccess.DataAccess;
+﻿using DataAccess.DataAccess;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace DataAccess
-{
-    public partial class PRN_BookStoreContext : DbContext
-    {
-        public PRN_BookStoreContext()
-        {
+namespace DataAccess {
+    public partial class PRN_BookStoreContext : DbContext {
+        public PRN_BookStoreContext() {
         }
 
         public PRN_BookStoreContext(DbContextOptions<PRN_BookStoreContext> options)
-            : base(options)
-        {
+            : base(options) {
         }
 
         public virtual DbSet<Book> Books { get; set; } = null!;
@@ -23,19 +16,15 @@ namespace DataAccess
         public virtual DbSet<OrderDetail> OrderDetails { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
+            if (!optionsBuilder.IsConfigured) {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https: //go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("server =(local); database = PRN_BookStore;uid=sa;pwd=12345;");
             }
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Book>(entity =>
-            {
+        protected override void OnModelCreating(ModelBuilder modelBuilder) {
+            modelBuilder.Entity<Book>(entity => {
                 entity.Property(e => e.BookId)
                     .HasColumnName("BookID")
                     .HasDefaultValueSql("(newid())");
@@ -65,8 +54,7 @@ namespace DataAccess
                     .HasConstraintName("FK_Books_Categories");
             });
 
-            modelBuilder.Entity<Category>(entity =>
-            {
+            modelBuilder.Entity<Category>(entity => {
                 entity.Property(e => e.CategoryId)
                     .HasColumnName("CategoryID")
                     .HasDefaultValueSql("(newid())");
@@ -78,8 +66,7 @@ namespace DataAccess
                 entity.Property(e => e.Status).HasMaxLength(20);
             });
 
-            modelBuilder.Entity<Order>(entity =>
-            {
+            modelBuilder.Entity<Order>(entity => {
                 entity.Property(e => e.OrderId)
                     .HasColumnName("OrderID")
                     .HasDefaultValueSql("(newid())");
@@ -115,8 +102,7 @@ namespace DataAccess
                     .HasConstraintName("FK_Orders_Users");
             });
 
-            modelBuilder.Entity<OrderDetail>(entity =>
-            {
+            modelBuilder.Entity<OrderDetail>(entity => {
                 entity.Property(e => e.OrderDetailId)
                     .HasColumnName("OrderDetailID")
                     .HasDefaultValueSql("(newid())");
@@ -140,8 +126,7 @@ namespace DataAccess
                     .HasConstraintName("FK_OrderDetails_Orders");
             });
 
-            modelBuilder.Entity<User>(entity =>
-            {
+            modelBuilder.Entity<User>(entity => {
                 entity.Property(e => e.UserId)
                     .HasColumnName("UserID")
                     .HasDefaultValueSql("(newid())");
