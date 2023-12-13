@@ -1,13 +1,13 @@
-using BusinessLayer.Service;
+﻿using BusinessLayer.Service;
 using DataAccess.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Presentation.Pages.Book {
-    public class IndexModel : PageModel {
+namespace Presentation.Pages {
+    public class Shop : PageModel {
         private readonly IBookService _bookService;
 
-        public IndexModel(IBookService bookService) {
+        public Shop(IBookService bookService) {
             _bookService = bookService;
         }
 

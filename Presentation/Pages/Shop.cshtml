@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@page
+@model Presentation.Pages.Shop
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,7 +14,7 @@
           name="description">
 
     <!-- title -->
-    <title>Fruitkha</title>
+    <title>Shop</title>
 
     <!-- favicon -->
     <link href="img/favicon.png" rel="shortcut icon" type="image/png">
@@ -156,11 +162,14 @@
 </div>
 <!-- end header -->
 
+<!-- search area -->
 <div class="search-area">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <span class="close-btn"><i class="fas fa-window-close"></i></span>
+                <span class="close-btn">
+                    <i class="fas fa-window-close"></i>
+                </span>
                 <div class="search-bar">
                     <div class="search-bar-tablecell">
                         <h3>Search For:</h3>
@@ -172,7 +181,116 @@
         </div>
     </div>
 </div>
-@RenderBody()
+<!-- end search arewa -->
+
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    <p>Attractive & Science Fiction</p>
+                    <h1>Shop</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end breadcrumb section -->
+
+<!-- products -->
+<div class="product-section mt-150 mb-150">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <!-- <div class="product-filters">
+                    <ul>
+                        <li class="active" data-filter="*">All</li>
+                        <li data-filter=".strawberry">Strawberry</li>
+                        <li data-filter=".berry">Berry</li>
+                        <li data-filter=".lemon">Lemon</li>
+                    </ul>
+                </div> -->
+            </div>
+        </div>
+
+        <div class="row">
+
+            @foreach (var item in Model.Book)
+            {
+                <div class="col-lg-4 col-md-6 text-center">
+
+                    <div class="single-product-item">
+                        <div class="product-image">
+                            <a href="single-product.html">
+                                <img alt=""
+                                     src="imgstorebook/author-book-store-book-cover-06.jpg">
+                            </a>
+                        </div>
+                        <h3>@item.Title</h3>
+                        <p class="product-price"><span>Per 1</span> @item.Price$ </p>
+                        <a class="cart-btn" href="cart.html"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="pagination-wrap">
+                    <ul>
+                        <li>
+                            <a href="#">Prev</a>
+                        </li>
+                        <li>
+                            <a href="#">1</a>
+                        </li>
+                        <li>
+                            <a class="active" href="#">2</a>
+                        </li>
+                        <li>
+                            <a href="#">3</a>
+                        </li>
+                        <li>
+                            <a href="#">Next</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end products -->
+
+<!-- logo carousel -->
+<div class="logo-carousel-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="logo-carousel-inner">
+                    <div class="single-logo-item">
+                        <img alt="" src="img/company-logos/1.png">
+                    </div>
+                    <div class="single-logo-item">
+                        <img alt="" src="img/company-logos/2.png">
+                    </div>
+                    <div class="single-logo-item">
+                        <img alt="" src="img/company-logos/3.png">
+                    </div>
+                    <div class="single-logo-item">
+                        <img alt="" src="img/company-logos/4.png">
+                    </div>
+                    <div class="single-logo-item">
+                        <img alt="" src="img/company-logos/5.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end logo carousel -->
+
 <!-- footer -->
 <div class="footer-area">
     <div class="container">
@@ -302,6 +420,6 @@
 <script src="js/sticker.js"></script>
 <!-- main js -->
 <script src="js/main.js"></script>
-@await RenderSectionAsync("Scripts",false)
+
 </body>
 </html>
