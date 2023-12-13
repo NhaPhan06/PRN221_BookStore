@@ -17,7 +17,7 @@ namespace Presentation.Pages.Book {
 
         [BindProperty(SupportsGet = true)] public int CurrentPage { get; set; } = 1;
 
-        [BindProperty(SupportsGet = true)] public int PageSize { get; set; } = 10;
+        [BindProperty(SupportsGet = true)] public int PageSize { get; set; } = 6;
 
         [BindProperty(SupportsGet = true)] public string SortBy { get; set; } = default!;
 
