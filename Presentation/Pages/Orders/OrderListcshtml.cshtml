@@ -1,0 +1,96 @@
+﻿@page
+@model Presentation.Pages.Orders.OrderListcshtmlModel
+@{
+}
+<table class="table">
+    <thead>
+        <tr>
+            @*<th>
+                @Html.DisplayNameFor(model => model.orders[0].User.Username)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.orders[0].TotalAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.orders[0].Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.orders[0].Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.orders[0].PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.orders[0].ReceiverName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.orders[0].PaymentMethod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.orders[0].OrderDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.orders[0].DeliveryDate)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.orders[0].ReceivedDate)
+            </th>*@
+            <th>
+                 <p> Action Status</p>
+            </th>         
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.orders)
+        {
+            <tr>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.User.Username)
+                </td>*@
+                 <td>
+                    @Html.DisplayFor(modelItem => item.TotalAmount)
+                </td>
+                 <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                 <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                 <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                 <td>
+                    @Html.DisplayFor(modelItem => item.ReceiverName)
+                </td>
+                 <td>
+                    @Html.DisplayFor(modelItem => item.PaymentMethod)
+                </td>
+                 <td>
+                    @Html.DisplayFor(modelItem => item.OrderDate)
+                </td>
+                 <td>
+                    @Html.DisplayFor(modelItem => item.DeliveryDate)
+                </td>
+                 @*<td>
+                    @Html.DisplayFor(modelItem => item.ReceivedDate)
+                </td>*@
+                 <td>
+                    @{
+                        String Check = item.Status;
+                        if (Check == "Confirm")
+                        
+                        {                                                                        
+                         <a asp-page-handler="Disable" class="btn btn-rounded btn-danger" asp-route-id="@item.OrderId" >Hủy Đơn</a>                       
+                         <a asp-page-handler="Delivery" class="btn btn-rounded btn-danger" asp-route-id="@item.OrderId" >Đang Vận Chuyển</a>                        
+                        }
+                        else if(Check == "Delivery")
+                        {
+                         <a asp-page-handler="Disable" class="btn btn-rounded btn-danger" asp-route-id="@item.OrderId" >Hủy Đơn</a>
+                         <a asp-page-handler="Recive" class="btn btn-rounded btn-danger" asp-route-id="@item.OrderId" >Nhận Được Hàng</a>                       
+                        }
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
