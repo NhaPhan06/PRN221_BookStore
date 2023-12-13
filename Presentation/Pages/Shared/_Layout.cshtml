@@ -8,7 +8,7 @@
           name="description">
 
     <!-- title -->
-    <title>Fruitkha</title>
+    <title>@ViewData["Title"]</title>
 
     <!-- favicon -->
     <link href="img/favicon.png" rel="shortcut icon" type="image/png">
@@ -85,7 +85,7 @@
                                         <a href="about.html">About</a>
                                     </li>
                                     <li>
-                                        <a href="cart.html">Cart</a>
+                                        <a href="#">Cart</a>
                                     </li>
                                     <li>
                                         <a href="checkout.html">Check Out</a>
@@ -97,7 +97,7 @@
                                         <a href="news.html">News</a>
                                     </li>
                                     <li>
-                                        <a href="shop.html">Shop</a>
+                                        <a href="Shop">Shop</a>
                                     </li>
                                 </ul>
                             </li>
@@ -116,25 +116,23 @@
                                 <a href="contact.html">Contact</a>
                             </li>
                             <li>
-                                <a href="shop.html">Shop</a>
+                                <a href="Shop">Shop</a>
                                 <ul class="sub-menu">
                                     <li>
-                                        <a href="shop.html">Shop</a>
+                                        <a href="Shop">Shop</a>
                                     </li>
                                     <li>
-                                        <a href="checkout.html">Check Out</a>
+                                        <a href="#">Check Out</a>
                                     </li>
+
                                     <li>
-                                        <a href="single-product.html">Single Product</a>
-                                    </li>
-                                    <li>
-                                        <a href="cart.html">Cart</a>
+                                        <a href="#">Cart</a>
                                     </li>
                                 </ul>
                             </li>
                             <li>
                                 <div class="header-icons">
-                                    <a class="shopping-cart" href="cart.html">
+                                    <a class="shopping-cart" href="#">
                                         <i class="fas fa-shopping-cart"></i>
                                     </a>
                                     <a class="mobile-hide search-bar-icon" href="#">
@@ -160,12 +158,16 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <span class="close-btn"><i class="fas fa-window-close"></i></span>
+                <span class="close-btn">
+                    <i class="fas fa-window-close"></i>
+                </span>
                 <div class="search-bar">
                     <div class="search-bar-tablecell">
-                        <h3>Search For:</h3>
-                        <input placeholder="Keywords" type="text">
-                        <button type="submit">Search <i class="fas fa-search"></i></button>
+                        <form method="get" action="Shop">
+                            <h3>Search For:</h3>
+                            <input placeholder="Keywords" name="title" type="text">
+                            <button type="submit">Search <i class="fas fa-search"></i></button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -204,17 +206,9 @@
                             <a href="index.html">Home</a>
                         </li>
                         <li>
-                            <a href="about.html">About</a>
+                            <a href="Shop">Shop</a>
                         </li>
-                        <li>
-                            <a href="services.html">Shop</a>
-                        </li>
-                        <li>
-                            <a href="news.html">News</a>
-                        </li>
-                        <li>
-                            <a href="contact.html">Contact</a>
-                        </li>
+
                     </ul>
                 </div>
             </div>
@@ -302,6 +296,6 @@
 <script src="js/sticker.js"></script>
 <!-- main js -->
 <script src="js/main.js"></script>
-@await RenderSectionAsync("Scripts",false)
+@await RenderSectionAsync("Scripts", false)
 </body>
 </html>

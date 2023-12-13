@@ -81,5 +81,18 @@ namespace DataAccess.Repository.Implement {
 
             return result;
         }
+
+        public Task<Book?> GetDetail(string id) {
+            IQueryable<Book> query = _context.Books.AsQueryable();
+
+            Guid.TryParse(id, out Guid guid);
+
+            query = query.Include(x => x.Category);
+            query = query.Where(book => book.BookId.Equals(guid));
+
+            Task<Book?> result = query.FirstOrDefaultAsync();
+
+            return result;
+        }
     }
 }
