@@ -42,7 +42,7 @@
                                 </div>
                                 <hr />
                                 <div class="input-group">
-                                    <input type="email" id="Username" name="Username" class="form-control" placeholder="Your Email Address">
+                                    <input type="text" id="Username" name="Username" class="form-control" placeholder="Username">
                                     <span class="md-line"></span>
                                 </div>
                                 <div class="input-group">
@@ -61,8 +61,11 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-5 col-xs-12 forgot-phone text-right">
-                                        <a href="auth-reset-password.html" class="text-right f-w-600 text-inverse"> Forgot Your Password?</a>
+                                        <a asp-page="/Register" class="text-right f-w-600 text-inverse"> Register</a>
                                     </div>
+                                    @*<div class="col-sm-5 col-xs-12 forgot-phone text-right">
+                                        <a href="auth-reset-password.html" class="text-right f-w-600 text-inverse"> Forgot Your Password?</a>
+                                    </div>*@
                                 </div>
                                 <div class="row m-t-30">
                                     <div class="col-md-12">
@@ -79,7 +82,9 @@
                                         <img src="../login/assets/images/auth/Logo-small-bottom.png" alt="small-logo.png">
                                     </div>
                                 </div>
-                                @ViewData["notification"]
+                                <div class="form-group text-danger">
+                                    @ViewData["notification"]
+                                </div>
                             </div>
                         </form>
                         <!-- end of form -->
@@ -136,15 +141,5 @@
     </div>
     <![endif]-->
     <!-- Warning Section Ends -->
-    <!-- Required Jquery -->
-    <script type="text/javascript" src="../login/assets/js/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="../login/assets/js/jquery-ui/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="../login/assets/js/popper.js/popper.min.js"></script>
-    <script type="text/javascript" src="../login/assets/js/bootstrap/js/bootstrap.min.js"></script>
-    <!-- jquery slimscroll js -->
-    <script type="text/javascript" src="../login/assets/js/jquery-slimscroll/jquery.slimscroll.js"></script>
-    <!-- modernizr js -->
-    <script type="text/javascript" src="../login/assets/js/modernizr/modernizr.js"></script>
-    <script type="text/javascript" src="../login/assets/js/modernizr/css-scrollbars.js"></script>
-    <script type="text/javascript" src="../login/assets/js/common-pages.js"></script>
+    
 </div>

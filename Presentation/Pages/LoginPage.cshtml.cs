@@ -37,6 +37,7 @@ namespace Presentation.Pages
                 }
                 else
                 {
+                    HttpContext.Session.SetString("UserID",account.UserId.ToString());
                     return RedirectToPage("/Home");
                 }
             }
