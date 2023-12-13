@@ -1,4 +1,4 @@
-﻿namespace BusinessObject.Model {
+﻿namespace DataAccess.Model {
     public class GetBooksDto {
         public string? Title { get; set; }
         public string? Category { get; set; }

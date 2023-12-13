@@ -1,9 +1,9 @@
 ﻿using BusinessObject.Mapper;
 using BusinessObject.Service;
 using BusinessObject.Service.Implement;
-using DataAccess.Generic;
-using DataAccess.Generic.UnitOfWork;
 using DataAccess.Repository;
+using DataAccess.Repository.Generic;
+using DataAccess.Repository.Generic.UnitOfWork;
 using DataAccess.Repository.Implement;
 using DataAccess.Repository.Implement.Generic;
 using Microsoft.Extensions.DependencyInjection;

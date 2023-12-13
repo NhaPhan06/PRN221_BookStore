@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace DataAccess.Generic {
+namespace DataAccess.Repository.Generic {
     public interface IGeneric<T> where T : class {
         T GetById(object id);
         IEnumerable<T> GetAll();

@@ -1,5 +1,5 @@
 ﻿using DataAccess.DataAccess;
-using DataAccess.Generic;
+using DataAccess.Repository.Generic;
 
 namespace DataAccess.Repository {
     public interface ICategoryRepository : IGeneric<Category> {

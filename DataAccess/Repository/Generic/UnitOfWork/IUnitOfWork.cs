@@ -1,6 +1,4 @@
-﻿using DataAccess.Repository;
-
-namespace DataAccess.Generic.UnitOfWork {
+﻿namespace DataAccess.Repository.Generic.UnitOfWork {
     public interface IUnitOfWork {
         IBookRepository BookRepository { get; }
         ICategoryRepository CategoryRepository { get; }

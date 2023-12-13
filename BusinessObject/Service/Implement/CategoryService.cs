@@ -1,5 +1,5 @@
 ﻿using DataAccess.DataAccess;
-using DataAccess.Generic.UnitOfWork;
+using DataAccess.Repository.Generic.UnitOfWork;
 
 namespace BusinessObject.Service.Implement {
     public class CategoryService : ICategoryService {

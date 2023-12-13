@@ -1,7 +1,6 @@
-﻿using DataAccess.Repository;
-using DataAccess.Repository.Implement;
+﻿using DataAccess.Repository.Implement;
 
-namespace DataAccess.Generic.UnitOfWork {
+namespace DataAccess.Repository.Generic.UnitOfWork {
     public class UnitOfWork : IUnitOfWork {
         public readonly PRN_BookStoreContext _context;
 

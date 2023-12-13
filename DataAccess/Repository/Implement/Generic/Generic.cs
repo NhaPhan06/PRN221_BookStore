@@ -1,4 +1,4 @@
-﻿using DataAccess.Generic;
+﻿using DataAccess.Repository.Generic;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
