@@ -41,5 +41,13 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
-
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapRazorPages();
+    endpoints.MapGet("/", c =>
+    {
+        c.Response.Redirect("/LoginPage");
+        return Task.CompletedTask;
+    });
+});
 app.Run();

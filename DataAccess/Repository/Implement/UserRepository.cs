@@ -18,5 +18,11 @@ namespace DataAccess.Repository.Implement {
             var user = _context.Set<User>().FirstOrDefault(a => a.Username.Equals(username) && a.Password.Equals(password));
             return user;
         }
+
+        public User UpdateUser(User user)
+        {
+            _context.Set<User>().Update(user);
+            return user;
+        }
     }
 }
