@@ -1,0 +1,18 @@
+.btn_nha {
+    display: inline-block;
+    padding: 12px 24px;
+    border: 2px solid #F28123;
+    border-radius: 80px;
+    transition: all 0.2s ease-in;
+    position: relative;
+    overflow: hidden;
+    font-size: 15px;
+    background-color: #F28123;
+    color: #fff;
+    z-index: 1;
+}
+
+.btn_nha:hover {
+    color: #0b0b0b;
+    border: 2px solid #F28123;
+}

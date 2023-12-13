@@ -171,35 +171,21 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr class="table-body-row">
-                            <td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-                            <td class="product-image"><img alt="" src="img/products/product-img-1.jpg"></td>
-                            <td class="product-name">Strawberry</td>
-                            <td class="product-price">$85</td>
-                            <td class="product-quantity"><input placeholder="0" type="number"></td>
-                            <td class="product-total">1</td>
-                        </tr>
-                        <tr class="table-body-row">
-                            <td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-                            <td class="product-image"><img alt="" src="img/products/product-img-2.jpg"></td>
-                            <td class="product-name">Berry</td>
-                            <td class="product-price">$70</td>
-                            <td class="product-quantity"><input placeholder="0" type="number"></td>
-                            <td class="product-total">1</td>
-                        </tr>
-                        <tr class="table-body-row">
-                            <td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-                            <td class="product-image"><img alt="" src="img/products/product-img-3.jpg"></td>
-                            <td class="product-name">Lemon</td>
-                            <td class="product-price">$35</td>
-                            <td class="product-quantity"><input placeholder="0" type="number"></td>
-                            <td class="product-total">1</td>
-                        </tr>
+                        @foreach (var item in Model.Carts)
+                        {
+                            <tr class="table-body-row">
+                                <td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
+                                <td class="product-image"><img alt="" src="@item.ImageUrl"></td>
+                                <td class="product-name">@item.Title</td>
+                                <td class="product-price">$@item.Price</td>
+                                <td class="product-quantity">@item.StockQuantity</td>
+                                <td class="product-total">$@(item.Price * item.StockQuantity)</td>
+                            </tr>
+                        }
                         </tbody>
                     </table>
                 </div>
             </div>
-
             <div class="col-lg-4">
                 <div class="total-section">
                     <table class="total-table">
@@ -211,25 +197,15 @@
                         </thead>
                         <tbody>
                         <tr class="total-data">
-                            <td><strong>Subtotal: </strong></td>
-                            <td>$500</td>
-                        </tr>
-                        <tr class="total-data">
-                            <td><strong>Shipping: </strong></td>
-                            <td>$45</td>
-                        </tr>
-                        <tr class="total-data">
                             <td><strong>Total: </strong></td>
-                            <td>$545</td>
+                            <td>$@Model.total</td>
                         </tr>
                         </tbody>
                     </table>
                     <div class="cart-buttons">
-                        <a class="boxed-btn" href="cart.html">Update Cart</a>
                         <a class="boxed-btn black" href="checkout.html">Check Out</a>
                     </div>
                 </div>
-
                 <div class="coupon-section">
                     <h3>Apply Coupon</h3>
                     <div class="coupon-form-wrap">

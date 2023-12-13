@@ -12,13 +12,14 @@ builder.Services.AddDbContext<PRN_BookStoreContext>(options => {
     options.UseSqlServer(connString).EnableSensitiveDataLogging();
 });
 
+builder.Services.AddSession();
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 
 WebApplication app = builder.Build();
 
-builder.Services.AddSession();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment()) {

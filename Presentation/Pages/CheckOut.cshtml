@@ -1,9 +1,10 @@
-﻿@page
-@model Presentation.Pages.Shop
+@page
+@model Presentation.Pages.CheckOut
 
 @{
     Layout = null;
 }
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +15,7 @@
           name="description">
 
     <!-- title -->
-    <title>Shop</title>
+    <title>Check Out</title>
 
     <!-- favicon -->
     <link href="img/favicon.png" rel="shortcut icon" type="image/png">
@@ -60,8 +61,7 @@
                     <!-- logo -->
                     <div class="site-logo">
                         <a href="index.html">
-                            <img alt=""
-                                 src="imgstorebook/240_F_405931625_dtLZDca2FCBTefOyKNFwL1cpLJEDFDIj_preview_rev_1.jpg">
+                            <img alt="" src="img/logo.png">
                         </a>
                     </div>
                     <!-- logo -->
@@ -191,8 +191,8 @@
         <div class="row">
             <div class="col-lg-8 offset-lg-2 text-center">
                 <div class="breadcrumb-text">
-                    <p>Attractive & Science Fiction</p>
-                    <h1>Shop</h1>
+                    <p>Fresh and Organic</p>
+                    <h1>Check Out Product</h1>
                 </div>
             </div>
         </div>
@@ -200,72 +200,145 @@
 </div>
 <!-- end breadcrumb section -->
 
-<!-- products -->
-<div class="product-section mt-150 mb-150">
+<!-- check out section -->
+<div class="checkout-section mt-150 mb-150">
     <div class="container">
-
         <div class="row">
-            <div class="col-md-12">
-                <!-- <div class="product-filters">
-                    <ul>
-                        <li class="active" data-filter="*">All</li>
-                        <li data-filter=".strawberry">Strawberry</li>
-                        <li data-filter=".berry">Berry</li>
-                        <li data-filter=".lemon">Lemon</li>
-                    </ul>
-                </div> -->
-            </div>
-        </div>
-
-        <div class="row">
-            @foreach (var item in Model.Book)
-            {
-                
-                <div class="col-lg-4 col-md-6 text-center">
-                    <div class="single-product-item">
-                        <form method="post" asp-page-handler="AddToCart">
-                            <input type="hidden" name="Id" value="@item.BookId"/>
-                            <div class="product-image">
-                                <a href="single-product.html">
-                                    <img alt=""
-                                         src="imgstorebook/author-book-store-book-cover-06.jpg">
-                                </a>
+            <div class="col-lg-8">
+                <div class="checkout-accordion-wrap">
+                    <div class="accordion" id="accordionExample">
+                        <div class="card single-accordion">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <button aria-controls="collapseOne" aria-expanded="true" class="btn btn-link"
+                                            data-target="#collapseOne" data-toggle="collapse" type="button">
+                                        Default Address
+                                    </button>
+                                </h5>
                             </div>
-                            <h3>@item.Title</h3>
-                            <p class="product-price"><span>Per 1</span> @item.Price$ </p>
-                            <button type="submit" class="btn_nha"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                        </form>
+                            <div aria-labelledby="headingOne" class="collapse show" data-parent="#accordionExample"
+                                 id="collapseOne">
+                                <div class="card-body">
+                                    <div class="billing-address-form">
+                                        <form asp-page-handler="Default">
+                                            <p>
+                                                <input placeholder="Name" type="text" value="" readonly>
+                                            </p>
+                                            <p>
+                                                <input placeholder="Address" type="text" value="" readonly>
+                                            </p>
+                                            <p>
+                                                <input placeholder="Phone" type="text" value="" readonly>
+                                            </p>
+                                            <button class="btn_nha" type="submit" style=" width: fit-content; align-self: end">  Order </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card single-accordion">
+                            <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0">
+                                    <button aria-controls="collapseTwo" aria-expanded="false" class="btn btn-link collapsed"
+                                            data-target="#collapseTwo" data-toggle="collapse" type="button">
+                                        Other Address
+                                    </button>
+                                </h5>
+                            </div>
+                            <div aria-labelledby="headingTwo" class="collapse" data-parent="#accordionExample"
+                                 id="collapseTwo">
+                                <div class="card-body">
+                                    <div class="billing-address-form">
+                                        <form asp-page-handler="Other">
+                                            <p>
+                                                <input placeholder="Name" type="text">
+                                            </p>
+                                            <p>
+                                                <input placeholder="Address" type="text">
+                                            </p>
+                                            <p>
+                                                <input placeholder="Phone" type="tel">
+                                            </p>
+                                            <button class="btn_nha" type="submit"> Order </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card single-accordion">
+                            <div class="card-header" id="headingThree">
+                                <h5 class="mb-0">
+                                    <button aria-controls="collapseThree" aria-expanded="false"
+                                            class="btn btn-link collapsed"
+                                            data-target="#collapseThree" data-toggle="collapse"
+                                            type="button">
+                                        Card Details
+                                    </button>
+                                </h5>
+                            </div>
+                            <div aria-labelledby="headingThree" class="collapse" data-parent="#accordionExample"
+                                 id="collapseThree">
+                                <div class="card-body">
+                                    <div class="card-details">
+                                        <p>Your card details goes here.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            }
-        </div>
 
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="pagination-wrap">
-                    <ul>
-                        <li>
-                            <a href="#">Prev</a>
-                        </li>
-                        <li>
-                            <a href="#">1</a>
-                        </li>
-                        <li>
-                            <a class="active" href="#">2</a>
-                        </li>
-                        <li>
-                            <a href="#">3</a>
-                        </li>
-                        <li>
-                            <a href="#">Next</a>
-                        </li>
-                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="order-details-wrap">
+                    <table class="order-details">
+                        <thead>
+                        <tr>
+                            <th>Your order Details</th>
+                            <th>Price</th>
+                        </tr>
+                        </thead>
+                        <tbody class="order-details-body">
+                        <tr>
+                            <td>Product</td>
+                            <td>Total</td>
+                        </tr>
+                        <tr>
+                            <td>Strawberry</td>
+                            <td>$85.00</td>
+                        </tr>
+                        <tr>
+                            <td>Berry</td>
+                            <td>$70.00</td>
+                        </tr>
+                        <tr>
+                            <td>Lemon</td>
+                            <td>$35.00</td>
+                        </tr>
+                        </tbody>
+                        <tbody class="checkout-details">
+                        <tr>
+                            <td>Subtotal</td>
+                            <td>$190</td>
+                        </tr>
+                        <tr>
+                            <td>Shipping</td>
+                            <td>$50</td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                            <td>$240</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <a class="boxed-btn" href="#">Place Order</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- end products -->
+<!-- end check out section -->
 
 <!-- logo carousel -->
 <div class="logo-carousel-section">
