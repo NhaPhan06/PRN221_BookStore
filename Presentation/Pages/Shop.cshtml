@@ -1,6 +1,6 @@
 ﻿@page
 @model Shop
-
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     Layout = null;
 }
@@ -67,48 +67,92 @@
                     <!-- menu start -->
                     <nav class="main-menu">
                         <ul>
-                            <li class="current-list-item"><a href="#">Home</a>
+                            <li class="current-list-item">
+                                <a href="#">Home</a>
                                 <ul class="sub-menu">
-                                    <li><a href="index.html">Static Home</a></li>
-                                    <li><a href="index_2.html">Slider Home</a></li>
+                                    <li>
+                                        <a href="index.html">Static Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="index_2.html">Slider Home</a>
+                                    </li>
                                 </ul>
                             </li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="#">Pages</a>
+                            <li>
+                                <a href="about.html">About</a>
+                            </li>
+                            <li>
+                                <a href="#">Pages</a>
                                 <ul class="sub-menu">
-                                    <li><a href="404.html">404 page</a></li>
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="cart.html">Cart</a></li>
-                                    <li><a href="checkout.html">Check Out</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                    <li><a href="news.html">News</a></li>
-                                    <li><a href="shop.html">Shop</a></li>
+                                    <li>
+                                        <a href="404.html">404 page</a>
+                                    </li>
+                                    <li>
+                                        <a href="about.html">About</a>
+                                    </li>
+                                    <li>
+                                        <a href="cart.html">Cart</a>
+                                    </li>
+                                    <li>
+                                        <a href="checkout.html">Check Out</a>
+                                    </li>
+                                    <li>
+                                        <a href="contact.html">Contact</a>
+                                    </li>
+                                    <li>
+                                        <a href="news.html">News</a>
+                                    </li>
+                                    <li>
+                                        <a href="shop.html">Shop</a>
+                                    </li>
                                 </ul>
                             </li>
-                            <li><a href="news.html">News</a>
+                            <li>
+                                <a href="news.html">News</a>
                                 <ul class="sub-menu">
-                                    <li><a href="news.html">News</a></li>
-                                    <li><a href="single-news.html">Single News</a></li>
+                                    <li>
+                                        <a href="news.html">News</a>
+                                    </li>
+                                    <li>
+                                        <a href="single-news.html">Single News</a>
+                                    </li>
                                 </ul>
                             </li>
-                            <li><a href="contact.html">Contact</a></li>
-                            <li><a href="shop.html">Shop</a>
+                            <li>
+                                <a href="contact.html">Contact</a>
+                            </li>
+                            <li>
+                                <a href="shop.html">Shop</a>
                                 <ul class="sub-menu">
-                                    <li><a href="shop.html">Shop</a></li>
-                                    <li><a href="checkout.html">Check Out</a></li>
-                                    <li><a href="single-product.html">Single Product</a></li>
-                                    <li><a href="cart.html">Cart</a></li>
+                                    <li>
+                                        <a href="shop.html">Shop</a>
+                                    </li>
+                                    <li>
+                                        <a href="checkout.html">Check Out</a>
+                                    </li>
+                                    <li>
+                                        <a href="single-product.html">Single Product</a>
+                                    </li>
+                                    <li>
+                                        <a href="cart.html">Cart</a>
+                                    </li>
                                 </ul>
                             </li>
                             <li>
                                 <div class="header-icons">
-                                    <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
-                                    <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                                    <a class="shopping-cart" href="cart.html">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </a>
+                                    <a class="mobile-hide search-bar-icon" href="#">
+                                        <i class="fas fa-search"></i>
+                                    </a>
                                 </div>
                             </li>
                         </ul>
                     </nav>
-                    <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                    <a class="mobile-show search-bar-icon" href="#">
+                        <i class="fas fa-search"></i>
+                    </a>
                     <div class="mobile-menu"></div>
                     <!-- menu end -->
                 </div>
@@ -123,12 +167,17 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <span class="close-btn"><i class="fas fa-window-close"></i></span>
+                <span class="close-btn">
+                    <i class="fas fa-window-close"></i>
+                </span>
                 <div class="search-bar">
                     <div class="search-bar-tablecell">
-                        <h3>Search For:</h3>
-                        <input placeholder="Keywords" type="text">
-                        <button type="submit">Search <i class="fas fa-search"></i></button>
+
+                        <form method="get">
+                            <h3>Search For:</h3>
+                            <input placeholder="Keywords" name="title" type="text">
+                            <button type="submit">Search <i class="fas fa-search"></i></button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -170,10 +219,31 @@
         </div>
 
         <div class="row">
-            @foreach (var item in Model.Book)
+            @if (Model.Book == null || Model.Book.Count == 0)
+            {
+                <div class="full-height-section error-section">
+                    <div class="full-height-tablecell">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-8 offset-lg-2 text-center">
+                                    <div class="error-text">
+                                        <i class="far fa-sad-cry"></i>
+                                        <h1>Oops! Not Found.</h1>
+                                        <p>How about finding something else?</p>
+                                        <a class="boxed-btn" href="index.html">Back to Home</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                @foreach (var item in Model.Book)
                 {
                     <div class="col-lg-4 col-md-6 text-center">
-            
+
                         <div class="single-product-item">
                             <div class="product-image">
                                 <a href="single-product.html">
@@ -187,18 +257,19 @@
                         </div>
                     </div>
                 }
+            }
         </div>
 
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="pagination-wrap">
                     <ul>
-                      @for (var i = 1; i < Model.TotalPages; i++)
-                      {
-                          <li>
-                              <a href="#">@i</a>
-                          </li>
-                      } 
+                        @for (var i = 1; i < Model.TotalPages; i++)
+                        {
+                            <li>
+                                <a class="@(i == Model.CurrentPage ? "active" : "")" asp-route-currentpage="@i" asp-page="./Shop" asp-route-title="@Model.Title">@i</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
@@ -242,8 +313,10 @@
             <div class="col-lg-3 col-md-6">
                 <div class="footer-box about-widget">
                     <h2 class="widget-title">About us</h2>
-                    <p>Ut enim ad minim veniam perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                        doloremque laudantium, totam rem aperiam, eaque ipsa quae.</p>
+                    <p>
+                        Ut enim ad minim veniam perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                        doloremque laudantium, totam rem aperiam, eaque ipsa quae.
+                    </p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
@@ -260,11 +333,21 @@
                 <div class="footer-box pages">
                     <h2 class="widget-title">Pages</h2>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="services.html">Shop</a></li>
-                        <li><a href="news.html">News</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li>
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="about.html">About</a>
+                        </li>
+                        <li>
+                            <a href="services.html">Shop</a>
+                        </li>
+                        <li>
+                            <a href="news.html">News</a>
+                        </li>
+                        <li>
+                            <a href="contact.html">Contact</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -274,7 +357,9 @@
                     <p>Subscribe to our mailing list to get the latest updates.</p>
                     <form action="index.html">
                         <input placeholder="Email" type="email">
-                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        <button type="submit">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
                     </form>
                 </div>
             </div>
@@ -288,7 +373,8 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-12">
-                <p>Copyrights &copy; 2019 - <a href="https://imransdesign.com/">Imran Hossain</a>, All Rights
+                <p>
+                    Copyrights &copy; 2019 - <a href="https://imransdesign.com/">Imran Hossain</a>, All Rights
                     Reserved.<br>
                     Distributed By - <a href="https://themewagon.com/">Themewagon</a>
                 </p>
@@ -296,11 +382,31 @@
             <div class="col-lg-6 text-right col-md-12">
                 <div class="social-icons">
                     <ul>
-                        <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-                        <li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
+                        <li>
+                            <a href="#" target="_blank">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank">
+                                <i class="fab fa-dribbble"></i>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
