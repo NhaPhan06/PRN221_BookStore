@@ -10,7 +10,7 @@ namespace DataAccess.Repository.Implement {
 
 
         public Task<List<Book>> GetBookList(GetBooksDto getBooksDto) {
-            var query = _context.Books.AsQueryable();
+            IQueryable<Book> query = _context.Books.AsQueryable();
 
             query = query.Include(x => x.Category);
 
@@ -59,15 +59,14 @@ namespace DataAccess.Repository.Implement {
             int pageSize = getBooksDto.PageSize <= 0 ? 10 : getBooksDto.PageSize;
             query = query.Skip((currentPage - 1) * pageSize).Take(pageSize);
 
-            var result = query.ToListAsync();
+            Task<List<Book>> result = query.ToListAsync();
 
             return result;
         }
 
         public Task<int> GetBookCount(GetBooksDto getBooksDto) {
+            IQueryable<Book> query = _context.Books.AsQueryable();
 
-            var query = _context.Books.AsQueryable();
-            
             query = query.Include(x => x.Category);
 
             if (!string.IsNullOrEmpty(getBooksDto.Title)) {
@@ -78,7 +77,7 @@ namespace DataAccess.Repository.Implement {
                 query = query.Where(book => book.Category.Name.Contains(getBooksDto.Category));
             }
 
-            var result = query.CountAsync();
+            Task<int> result = query.CountAsync();
 
             return result;
         }
