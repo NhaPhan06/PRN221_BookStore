@@ -10,7 +10,7 @@ namespace DataAccess.Enum
     {
         Confirm,
         Delivery,
-        Recive,
+        Receive,
         Disable
 
     }
