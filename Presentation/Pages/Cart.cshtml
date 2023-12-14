@@ -220,10 +220,12 @@
                         @foreach (var item in Model.Carts)
                         {
                             <tr class="table-body-row">
+                                
                                 <td class="product-remove">
-                                    <a href="#">
-                                        <i class="far fa-window-close"></i>
-                                    </a>
+                                    <form method="post" asp-page-handler="Remove">
+                                        <input type="hidden" name="Id" value="@item.BookId"/>
+                                        <button style="width:50px" style="height:50px" type="submit">X</button>
+                                    </form>
                                 </td>
                                 <td class="product-image">
                                     <img alt="" src="@item.ImageUrl">

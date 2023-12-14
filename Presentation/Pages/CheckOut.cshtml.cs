@@ -59,7 +59,10 @@ namespace Presentation.Pages {
             Carts = JsonConvert.DeserializeObject<List<Carts>>(jsoncart);
             await _orderService.CreateOrder(Carts, order);
 
-            return RedirectToPage("Home");
+            //delete cart
+            HttpContext.Session.Remove("cart");
+            
+            return RedirectToPage("shop");
         }
 
         public async Task<IActionResult> OnPostOther() {
@@ -78,7 +81,19 @@ namespace Presentation.Pages {
             Carts = JsonConvert.DeserializeObject<List<Carts>>(jsoncart);
             await _orderService.CreateOrder(Carts, order);
             
-            return RedirectToPage("Home");
+            //delete cart
+            HttpContext.Session.Remove("cart");
+            
+            return RedirectToPage("shop");
         }
+
+        public async Task<IActionResult> OnPostCancel()
+        {
+            //delete cart
+            HttpContext.Session.Remove("cart");
+            return RedirectToPage("shop");
+        }
+        
+
     }
 }
