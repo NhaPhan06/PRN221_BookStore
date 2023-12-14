@@ -70,9 +70,13 @@ namespace Presentation.Pages.Profile
             HttpContext.Session.Remove("UserID");
             return RedirectToPage("/Home");
         }
-        public IActionResult OnGetOrderDetails()
+        public IActionResult OnGetOrderDetails(string id)
         {
-            Guid orId = Guid.Parse(OrderId);
+            var accId = HttpContext.Session.GetString("UserID");
+            Guid userid = new Guid(accId);
+            Users = _userService.GetUserById(userid);
+            orders = _orderService.GetOrdersByUserId(Users.UserId);
+            Guid orId = Guid.Parse(id);
             OrderDetail = _orderDetailService.GetOrderDetailByOrderId(orId);
             return Page();
         }

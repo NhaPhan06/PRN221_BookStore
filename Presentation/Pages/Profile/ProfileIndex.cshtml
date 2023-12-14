@@ -59,13 +59,13 @@
                                     <li><a href="shop.html">Shop</a></li>
                                 </ul>
                             </li>
-                            <li>
+                            @*<li>
                                 <a href="news.html">News</a>
                                 <ul class="sub-menu">
                                     <li><a href="news.html">News</a></li>
                                     <li><a href="single-news.html">Single News</a></li>
                                 </ul>
-                            </li>
+                            </li>*@
                             <li><a href="contact.html">Contact</a></li>
                             <li>
                                 <a href="shop.html">Shop</a>
@@ -77,23 +77,33 @@
                                 </ul>
                             </li>
                             <li>
-                                <div class="header-icons">
-                                    <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
-                                    <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-                                    @if (@HttpContext.Session.GetString("UserID") == null)
-                                    {
-                                        <a asp-page="/LoginPage"><i class="fa fa-user" aria-hidden="true"></i></a>
-                                    }
-                                    else if (@HttpContext.Session.GetString("UserID") != null)
-                                    {
+                                @if (@HttpContext.Session.GetString("UserID") == null)
+                                {
+                                    <a asp-page="/LoginPage"><i class="fa fa-user" aria-hidden="true"></i></a>
+                                }
+                                else if (@HttpContext.Session.GetString("UserID") != null)
+                                {
+                                    <div class="header-icons">
                                         <a href="#"><i class="fa fa-user" aria-hidden="true"></i></a>
                                         <ul class="sub-menu">
                                             <li><a asp-page="/Profile/ProfileIndex">Profile</a></li>
                                             <li><a asp-page-handler="Logout" asp-route-handler="OnGetLogout">Logout</a></li>
                                         </ul>
-                                    }
-                                </div>
+                                    </div>
+
+                                }
                             </li>
+                            <li>
+                                
+                                <div class="header-icons">
+                                    
+                                    <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                                    <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                                    
+                                </div>
+                                
+                            </li>
+                            
                         </ul>
                     </nav>
                     <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
@@ -154,7 +164,7 @@
                                 </h5>
                             </div>
 
-                            <div aria-labelledby="headingOne" class="collapse show" data-parent="#accordionExample"
+                            <div aria-labelledby="headingOne" class="collapse" data-parent="#accordionExample"
                                  id="collapseOne">
                                 <div class="card-body">
                                     <div class="billing-address-form">
@@ -219,7 +229,7 @@
                                     </button>
                                 </h5>
                             </div>
-                            <div aria-labelledby="headingTwo" class="collapse" data-parent="#accordionExample"
+                            <div aria-labelledby="headingTwo" class="collapse show" data-parent="#accordionExample"
                                  id="collapseTwo">
                                 <div class="card-body">
                                     <div class="shipping-address-form">
@@ -285,7 +295,7 @@
                                                                 @Html.DisplayFor(modelItem => item.DeliveryDate)
                                                             </td>
                                                             <td>
-                                                                <a asp-route-OrderId="@item.OrderId" asp-route-handler="OnGetOrderDetails" class="btn btn-primary btn-sm"><i class="fas fa-folder">View</i></a>
+                                                                <a asp-route-id="@item.OrderId" asp-route-handler="OrderDetails" class="btn btn-primary btn-sm"><i class="fas fa-folder">View</i></a>
                                                             </td>
                                                         </tr>
                                                     }
@@ -296,7 +306,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card single-accordion">
+                        @*<div class="card single-accordion">
                             <div class="card-header" id="headingThree">
                                 <h5 class="mb-0">
                                     <button aria-controls="collapseThree" aria-expanded="false"
@@ -315,15 +325,27 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
                     </div>
 
                 </div>
             </div>
 
             <div class="col-lg-4">
-                <div class="order-details-wrap">
-                        <div class="table-container">
+                <div class="card single-accordion">
+                    <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                            <button aria-controls="collapseThree" aria-expanded="false"
+                                    class="btn btn-link collapsed"
+                                    data-target="#collapseThree" data-toggle="collapse"
+                                    type="button">
+                                Order Details
+                            </button>
+                        </h5>
+                    </div>
+                    <div aria-labelledby="headingThree" class="collapse show" data-parent="#accordionExample"
+                         id="collapseThree">
+                        <div class="card-body">
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -355,13 +377,15 @@
                                                 @Html.DisplayFor(modelItem => item.Price)
                                             </td>
                                             <td>
-                                                @*<a asp-route-OrderId="@item.OrderId" asp-route-handler="OnGetOrderDetails" class="btn btn-primary btn-sm"><i class="fas fa-folder">View</i></a>*@
+                                                <a class="boxed-btn" href="#">Cancel Order</a>
                                             </td>
                                         </tr>
                                     }
                                 </tbody>
                             </table>
-                        </div>
+                         </div>
+                            
+                    </div>
                 </div>
             </div>
         </div>
