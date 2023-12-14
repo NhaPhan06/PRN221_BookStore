@@ -70,9 +70,8 @@ namespace Presentation.Pages.Profile
             HttpContext.Session.Remove("UserID");
             return RedirectToPage("/Home");
         }
-        public IActionResult OnGetOrderDetails()
-        {
-            Guid orId = Guid.Parse(OrderId);
+        public IActionResult OnGetOrderDetails() {
+            var orId = Guid.Parse(OrderId);
             OrderDetail = _orderDetailService.GetOrderDetailByOrderId(orId);
             return Page();
         }

@@ -285,7 +285,7 @@
                                                                 @Html.DisplayFor(modelItem => item.DeliveryDate)
                                                             </td>
                                                             <td>
-                                                                <a asp-route-OrderId="@item.OrderId" asp-route-handler="OnGetOrderDetails" class="btn btn-primary btn-sm"><i class="fas fa-folder">View</i></a>
+                                                                <a asp-route-orderid="@item.OrderId" asp-route-handler="OrderDetails" class="btn btn-primary btn-sm"><i class="fas fa-folder">View</i></a>
                                                             </td>
                                                         </tr>
                                                     }
