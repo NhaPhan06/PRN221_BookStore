@@ -12,7 +12,7 @@ namespace BusinessLayer.Service.Implement {
             _unitOfWork = unitOfWork;
         }
         public List<Order> GetAll() => _unitOfWork.OrderRepository.GetAllOrder();        
-
+        
         public List<Order> Search()
         {
             throw new NotImplementedException();

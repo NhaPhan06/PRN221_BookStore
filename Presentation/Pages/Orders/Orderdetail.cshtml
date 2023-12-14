@@ -1,0 +1,43 @@
+﻿@page
+@model Presentation.Pages.Orders.OrderdetailModel
+@{
+}
+
+    <div>
+        <dl  class="row">
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Orderdetail.OrderDetailId)
+            </dt>
+             <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Orderdetail.OrderDetailId)
+             </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Orderdetail.OrderId)
+            </dt>
+             <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Orderdetail.OrderId)
+             </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Orderdetail.BookId)
+            </dt>
+             <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Orderdetail.BookId)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Orderdetail.Quantity)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Orderdetail.Quantity)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Orderdetail.Price)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Orderdetail.Price)
+            </dd>
+        </dl>
+       
+            
+        </div>
+        
