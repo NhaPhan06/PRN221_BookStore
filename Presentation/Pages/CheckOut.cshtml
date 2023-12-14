@@ -222,13 +222,13 @@
                                     <div class="billing-address-form">
                                         <form asp-page-handler="Default">
                                             <p>
-                                                <input placeholder="Name" type="text" value="" readonly>
+                                                <input placeholder="Name" type="text" value="@Model.User.Firstname @Model.User.Lastname" readonly>
                                             </p>
                                             <p>
-                                                <input placeholder="Address" type="text" value="" readonly>
+                                                <input placeholder="Address" type="text" value="@Model.User.Address" readonly>
                                             </p>
                                             <p>
-                                                <input placeholder="Phone" type="text" value="" readonly>
+                                                <input placeholder="Phone" type="text" value="@Model.User.PhoneNumber" readonly>
                                             </p>
                                             <button class="btn_nha" type="submit"> Order </button>
                                         </form>
