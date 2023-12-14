@@ -7,20 +7,18 @@ namespace Presentation.Pages.Orders
 {
     public class OrderdetailModel : PageModel
     {
-        private  readonly IOrderDetailService _orderDetailService;
+        private readonly IOrderDetailService _orderDetailService;
         private readonly IOrderService _orderService;
         public OrderdetailModel(IOrderDetailService orderDetailService, IOrderService orderService)
         {
             _orderDetailService = orderDetailService;
             _orderService = orderService;
         }
-        public  OrderDetail Orderdetail { get; set; }
-        public  Order Order { get; set; }
-
+        public List<OrderDetail> Orderdetails { get; set; }
         public IActionResult OnGet(Guid id)
         {
-            var orderdetail = _orderService.GetOrderById(id);
-            Order = orderdetail;
+            var order = _orderService.GetOrderById(id);
+            Orderdetails = _orderDetailService.GetAllOrderDetailByOrderId(order.OrderId);
             return Page();
         }
     }

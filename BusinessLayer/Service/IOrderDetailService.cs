@@ -4,5 +4,6 @@ namespace BusinessLayer.Service {
     public interface IOrderDetailService {
         
         OrderDetail GetOrderDetailById(Guid id);
+        List<OrderDetail> GetAllOrderDetailByOrderId(Guid id);
     }
 }
