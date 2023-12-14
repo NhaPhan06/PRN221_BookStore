@@ -76,18 +76,15 @@
                     <div class="col-lg-4 col-md-6 text-center">
 
                         <div class="single-product-item">
-                            <form method="post" asp-page-handler="AddToCart">
-                                <input type="hidden" name="Id" value="@item.BookId"/>
-                                <div class="product-image">
-                                    <a href="single-product.html">
-                                        <img alt=""
-                                             src="imgstorebook/author-book-store-book-cover-06.jpg">
-                                    </a>
-                                </div>
-                                <h3>@item.Title</h3>
-                                <p class="product-price"><span>Per 1</span> @item.Price$ </p>
-                                <button type="submit" class="btn_nha"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                            </form>
+                            <div class="product-image">
+                                <a asp-page="./BookDetails" asp-route-id="@item.BookId">
+                                    <img alt=""
+                                         src="imgstorebook/author-book-store-book-cover-06.jpg">
+                                </a>
+                            </div>
+                            <h3>@item.Title</h3>
+                            <p class="product-price"><span>Per 1</span> @item.Price$ </p>
+                            <a class="cart-btn" href="cart.html"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
                         </div>
                     </div>
                 }
