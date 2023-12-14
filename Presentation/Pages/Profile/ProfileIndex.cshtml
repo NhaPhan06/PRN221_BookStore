@@ -4,6 +4,18 @@
     ViewData["Title"] = "ProfileIndex";
     Layout = "_LayoutProfile";
 }
+<style>
+    .table-container {
+        max-height: 400px;
+        overflow-y: auto;
+        overflow-x: auto; /* Hiển thị thanh cuộn ngang khi cần thiết */
+    }
+
+    .table {
+        width: 100%; /* Đảm bảo bảng chiếm toàn bộ chiều rộng của container */
+    }
+</style>
+
 <!--PreLoader-->
 <div class="loader">
     <div class="loader-inner">
@@ -28,11 +40,11 @@
                     <nav class="main-menu">
                         <ul>
                             <li class="current-list-item">
-                                <a href="#">Home</a>
-                                <ul class="sub-menu">
+                                <a asp-page="./Home">Home</a>
+                                @*<ul class="sub-menu">
                                     <li><a href="index.html">Static Home</a></li>
                                     <li><a href="index_2.html">Slider Home</a></li>
-                                </ul>
+                                </ul>*@
                             </li>
                             <li><a href="about.html">About</a></li>
                             <li>
@@ -68,6 +80,18 @@
                                 <div class="header-icons">
                                     <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
                                     <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                                    @if (@HttpContext.Session.GetString("UserID") == null)
+                                    {
+                                        <a asp-page="/LoginPage"><i class="fa fa-user" aria-hidden="true"></i></a>
+                                    }
+                                    else if (@HttpContext.Session.GetString("UserID") != null)
+                                    {
+                                        <a href="#"><i class="fa fa-user" aria-hidden="true"></i></a>
+                                        <ul class="sub-menu">
+                                            <li><a asp-page="/Profile/ProfileIndex">Profile</a></li>
+                                            <li><a asp-page="Home" asp-page-handler="logout">Logout</a></li>
+                                        </ul>
+                                    }
                                 </div>
                             </li>
                         </ul>
@@ -117,7 +141,7 @@
 <div class="checkout-section mt-150 mb-150">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-8">
                 <div class="checkout-accordion-wrap">
                     <div class="accordion" id="accordionExample">
                         <div class="card single-accordion">
@@ -191,7 +215,7 @@
                                             class="btn btn-link collapsed"
                                             data-target="#collapseTwo" data-toggle="collapse"
                                             type="button">
-                                        Shipping Address
+                                        Orders History
                                     </button>
                                 </h5>
                             </div>
@@ -199,7 +223,69 @@
                                  id="collapseTwo">
                                 <div class="card-body">
                                     <div class="shipping-address-form">
-                                        <p>Your shipping address form is here.</p>
+                                        <div class="table-container">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.orders[0].TotalAmount)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.orders[0].Address)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.orders[0].Status)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.orders[0].PhoneNumber)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.orders[0].ReceiverName)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.orders[0].PaymentMethod)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.orders[0].OrderDate)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.orders[0].DeliveryDate)
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model.orders)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.TotalAmount)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Address)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Status)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.PhoneNumber)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.ReceiverName)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.PaymentMethod)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.OrderDate)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.DeliveryDate)
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -229,7 +315,7 @@
                 </div>
             </div>
 
-            @*<div class="col-lg-4">
+            <div class="col-lg-4">
                 <div class="order-details-wrap">
                     <table class="order-details">
                         <thead>
@@ -273,7 +359,7 @@
                     </table>
                     <a class="boxed-btn" href="#">Place Order</a>
                 </div>
-            </div>*@
+            </div>
         </div>
     </div>
 </div>

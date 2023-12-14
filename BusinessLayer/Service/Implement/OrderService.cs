@@ -55,5 +55,10 @@ namespace BusinessLayer.Service.Implement {
         {
            return _unitOfWork.OrderRepository.GetOrderById(id);
         }
+
+        public List<Order> GetOrdersByUserId(Guid id)
+        {
+            return _unitOfWork.OrderRepository.GetOrdersByUserId(id);
+        }
     }
 }

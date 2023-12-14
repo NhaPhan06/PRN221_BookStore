@@ -19,6 +19,12 @@ namespace DataAccess.Repository.Implement {
             return orders;
         }
 
+        public List<Order> GetOrdersByUserId(Guid id)
+        {
+            var orders = _context.Set<Order>().Include(c => c.OrderDetails).Include(c => c.User).Where(c => c.UserId==id).ToList();
+            return orders;
+        }
+
         public void SaveChange()
         {
             _context.SaveChanges();
