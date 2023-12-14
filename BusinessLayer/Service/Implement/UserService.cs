@@ -1,5 +1,6 @@
-﻿using BusinessLayer.DTOS.User;
+﻿
 using DataAccess.DataAccess;
+using DataAccess.Model;
 using DataAccess.Repository.Generic.UnitOfWork;
 
 namespace BusinessLayer.Service.Implement {

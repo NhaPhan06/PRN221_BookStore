@@ -26,13 +26,13 @@ namespace Presentation.Pages
                 var account = _userService.Login(Username, Password);
                 if (account == null)
                 {
-                    ViewData["notification"] = "Tài khoản không tồn tại";
-                    return RedirectToPage();
+                    ViewData["notification"] = "Account does not exist!";
+                    return Page();
                 }
 
                 if (account.Status == "INACTIVE")
                 {
-                    ViewData["notification"] = "Tài khoản đã khóa";
+                    ViewData["notification"] = "Your account is banned!";
                     return Page();
                 }
                 else

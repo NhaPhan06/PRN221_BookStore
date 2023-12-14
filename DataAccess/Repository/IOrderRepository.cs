@@ -11,5 +11,6 @@ namespace DataAccess.Repository {
 
         public Order GetOrderById(Guid id);
         void SaveChange();
+        List<Order> GetOrdersByUserId(Guid id);
     }
 }

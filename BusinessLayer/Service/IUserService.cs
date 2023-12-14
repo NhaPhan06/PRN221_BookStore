@@ -1,5 +1,6 @@
-﻿using BusinessLayer.DTOS.User;
+﻿
 using DataAccess.DataAccess;
+using DataAccess.Model;
 
 namespace BusinessLayer.Service {
     public interface IUserService {
