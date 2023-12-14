@@ -64,6 +64,20 @@ namespace Presentation.Pages {
 
         public async Task<IActionResult> OnPostOther() {
 
+            //create order
+            var order = new Order();
+            var userId = HttpContext.Session.GetString("UserID");
+            var user = _userService.GetUserById(Guid.Parse(userId));
+            order.OrderId = Guid.NewGuid();
+            order.UserId = user.UserId;
+            order.Address = receiver.Address;
+            order.PhoneNumber = receiver.PhoneNumber;
+            order.ReceiverName = receiver.ReceiverName;
+            //get cart
+            var jsoncart = HttpContext.Session.GetString("cart");
+            Carts = JsonConvert.DeserializeObject<List<Carts>>(jsoncart);
+            await _orderService.CreateOrder(Carts, order);
+            
             return RedirectToPage("Home");
         }
     }
