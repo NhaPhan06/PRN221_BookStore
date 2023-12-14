@@ -1,33 +1,45 @@
 // CodeMirror, copyright (c) by Marijn Haverbeke and others
 // Distributed under an MIT license: https://codemirror.net/LICENSE
 
-(function(mod) {
+(function (mod) {
   if (typeof exports == "object" && typeof module == "object") // CommonJS
     mod(require("../lib/codemirror"));
   else if (typeof define == "function" && define.amd) // AMD
     define(["../lib/codemirror"], mod);
   else // Plain browser env
     mod(CodeMirror);
-})(function(CodeMirror) {
+})(function (CodeMirror) {
   "use strict";
 
   var cmds = CodeMirror.commands;
   var Pos = CodeMirror.Pos;
-  function posEq(a, b) { return a.line == b.line && a.ch == b.ch; }
+
+  function posEq(a, b) {
+    return a.line == b.line && a.ch == b.ch;
+  }
 
   // Kill 'ring'
 
   var killRing = [];
+
   function addToRing(str) {
     killRing.push(str);
     if (killRing.length > 50) killRing.shift();
   }
+
   function growRingTop(str) {
     if (!killRing.length) return addToRing(str);
     killRing[killRing.length - 1] += str;
   }
-  function getFromRing(n) { return killRing[killRing.length - (n ? Math.min(n, 1) : 1)] || ""; }
-  function popFromRing() { if (killRing.length > 1) killRing.pop(); return getFromRing(); }
+
+  function getFromRing(n) {
+    return killRing[killRing.length - (n ? Math.min(n, 1) : 1)] || "";
+  }
+
+  function popFromRing() {
+    if (killRing.length > 1) killRing.pop();
+    return getFromRing();
+  }
 
   var lastKill = null;
 
@@ -67,7 +79,7 @@
     var no = pos.line, line = cm.getLine(no);
     var sawText = /\S/.test(dir < 0 ? line.slice(0, pos.ch) : line.slice(pos.ch));
     var fst = cm.firstLine(), lst = cm.lastLine();
-    for (;;) {
+    for (; ;) {
       no += dir;
       if (no < fst || no > lst)
         return cm.clipPos(Pos(no - dir, dir < 0 ? 0 : null));
@@ -81,7 +93,7 @@
   function bySentence(cm, pos, dir) {
     var line = pos.line, ch = pos.ch;
     var text = cm.getLine(pos.line), sawWord = false;
-    for (;;) {
+    for (; ;) {
       var next = text.charAt(ch + (dir < 0 ? -1 : 0));
       if (!next) { // End/beginning of line reached
         if (line == (dir < 0 ? cm.firstLine() : cm.lastLine())) return Pos(line, ch);
@@ -100,10 +112,10 @@
   function byExpr(cm, pos, dir) {
     var wrap;
     if (cm.findMatchingBracket && (wrap = cm.findMatchingBracket(pos, {strict: true}))
-        && wrap.match && (wrap.forward ? 1 : -1) == dir)
+      && wrap.match && (wrap.forward ? 1 : -1) == dir)
       return dir > 0 ? Pos(wrap.to.line, wrap.to.ch + 1) : wrap.to;
 
-    for (var first = true;; first = false) {
+    for (var first = true; ; first = false) {
       var token = cm.getTokenAt(pos);
       var after = Pos(pos.line, dir < 0 ? token.start : token.end);
       if (first && dir > 0 && token.end == pos.ch || !/\w/.test(token.string)) {
@@ -126,8 +138,10 @@
   }
 
   function repeated(cmd) {
-    var f = typeof cmd == "string" ? function(cm) { cm.execCommand(cmd); } : cmd;
-    return function(cm) {
+    var f = typeof cmd == "string" ? function (cm) {
+      cm.execCommand(cmd);
+    } : cmd;
+    return function (cm) {
       var prefix = getPrefix(cm);
       f(cm);
       for (var i = 1; i < prefix; ++i) f(cm);
@@ -136,7 +150,10 @@
 
   function findEnd(cm, pos, by, dir) {
     var prefix = getPrefix(cm);
-    if (prefix < 0) { dir = -dir; prefix = -prefix; }
+    if (prefix < 0) {
+      dir = -dir;
+      prefix = -prefix;
+    }
     for (var i = 0; i < prefix; ++i) {
       var newPos = by(cm, pos, dir);
       if (posEq(newPos, pos)) break;
@@ -146,7 +163,7 @@
   }
 
   function move(by, dir) {
-    var f = function(cm) {
+    var f = function (cm) {
       cm.extendSelection(findEnd(cm, cm.getCursor(), by, dir));
     };
     f.motion = true;
@@ -220,7 +237,9 @@
   cmds.setMark = function (cm) {
     cm.setCursor(cm.getCursor());
     cm.setExtending(!cm.getExtending());
-    cm.on("change", function() { cm.setExtending(false); });
+    cm.on("change", function () {
+      cm.setExtending(false);
+    });
   }
 
   function clearMark(cm) {
@@ -267,19 +286,20 @@
         else if (/[\(\{\[]/.test(ch) && (!stack.length || stack.pop() != ch))
           return cm.extendSelection(Pos(line, i));
       }
-      --line; ch = null;
+      --line;
+      ch = null;
     }
   }
 
   // Commands. Names should match emacs function names (albeit in camelCase)
   // except where emacs function names collide with code mirror core commands.
 
-  cmds.killRegion = function(cm) {
+  cmds.killRegion = function (cm) {
     _kill(cm, cm.getCursor("start"), cm.getCursor("end"), true);
   };
 
   // Maps to emacs kill-line
-  cmds.killLineEmacs = repeated(function(cm) {
+  cmds.killLineEmacs = repeated(function (cm) {
     var start = cm.getCursor(), end = cm.clipPos(Pos(start.line));
     var text = cm.getRange(start, end);
     if (!/\S/.test(text)) {
@@ -289,18 +309,18 @@
     _kill(cm, start, end, "grow", text);
   });
 
-  cmds.killRingSave = function(cm) {
+  cmds.killRingSave = function (cm) {
     addToRing(cm.getSelection());
     clearMark(cm);
   };
 
-  cmds.yank = function(cm) {
+  cmds.yank = function (cm) {
     var start = cm.getCursor();
     cm.replaceRange(getFromRing(getPrefix(cm)), start, start, "paste");
     cm.setSelection(start, cm.getCursor());
   };
 
-  cmds.yankPop = function(cm) {
+  cmds.yankPop = function (cm) {
     cm.replaceSelection(popFromRing(), "around", "paste");
   };
 
@@ -308,13 +328,15 @@
 
   cmds.backwardChar = move(byChar, -1)
 
-  cmds.deleteChar = function(cm) { killTo(cm, byChar, 1, false); };
+  cmds.deleteChar = function (cm) {
+    killTo(cm, byChar, 1, false);
+  };
 
-  cmds.deleteForwardChar = function(cm) {
+  cmds.deleteForwardChar = function (cm) {
     _killRegion(cm, false) || killTo(cm, byChar, 1, false);
   };
 
-  cmds.deleteBackwardChar = function(cm) {
+  cmds.deleteBackwardChar = function (cm) {
     _killRegion(cm, false) || killTo(cm, byChar, -1, false);
   };
 
@@ -322,9 +344,13 @@
 
   cmds.backwardWord = move(byWord, -1);
 
-  cmds.killWord = function(cm) { killTo(cm, byWord, 1, "grow"); };
+  cmds.killWord = function (cm) {
+    killTo(cm, byWord, 1, "grow");
+  };
 
-  cmds.backwardKillWord = function(cm) { killTo(cm, byWord, -1, "grow"); };
+  cmds.backwardKillWord = function (cm) {
+    killTo(cm, byWord, -1, "grow");
+  };
 
   cmds.nextLine = move(byLine, 1);
 
@@ -342,38 +368,44 @@
 
   cmds.forwardSentence = move(bySentence, 1);
 
-  cmds.killSentence = function(cm) { killTo(cm, bySentence, 1, "grow"); };
+  cmds.killSentence = function (cm) {
+    killTo(cm, bySentence, 1, "grow");
+  };
 
-  cmds.backwardKillSentence = function(cm) {
+  cmds.backwardKillSentence = function (cm) {
     _kill(cm, cm.getCursor(), bySentence(cm, cm.getCursor(), 1), "grow");
   };
 
-  cmds.killSexp = function(cm) { killTo(cm, byExpr, 1, "grow"); };
+  cmds.killSexp = function (cm) {
+    killTo(cm, byExpr, 1, "grow");
+  };
 
-  cmds.backwardKillSexp = function(cm) { killTo(cm, byExpr, -1, "grow"); };
+  cmds.backwardKillSexp = function (cm) {
+    killTo(cm, byExpr, -1, "grow");
+  };
 
   cmds.forwardSexp = move(byExpr, 1);
 
   cmds.backwardSexp = move(byExpr, -1);
 
-  cmds.markSexp = function(cm) {
+  cmds.markSexp = function (cm) {
     var cursor = cm.getCursor();
     cm.setSelection(findEnd(cm, cursor, byExpr, 1), cursor);
   };
 
-  cmds.transposeSexps = function(cm) {
+  cmds.transposeSexps = function (cm) {
     var leftStart = byExpr(cm, cm.getCursor(), -1);
     var leftEnd = byExpr(cm, leftStart, 1);
     var rightEnd = byExpr(cm, leftEnd, 1);
     var rightStart = byExpr(cm, rightEnd, -1);
     cm.replaceRange(cm.getRange(rightStart, rightEnd) +
-                    cm.getRange(leftEnd, rightStart) +
-                    cm.getRange(leftStart, leftEnd), leftStart, rightEnd);
+      cm.getRange(leftEnd, rightStart) +
+      cm.getRange(leftStart, leftEnd), leftStart, rightEnd);
   };
 
   cmds.backwardUpList = repeated(toEnclosingExpr);
 
-  cmds.justOneSpace = function(cm) {
+  cmds.justOneSpace = function (cm) {
     var pos = cm.getCursor(), from = pos.ch;
     var to = pos.ch, text = cm.getLine(pos.line);
     while (from && /\s/.test(text.charAt(from - 1))) --from;
@@ -381,58 +413,64 @@
     cm.replaceRange(" ", Pos(pos.line, from), Pos(pos.line, to));
   };
 
-  cmds.openLine = repeated(function(cm) {
+  cmds.openLine = repeated(function (cm) {
     cm.replaceSelection("\n", "start");
   });
 
   // maps to emacs 'transpose-chars'
-  cmds.transposeCharsRepeatable = repeated(function(cm) {
+  cmds.transposeCharsRepeatable = repeated(function (cm) {
     cm.execCommand("transposeChars");
   });
 
-  cmds.capitalizeWord = repeated(function(cm) {
-    operateOnWord(cm, function(w) {
+  cmds.capitalizeWord = repeated(function (cm) {
+    operateOnWord(cm, function (w) {
       var letter = w.search(/\w/);
       if (letter == -1) return w;
       return w.slice(0, letter) + w.charAt(letter).toUpperCase() +
-          w.slice(letter + 1).toLowerCase();
+        w.slice(letter + 1).toLowerCase();
     });
   });
 
-  cmds.upcaseWord = repeated(function(cm) {
-    operateOnWord(cm, function(w) { return w.toUpperCase(); });
+  cmds.upcaseWord = repeated(function (cm) {
+    operateOnWord(cm, function (w) {
+      return w.toUpperCase();
+    });
   });
 
-  cmds.downcaseWord = repeated(function(cm) {
-    operateOnWord(cm, function(w) { return w.toLowerCase(); });
+  cmds.downcaseWord = repeated(function (cm) {
+    operateOnWord(cm, function (w) {
+      return w.toLowerCase();
+    });
   });
 
   // maps to emacs 'undo'
   cmds.undoRepeatable = repeated("undo");
 
-  cmds.keyboardQuit = function(cm) {
+  cmds.keyboardQuit = function (cm) {
     cm.execCommand("clearSearch");
     clearMark(cm);
   }
 
-  cmds.newline = repeated(function(cm) { cm.replaceSelection("\n", "end"); });
+  cmds.newline = repeated(function (cm) {
+    cm.replaceSelection("\n", "end");
+  });
 
-  cmds.gotoLine = function(cm) {
+  cmds.gotoLine = function (cm) {
     var prefix = getPrefix(cm, true);
     if (prefix != null && prefix > 0) return cm.setCursor(prefix - 1);
 
-    getInput(cm, "Goto line", function(str) {
+    getInput(cm, "Goto line", function (str) {
       var num;
-      if (str && !isNaN(num = Number(str)) && num == (num|0) && num > 0)
-      cm.setCursor(num - 1);
+      if (str && !isNaN(num = Number(str)) && num == (num | 0) && num > 0)
+        cm.setCursor(num - 1);
     });
   };
 
-  cmds.indentRigidly = function(cm) {
+  cmds.indentRigidly = function (cm) {
     cm.indentSelection(getPrefix(cm, true) || cm.getOption("indentUnit"));
   };
 
-  cmds.exchangePointAndMark = function(cm) {
+  cmds.exchangePointAndMark = function (cm) {
     cm.setSelection(cm.getCursor("head"), cm.getCursor("anchor"));
   };
 
@@ -535,11 +573,17 @@
   });
 
   var prefixMap = {"Ctrl-G": clearPrefix};
+
   function regPrefix(d) {
-    prefixMap[d] = function(cm) { addPrefix(cm, d); };
-    keyMap["Ctrl-" + d] = function(cm) { addPrefix(cm, d); };
+    prefixMap[d] = function (cm) {
+      addPrefix(cm, d);
+    };
+    keyMap["Ctrl-" + d] = function (cm) {
+      addPrefix(cm, d);
+    };
     prefixPreservingKeys["Ctrl-" + d] = true;
   }
+
   for (var i = 0; i < 10; ++i) regPrefix(String(i));
   regPrefix("-");
 });

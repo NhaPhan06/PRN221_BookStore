@@ -4,8 +4,9 @@ title: Layout
 ---
 
 > ##### Tip!
-> The [starter page](https://adminlte.io/themes/v3/starter.html) is a good place to start building your app if you'd like to start from scratch.
-{: .quote-info .mt-0}
+> The [starter page](https://adminlte.io/themes/v3/starter.html) is a good place to start building your app if you'd
+> like to start from scratch.
+> {: .quote-info .mt-0}
 
 The layout consists of four major parts:
 
@@ -15,13 +16,16 @@ The layout consists of four major parts:
 - Content `.content-wrapper`. Contains the page header and content.
 
 #### Layout Options
+
 {: .mt-4}
 
 > ##### Note!
-> You cannot use both layout-boxed and layout-navbar-fixed or layout-footer-fixed at the same time. Anything else can be mixed together.
-{: .quote-danger}
+> You cannot use both layout-boxed and layout-navbar-fixed or layout-footer-fixed at the same time. Anything else can be
+> mixed together.
+> {: .quote-danger}
 
-AdminLTE 3.2 provides a set of options to apply to your main layout. Each one of these classes can be added to the body tag to get the desired goal.
+AdminLTE 3.2 provides a set of options to apply to your main layout. Each one of these classes can be added to the body
+tag to get the desired goal.
 
 - Fixed Sidebar: use the class `.layout-fixed` to get a fixed sidebar.
 - Fixed Navbar: use the class `.layout-navbar-fixed` to get a fixed navbar.
@@ -30,28 +34,30 @@ AdminLTE 3.2 provides a set of options to apply to your main layout. Each one of
 - Boxed Layout: use the class `.layout-boxed` to get a boxed layout that stretches only to 1250px.
 - Top Navigation: use the class `.layout-top-nav` to remove the sidebar and have your links at the top navbar.
 
-
 ##### Responsive Variations
 
 You can also use the following classes for responsive changes with placing
 
-- Fixed Navbar: 
+- Fixed Navbar:
   - use the class `.layout-*-navbar-fixed` to get a fixed navbar.
   - use the class `.layout-*-navbar-not-fixed` to get a not fixed navbar.
-- Fixed Footer: 
+- Fixed Footer:
   - use the class `.layout-*-footer-fixed` to get a fixed footer.
   - use the class `.layout-*-footer-not-fixed` to get a not fixed footer.
 
 > ##### Tip!
-> If you want to use anchors with a fixed navbar, you need to add `.anchor` to you hidden anchor, e.g. `<a id="testAnchor" class="anchor"></a>`. 
-> 
-> To get a smooth scrolling to the anchor you need to add `.scroll-smooth` to your HTML tag like this `<html class="scroll-smooth">` otherwise it jumps directly to your anchor, `.scroll-smooth` can cause issues with a Chrome extension called ScrollAnywhere.
-{: .quote-info}
-
+> If you want to use anchors with a fixed navbar, you need to add `.anchor` to you hidden anchor,
+> e.g. `<a id="testAnchor" class="anchor"></a>`.
+>
+> To get a smooth scrolling to the anchor you need to add `.scroll-smooth` to your HTML tag like
+> this `<html class="scroll-smooth">` otherwise it jumps directly to your anchor, `.scroll-smooth` can cause issues with a
+> Chrome extension called ScrollAnywhere.
+> {: .quote-info}
 
 #### Preloader
 
-Preloader to avoid [https://github.com/ColorlibHQ/AdminLTE/discussions/3319](https://github.com/ColorlibHQ/AdminLTE/discussions/3319)
+Preloader to
+avoid [https://github.com/ColorlibHQ/AdminLTE/discussions/3319](https://github.com/ColorlibHQ/AdminLTE/discussions/3319)
 
 ```html
 <div class="wrapper">
@@ -65,17 +71,16 @@ Preloader to avoid [https://github.com/ColorlibHQ/AdminLTE/discussions/3319](htt
 - Preloader elements should be added inside `.wrapper` element.
 - You can replace image OR modify size OR include any preload items inside `.preloader` element.
 
-
 #### Dark Mode
 
 AdminLTE 3.2 provides a dark mode option. You can add in body tag:
 
 - `.dark-mode`
 
-
 #### Color Variations
 
-AdminLTE 3.2 provides a set of color variations to apply to your sidebar (light & dark) & navbar. You can combine any available color with these class prefixes:
+AdminLTE 3.2 provides a set of color variations to apply to your sidebar (light & dark) & navbar. You can combine any
+available color with these class prefixes:
 
 - `.navbar-*`
 - `.sidebar-dark-*`
@@ -84,15 +89,15 @@ AdminLTE 3.2 provides a set of color variations to apply to your sidebar (light 
 
 > ###### New
 > You can use override the link/accent color in AdminLTE, you can add `.accent-*` to `body`.
-{: .quote-info}
+> {: .quote-info}
 
 > ###### Info
 > You can combine `.navbar-*` with `.navbar-light` or `.navbar-dark`.
-{: .quote-info}
+> {: .quote-info}
 
 > ###### Recommended for Dark Mode
 > You must use only `.navbar-dark` without only combination.
-{: .quote-info}
+> {: .quote-info}
 
 The following colors are available:
 
@@ -108,6 +113,7 @@ The following colors are available:
 </div>
 
 ##### Black/White Nuances
+
 {: .mt-4}
 
 <div class="row">
@@ -118,6 +124,7 @@ The following colors are available:
 </div>
 
 ##### Colors
+
 {: .mt-4}
 
 <div class="row">
@@ -135,8 +142,7 @@ The following colors are available:
 
 > ##### Tip!
 > You can use these color variations even with `.text-*`, `.bg-*` & much more.
-{: .quote-info}
-
+> {: .quote-info}
 
 ##### Custom Range / Switch
 
@@ -144,7 +150,8 @@ For custom colored custom-checkbox & custom-radio you can add this classes:
 
 - `.custom-control-input-*`
 
-You can also change the look to outlined checkbox & radio with adding the `.custom-control-input-outline` on the custom control input.
+You can also change the look to outlined checkbox & radio with adding the `.custom-control-input-outline` on the custom
+control input.
 
 For custom colored custom-range you can add this classes:
 

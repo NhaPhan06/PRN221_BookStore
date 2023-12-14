@@ -61,6 +61,22 @@ class CardWidget {
     this._settings = $.extend({}, Default, settings)
   }
 
+  static _jQueryInterface(config) {
+    let data = $(this).data(DATA_KEY)
+    const _options = $.extend({}, Default, $(this).data())
+
+    if (!data) {
+      data = new CardWidget($(this), _options)
+      $(this).data(DATA_KEY, typeof config === 'string' ? data : config)
+    }
+
+    if (typeof config === 'string' && /collapse|expand|remove|toggle|maximize|minimize|toggleMaximize/.test(config)) {
+      data[config]()
+    } else if (typeof config === 'object') {
+      data._init($(this))
+    }
+  }
+
   collapse() {
     this._parent.addClass(CLASS_NAME_COLLAPSING).children(`${SELECTOR_CARD_BODY}, ${SELECTOR_CARD_FOOTER}`)
       .slideUp(this._settings.animationSpeed, () => {
@@ -148,6 +164,8 @@ class CardWidget {
     this._element.trigger($.Event(EVENT_MINIMIZED), this._parent)
   }
 
+  // Private
+
   toggleMaximize() {
     if (this._parent.hasClass(CLASS_NAME_MAXIMIZED)) {
       this.minimize()
@@ -157,7 +175,7 @@ class CardWidget {
     this.maximize()
   }
 
-  // Private
+  // Static
 
   _init(card) {
     this._parent = card
@@ -173,24 +191,6 @@ class CardWidget {
     $(this).find(this._settings.removeTrigger).click(() => {
       this.remove()
     })
-  }
-
-  // Static
-
-  static _jQueryInterface(config) {
-    let data = $(this).data(DATA_KEY)
-    const _options = $.extend({}, Default, $(this).data())
-
-    if (!data) {
-      data = new CardWidget($(this), _options)
-      $(this).data(DATA_KEY, typeof config === 'string' ? data : config)
-    }
-
-    if (typeof config === 'string' && /collapse|expand|remove|toggle|maximize|minimize|toggleMaximize/.test(config)) {
-      data[config]()
-    } else if (typeof config === 'object') {
-      data._init($(this))
-    }
   }
 }
 

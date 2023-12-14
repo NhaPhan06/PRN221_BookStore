@@ -1,9 +1,9 @@
 export default class Sparkline {
   constructor(element, options = {}) {
     this.element = element;
-    this.options = { ...Sparkline.options, ...options };
+    this.options = {...Sparkline.options, ...options};
 
-    init: {
+    {
       this.element.innerHTML = "<canvas></canvas>";
       this.canvas = this.element.firstChild;
       this.context = this.canvas.getContext("2d");
@@ -22,12 +22,22 @@ export default class Sparkline {
     }
   }
 
+  get points() {
+    return this._points;
+  }
+
   set points(points) {
     this.draw(points);
   }
 
-  get points() {
-    return this._points;
+  static init(element, options) {
+    return new Sparkline(element, options);
+  }
+
+  static draw(element, points, options) {
+    const sparkline = new Sparkline(element, options);
+    sparkline.draw(points);
+    return sparkline;
   }
 
   draw(points = []) {
@@ -135,16 +145,6 @@ export default class Sparkline {
     dot(this.options.endColor, this.options.endLine, offsetX + (points.length == 1 ? width / 2 : width), y(points.length - 1));
     dot(this.options.minColor, this.options.minLine, minX + (points.length == 1 ? width / 2 : 0), y(points.indexOf(minValue)));
     dot(this.options.maxColor, this.options.maxLine, maxX + (points.length == 1 ? width / 2 : 0), y(points.indexOf(maxValue)));
-  }
-
-  static init(element, options) {
-    return new Sparkline(element, options);
-  }
-
-  static draw(element, points, options) {
-    const sparkline = new Sparkline(element, options);
-    sparkline.draw(points);
-    return sparkline;
   }
 }
 

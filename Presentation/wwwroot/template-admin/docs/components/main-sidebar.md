@@ -3,7 +3,8 @@ layout: page
 title: Main Sidebar Component
 ---
 
-The sidebar used in this page to the left provides an example of what your sidebar would look like. Construction of a sidebar: 
+The sidebar used in this page to the left provides an example of what your sidebar would look like. Construction of a
+sidebar:
 
 ```html
 <!-- Main Sidebar Container -->
@@ -71,8 +72,8 @@ The sidebar used in this page to the left provides an example of what your sideb
   <!-- /.sidebar -->
 </aside>
 ```
-{: .max-height-300}
 
+{: .max-height-300}
 
 #### Alternate Logo
 
@@ -84,9 +85,11 @@ You can use two logo images instead of logo with text, you only need to change t
   <img src="dist/img/logo-xl.png" alt="AdminLTE Docs Logo Large" class="brand-image-xs logo-xl" style="left: 12px">
 </a>
 ```
+
 > Example from v3.0 docs.
 
-Based on the example above, you can replace `.brand-image-xl` on `.logo-xs` with `.brand-image-xs` or vice versa on `.logo-xl` for changed logo sizes.
+Based on the example above, you can replace `.brand-image-xl` on `.logo-xs` with `.brand-image-xs` or vice versa
+on `.logo-xl` for changed logo sizes.
 
 #### Brand with Pushmenu Button
 
@@ -118,8 +121,8 @@ You can add this code above user-panel or nav-sidebar:
   </div>
 </form>
 ```
-{: .max-height-300}
 
+{: .max-height-300}
 
 #### Sidebar Custom Area
 
@@ -136,8 +139,7 @@ You can simply add this code after the `div.sidebar`:
 
 > ##### Warning!
 > The Sidebar Custom Area works only with `.layout-fixed` enabled.
-{: .quote-warning}
-
+> {: .quote-warning}
 
 #### Additional Classes
 
@@ -153,9 +155,9 @@ You can simply add this code after the `div.sidebar`:
 - `.nav-legacy` Legacy v2 nav style
 - `.nav-collapse-hide-child` Hide nav item submenus on collapsed sidebar
 
-
 > ##### Tip!
 > You can also use `.text-sm` on `.nav-sidebar` or `.brand-link` for smaller font.
-{: .quote-info}
+> {: .quote-info}
 
-For more information about the JS part of the sidebar, please visit the [PushMenu plugin page]({% link javascript/push-menu.md %})
+For more information about the JS part of the sidebar, please visit the [PushMenu plugin page]({% link
+javascript/push-menu.md %})

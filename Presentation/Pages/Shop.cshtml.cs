@@ -45,34 +45,32 @@ namespace Presentation.Pages {
                 TotalPages = (int)Math.Ceiling(decimal.Divide(count, PageSize));
             }
         }
-        
-        public async Task<IActionResult> OnPostAddToCart(Guid Id)
-        {
+
+        public async Task<IActionResult> OnPostAddToCart(Guid Id) {
             bool check = false;
-            List<Carts> cartsList = new List<Carts>();
-            Carts newCart = new Carts();
-            var book = await _bookService.GetBookById(Id);
-            
+            List<Carts> cartsList = new();
+            Carts newCart = new();
+            DataAccess.DataAccess.Book book = await _bookService.GetBookById(Id);
+
             // get cart from session
-            var json = HttpContext.Session.GetString("cart");
+            string? json = HttpContext.Session.GetString("cart");
 
             // deserialize cart
-            if (json != null) cartsList = JsonConvert.DeserializeObject<List<Carts>>(json);
-            
+            if (json != null) {
+                cartsList = JsonConvert.DeserializeObject<List<Carts>>(json);
+            }
+
             // add book to cart
-            if (cartsList.Count != 0)
-            {
-                foreach (var c in cartsList)
-                {
-                    if (c.BookId == book.BookId)
-                    {
+            if (cartsList.Count != 0) {
+                foreach (Carts c in cartsList) {
+                    if (c.BookId == book.BookId) {
                         c.StockQuantity += 1;
                         check = true;
                         break;
                     }
                 }
-                if (check == false)
-                {
+
+                if (check == false) {
                     newCart.BookId = book.BookId;
                     newCart.StockQuantity = 1;
                     newCart.Title = book.Title;
@@ -80,9 +78,7 @@ namespace Presentation.Pages {
                     newCart.ImageUrl = book.ImageUrl;
                     cartsList.Add(newCart);
                 }
-            }
-            else
-            {
+            } else {
                 newCart.BookId = book.BookId;
                 newCart.StockQuantity = 1;
                 newCart.Title = book.Title;
@@ -90,14 +86,14 @@ namespace Presentation.Pages {
                 newCart.ImageUrl = book.ImageUrl;
                 cartsList.Add(newCart);
             }
-            
+
             //Remove old Session
             HttpContext.Session.Remove("cart");
-            
+
             // serialize cart
             json = JsonConvert.SerializeObject(cartsList);
             HttpContext.Session.SetString("cart", json);
-            
+
             return Redirect("shop");
         }
     }

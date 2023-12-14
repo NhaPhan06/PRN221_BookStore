@@ -1,10 +1,10 @@
-  'use strict';
-$(window).on('load',function(){
+'use strict';
+$(window).on('load', function () {
     //Welcome Message (not for login page)
-    function notify(message, type){
+    function notify(message, type) {
         $.growl({
             message: message
-        },{
+        }, {
             type: type,
             allow_dismiss: false,
             label: 'Cancel',
@@ -15,36 +15,37 @@ $(window).on('load',function(){
             },
             delay: 2500,
             animate: {
-                    enter: 'animated fadeInRight',
-                    exit: 'animated fadeOutRight'
+                enter: 'animated fadeInRight',
+                exit: 'animated fadeOutRight'
             },
             offset: {
                 x: 30,
                 y: 30
             }
         });
-    };
+    }
 
-   
-        notify('Welcome to Notification page', 'inverse');
-   
+
+    notify('Welcome to Notification page', 'inverse');
+
 });
 
-$(document).ready(function() {
-   
+$(document).ready(function () {
+
     /*--------------------------------------
          Notifications & Dialogs
      ---------------------------------------*/
+
     /*
      * Notifications
      */
-    function notify(from, align, icon, type, animIn, animOut){
+    function notify(from, align, icon, type, animIn, animOut) {
         $.growl({
             icon: icon,
             title: ' Bootstrap Growl ',
             message: 'Turning standard Bootstrap alerts into awesome notifications',
             url: ''
-        },{
+        }, {
             element: 'body',
             type: type,
             allow_dismiss: true,
@@ -68,19 +69,19 @@ $(document).ready(function() {
             },
             icon_type: 'class',
             template: '<div data-growl="container" class="alert" role="alert">' +
-            '<button type="button" class="close" data-growl="dismiss">' +
-            '<span aria-hidden="true">&times;</span>' +
-            '<span class="sr-only">Close</span>' +
-            '</button>' +
-            '<span data-growl="icon"></span>' +
-            '<span data-growl="title"></span>' +
-            '<span data-growl="message"></span>' +
-            '<a href="#" data-growl="url"></a>' +
-            '</div>'
+                '<button type="button" class="close" data-growl="dismiss">' +
+                '<span aria-hidden="true">&times;</span>' +
+                '<span class="sr-only">Close</span>' +
+                '</button>' +
+                '<span data-growl="icon"></span>' +
+                '<span data-growl="title"></span>' +
+                '<span data-growl="message"></span>' +
+                '<a href="#" data-growl="url"></a>' +
+                '</div>'
         });
-    };
+    }
 
-    $('.notifications .btn').on('click',function(e){
+    $('.notifications .btn').on('click', function (e) {
         e.preventDefault();
         var nFrom = $(this).attr('data-from');
         var nAlign = $(this).attr('data-align');

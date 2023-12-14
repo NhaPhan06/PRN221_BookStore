@@ -75,7 +75,7 @@ function getScrollParent(element) {
   }
 
   // Firefox want us to check `-x` and `-y` variations as well
-  const { overflow, overflowX, overflowY } = getStyleComputedProperty(element);
+  const {overflow, overflowX, overflowY} = getStyleComputedProperty(element);
   if (/(auto|scroll|overlay)/.test(overflow + overflowY + overflowX)) {
     return element;
   }
@@ -153,7 +153,7 @@ function getOffsetParent(element) {
 }
 
 function isOffsetContainer(element) {
-  const { nodeName } = element;
+  const {nodeName} = element;
   if (nodeName === 'BODY') {
     return false;
   }
@@ -198,7 +198,7 @@ function findCommonOffsetParent(element1, element2) {
   const range = document.createRange();
   range.setStart(start, 0);
   range.setEnd(end, 0);
-  const { commonAncestorContainer } = range;
+  const {commonAncestorContainer} = range;
 
   // Both nodes are inside #document
   if (element1 !== commonAncestorContainer && element2 !== commonAncestorContainer || start.contains(end)) {
@@ -344,7 +344,8 @@ function getBoundingClientRect(element) {
     } else {
       rect = element.getBoundingClientRect();
     }
-  } catch (e) {}
+  } catch (e) {
+  }
 
   const result = {
     left: rect.left,
@@ -501,7 +502,7 @@ function getFixedPositionOffsetParent(element) {
 function getBoundaries(popper, reference, padding, boundariesElement, fixedPosition = false) {
   // NOTE: 1 DOM access here
 
-  let boundaries = { top: 0, left: 0 };
+  let boundaries = {top: 0, left: 0};
   const offsetParent = fixedPosition ? getFixedPositionOffsetParent(popper) : findCommonOffsetParent(popper, getReferenceNode(reference));
 
   // Handle viewport case
@@ -525,7 +526,7 @@ function getBoundaries(popper, reference, padding, boundariesElement, fixedPosit
 
     // In case of HTML, we need a different computation
     if (boundariesNode.nodeName === 'HTML' && !isFixed(offsetParent)) {
-      const { height, width } = getWindowSizes(popper.ownerDocument);
+      const {height, width} = getWindowSizes(popper.ownerDocument);
       boundaries.top += offsets.top - offsets.marginTop;
       boundaries.bottom = height + offsets.top;
       boundaries.left += offsets.left - offsets.marginLeft;
@@ -547,7 +548,7 @@ function getBoundaries(popper, reference, padding, boundariesElement, fixedPosit
   return boundaries;
 }
 
-function getArea({ width, height }) {
+function getArea({width, height}) {
   return width * height;
 }
 
@@ -592,7 +593,10 @@ function computeAutoPlacement(placement, refRect, popper, reference, boundariesE
     area: getArea(rects[key])
   })).sort((a, b) => b.area - a.area);
 
-  const filteredAreas = sortedAreas.filter(({ width, height }) => width >= popper.clientWidth && height >= popper.clientHeight);
+  const filteredAreas = sortedAreas.filter(({
+                                              width,
+                                              height
+                                            }) => width >= popper.clientWidth && height >= popper.clientHeight);
 
   const computedPlacement = filteredAreas.length > 0 ? filteredAreas[0].key : sortedAreas[0].key;
 
@@ -641,14 +645,14 @@ function taskDebounce(fn) {
 const supportsMicroTasks = isBrowser && window.Promise;
 
 /**
-* Create a debounced version of a method, that's asynchronously deferred
-* but called in the minimum time possible.
-*
-* @method
-* @memberof Popper.Utils
-* @argument {Function} fn
-* @returns {Function}
-*/
+ * Create a debounced version of a method, that's asynchronously deferred
+ * but called in the minimum time possible.
+ *
+ * @method
+ * @memberof Popper.Utils
+ * @argument {Function} fn
+ * @returns {Function}
+ */
 var debounce = supportsMicroTasks ? microtaskDebounce : taskDebounce;
 
 /**
@@ -700,7 +704,7 @@ function findIndex(arr, prop, value) {
 function getOffsetRect(element) {
   let elementRect;
   if (element.nodeName === 'HTML') {
-    const { width, height } = getWindowSizes(element.ownerDocument);
+    const {width, height} = getWindowSizes(element.ownerDocument);
     elementRect = {
       width,
       height,
@@ -747,7 +751,7 @@ function getOuterSizes(element) {
  * @returns {String} flipped placement
  */
 function getOppositePlacement(placement) {
-  const hash = { left: 'right', right: 'left', bottom: 'top', top: 'bottom' };
+  const hash = {left: 'right', right: 'left', bottom: 'top', top: 'bottom'};
   return placement.replace(/left|right|bottom|top/g, matched => hash[matched]);
 }
 
@@ -845,7 +849,7 @@ function isFunction(functionToCheck) {
  * @returns {Boolean}
  */
 function isModifierEnabled(modifiers, modifierName) {
-  return modifiers.some(({ name, enabled }) => enabled && name === modifierName);
+  return modifiers.some(({name, enabled}) => enabled && name === modifierName);
 }
 
 /**
@@ -859,7 +863,7 @@ function isModifierEnabled(modifiers, modifierName) {
  * @returns {Boolean}
  */
 function isModifierRequired(modifiers, requestingName, requestedName) {
-  const requesting = find(modifiers, ({ name }) => name === requestingName);
+  const requesting = find(modifiers, ({name}) => name === requestingName);
 
   const isRequired = !!requesting && modifiers.some(modifier => {
     return modifier.name === requestedName && modifier.enabled && modifier.order < requesting.order;
@@ -991,7 +995,7 @@ function setStyles(element, styles) {
 function attachToScrollParents(scrollParent, event, callback, scrollParents) {
   const isBody = scrollParent.nodeName === 'BODY';
   const target = isBody ? scrollParent.ownerDocument.defaultView : scrollParent;
-  target.addEventListener(event, callback, { passive: true });
+  target.addEventListener(event, callback, {passive: true});
 
   if (!isBody) {
     attachToScrollParents(getScrollParent(target.parentNode), event, callback, scrollParents);
@@ -1008,7 +1012,7 @@ function attachToScrollParents(scrollParent, event, callback, scrollParents) {
 function setupEventListeners(reference, options, state, updateBound) {
   // Resize event listener on window
   state.updateBound = updateBound;
-  getWindow(reference).addEventListener('resize', state.updateBound, { passive: true });
+  getWindow(reference).addEventListener('resize', state.updateBound, {passive: true});
 
   // Scroll event listener on scroll parents
   const scrollElement = getScrollParent(reference);
@@ -1057,6 +1061,36 @@ var index = {
   setupEventListeners
 };
 
-export { computeAutoPlacement, debounce, findIndex, getBordersSize, getBoundaries, getBoundingClientRect, getClientRect, getOffsetParent, getOffsetRect, getOffsetRectRelativeToArbitraryNode, getOuterSizes, getParentNode, getPopperOffsets, getReferenceOffsets, getScroll, getScrollParent, getStyleComputedProperty, getSupportedPropertyName, getWindowSizes, isFixed, isFunction, isModifierEnabled, isModifierRequired, isNumeric, removeEventListeners, runModifiers, setAttributes, setStyles, setupEventListeners };
+export {
+  computeAutoPlacement,
+  debounce,
+  findIndex,
+  getBordersSize,
+  getBoundaries,
+  getBoundingClientRect,
+  getClientRect,
+  getOffsetParent,
+  getOffsetRect,
+  getOffsetRectRelativeToArbitraryNode,
+  getOuterSizes,
+  getParentNode,
+  getPopperOffsets,
+  getReferenceOffsets,
+  getScroll,
+  getScrollParent,
+  getStyleComputedProperty,
+  getSupportedPropertyName,
+  getWindowSizes,
+  isFixed,
+  isFunction,
+  isModifierEnabled,
+  isModifierRequired,
+  isNumeric,
+  removeEventListeners,
+  runModifiers,
+  setAttributes,
+  setStyles,
+  setupEventListeners
+};
 export default index;
 //# sourceMappingURL=popper-utils.js.map

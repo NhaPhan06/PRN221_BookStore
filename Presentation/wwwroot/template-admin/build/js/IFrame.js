@@ -76,6 +76,29 @@ class IFrame {
 
   // Public
 
+  static _jQueryInterface(config) {
+    if ($(SELECTOR_DATA_TOGGLE).length > 0) {
+      let data = $(this).data(DATA_KEY)
+
+      if (!data) {
+        data = $(this).data()
+      }
+
+      const _options = $.extend({}, Default, typeof config === 'object' ? config : data)
+      localStorage.setItem('AdminLTE:IFrame:Options', JSON.stringify(_options))
+
+      const plugin = new IFrame($(this), _options)
+
+      $(this).data(DATA_KEY, typeof config === 'object' ? config : data)
+
+      if (typeof config === 'string' && /createTab|openTabSidebar|switchTab|removeActiveTab/.test(config)) {
+        plugin[config]()
+      }
+    } else {
+      new IFrame($(this), JSON.parse(localStorage.getItem('AdminLTE:IFrame:Options')))._initFrameElement()
+    }
+  }
+
   onTabClick(item) {
     this._config.onTabClick(item)
   }
@@ -232,6 +255,8 @@ class IFrame {
     }
   }
 
+  // Private
+
   toggleFullscreen() {
     if ($('body').hasClass(CLASS_NAME_FULLSCREEN_MODE)) {
       $(`${SELECTOR_DATA_TOGGLE_FULLSCREEN} i`).removeClass(this._config.iconMinimize).addClass(this._config.iconMaximize)
@@ -247,8 +272,6 @@ class IFrame {
     $(window).trigger('resize')
     this._fixHeight(true)
   }
-
-  // Private
 
   _init() {
     const usingDefTab = ($(SELECTOR_TAB_CONTENT).children().length > 2)
@@ -280,7 +303,7 @@ class IFrame {
 
   _navScroll(offset) {
     const leftPos = $(SELECTOR_TAB_NAVBAR_NAV).scrollLeft()
-    $(SELECTOR_TAB_NAVBAR_NAV).animate({ scrollLeft: (leftPos + offset) }, 250, 'linear')
+    $(SELECTOR_TAB_NAVBAR_NAV).animate({scrollLeft: (leftPos + offset)}, 250, 'linear')
   }
 
   _setupListeners() {
@@ -314,7 +337,7 @@ class IFrame {
     })
     $(document).on('click', SELECTOR_DATA_TOGGLE_CLOSE, e => {
       e.preventDefault()
-      let { target } = e
+      let {target} = e
 
       if (target.nodeName == 'I') {
         target = e.target.offsetParent
@@ -332,7 +355,7 @@ class IFrame {
       e.preventDefault()
       clearInterval(mousedownInterval)
 
-      let { scrollOffset } = this._config
+      let {scrollOffset} = this._config
 
       if (!this._config.scrollBehaviorSwap) {
         scrollOffset = -scrollOffset
@@ -349,7 +372,7 @@ class IFrame {
       e.preventDefault()
       clearInterval(mousedownInterval)
 
-      let { scrollOffset } = this._config
+      let {scrollOffset} = this._config
 
       if (this._config.scrollBehaviorSwap) {
         scrollOffset = -scrollOffset
@@ -391,6 +414,8 @@ class IFrame {
     })
   }
 
+  // Static
+
   _fixHeight(tabEmpty = false) {
     if ($('body').hasClass(CLASS_NAME_FULLSCREEN_MODE)) {
       const windowHeight = $(window).height()
@@ -407,31 +432,6 @@ class IFrame {
       } else {
         $(SELECTOR_CONTENT_IFRAME).height(contentWrapperHeight - navbarHeight)
       }
-    }
-  }
-
-  // Static
-
-  static _jQueryInterface(config) {
-    if ($(SELECTOR_DATA_TOGGLE).length > 0) {
-      let data = $(this).data(DATA_KEY)
-
-      if (!data) {
-        data = $(this).data()
-      }
-
-      const _options = $.extend({}, Default, typeof config === 'object' ? config : data)
-      localStorage.setItem('AdminLTE:IFrame:Options', JSON.stringify(_options))
-
-      const plugin = new IFrame($(this), _options)
-
-      $(this).data(DATA_KEY, typeof config === 'object' ? config : data)
-
-      if (typeof config === 'string' && /createTab|openTabSidebar|switchTab|removeActiveTab/.test(config)) {
-        plugin[config]()
-      }
-    } else {
-      new IFrame($(this), JSON.parse(localStorage.getItem('AdminLTE:IFrame:Options')))._initFrameElement()
     }
   }
 }

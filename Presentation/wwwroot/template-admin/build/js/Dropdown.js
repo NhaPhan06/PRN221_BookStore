@@ -40,6 +40,22 @@ class Dropdown {
 
   // Public
 
+  static _jQueryInterface(config) {
+    return this.each(function () {
+      let data = $(this).data(DATA_KEY)
+      const _config = $.extend({}, Default, $(this).data())
+
+      if (!data) {
+        data = new Dropdown($(this), _config)
+        $(this).data(DATA_KEY, data)
+      }
+
+      if (config === 'toggleSubmenu' || config === 'fixPosition') {
+        data[config]()
+      }
+    })
+  }
+
   toggleSubmenu() {
     this._element.siblings().show().toggleClass('show')
 
@@ -51,6 +67,8 @@ class Dropdown {
       $('.dropdown-submenu .show').removeClass('show').hide()
     })
   }
+
+  // Static
 
   fixPosition() {
     const $element = $(SELECTOR_DROPDOWN_MENU_ACTIVE)
@@ -86,24 +104,6 @@ class Dropdown {
         right: 0
       })
     }
-  }
-
-  // Static
-
-  static _jQueryInterface(config) {
-    return this.each(function () {
-      let data = $(this).data(DATA_KEY)
-      const _config = $.extend({}, Default, $(this).data())
-
-      if (!data) {
-        data = new Dropdown($(this), _config)
-        $(this).data(DATA_KEY, data)
-      }
-
-      if (config === 'toggleSubmenu' || config === 'fixPosition') {
-        data[config]()
-      }
-    })
   }
 }
 

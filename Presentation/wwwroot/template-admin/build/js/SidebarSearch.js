@@ -5,7 +5,7 @@
  * --------------------------------------------
  */
 
-import $, { trim } from 'jquery'
+import $, {trim} from 'jquery'
 
 /**
  * Constants
@@ -60,6 +60,25 @@ class SidebarSearch {
 
   // Public
 
+  static _jQueryInterface(config) {
+    let data = $(this).data(DATA_KEY)
+
+    if (!data) {
+      data = $(this).data()
+    }
+
+    const _options = $.extend({}, Default, typeof config === 'object' ? config : data)
+    const plugin = new SidebarSearch($(this), _options)
+
+    $(this).data(DATA_KEY, typeof config === 'object' ? config : data)
+
+    if (typeof config === 'string' && /init|toggle|close|open|search/.test(config)) {
+      plugin[config]()
+    } else {
+      plugin.init()
+    }
+  }
+
   init() {
     if ($(SELECTOR_DATA_WIDGET).length === 0) {
       return
@@ -67,13 +86,13 @@ class SidebarSearch {
 
     if ($(SELECTOR_DATA_WIDGET).next(SELECTOR_SEARCH_RESULTS).length === 0) {
       $(SELECTOR_DATA_WIDGET).after(
-        $('<div />', { class: CLASS_NAME_SEARCH_RESULTS })
+        $('<div />', {class: CLASS_NAME_SEARCH_RESULTS})
       )
     }
 
     if ($(SELECTOR_SEARCH_RESULTS).children(SELECTOR_SEARCH_LIST_GROUP).length === 0) {
       $(SELECTOR_SEARCH_RESULTS).append(
-        $('<div />', { class: CLASS_NAME_LIST_GROUP })
+        $('<div />', {class: CLASS_NAME_LIST_GROUP})
       )
     }
 
@@ -118,6 +137,8 @@ class SidebarSearch {
     $(SELECTOR_SEARCH_ICON).removeClass(CLASS_NAME_ICON_CLOSE).addClass(CLASS_NAME_ICON_SEARCH)
   }
 
+  // Private
+
   toggle() {
     if ($(SELECTOR_DATA_WIDGET).parent().hasClass(CLASS_NAME_OPEN)) {
       this.close()
@@ -125,8 +146,6 @@ class SidebarSearch {
       this.open()
     }
   }
-
-  // Private
 
   _parseItem(item, path = []) {
     if ($(item).hasClass(CLASS_NAME_HEADER)) {
@@ -202,29 +221,10 @@ class SidebarSearch {
     return groupItemElement
   }
 
-  _addNotFound() {
-    $(SELECTOR_SEARCH_RESULTS_GROUP).append(this._renderItem(this.options.notFoundText, '#', []))
-  }
-
   // Static
 
-  static _jQueryInterface(config) {
-    let data = $(this).data(DATA_KEY)
-
-    if (!data) {
-      data = $(this).data()
-    }
-
-    const _options = $.extend({}, Default, typeof config === 'object' ? config : data)
-    const plugin = new SidebarSearch($(this), _options)
-
-    $(this).data(DATA_KEY, typeof config === 'object' ? config : data)
-
-    if (typeof config === 'string' && /init|toggle|close|open|search/.test(config)) {
-      plugin[config]()
-    } else {
-      plugin.init()
-    }
+  _addNotFound() {
+    $(SELECTOR_SEARCH_RESULTS_GROUP).append(this._renderItem(this.options.notFoundText, '#', []))
   }
 }
 

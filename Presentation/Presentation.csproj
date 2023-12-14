@@ -7,159 +7,159 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj" />
+        <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Pages\Book\" />
-        <Folder Include="Pages\Category\" />
+        <Folder Include="Pages\Book\"/>
+        <Folder Include="Pages\Category\"/>
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.25" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.25"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.25">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
+        <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16"/>
     </ItemGroup>
 
     <ItemGroup>
-        <None Include="wwwroot\bootstrap\css\bootstrap-grid.css" />
-        <None Include="wwwroot\bootstrap\css\bootstrap-grid.css.map" />
-        <None Include="wwwroot\bootstrap\css\bootstrap-grid.min.css" />
-        <None Include="wwwroot\bootstrap\css\bootstrap-grid.min.css.map" />
-        <None Include="wwwroot\bootstrap\css\bootstrap-reboot.css" />
-        <None Include="wwwroot\bootstrap\css\bootstrap-reboot.css.map" />
-        <None Include="wwwroot\bootstrap\css\bootstrap-reboot.min.css" />
-        <None Include="wwwroot\bootstrap\css\bootstrap-reboot.min.css.map" />
-        <None Include="wwwroot\bootstrap\css\bootstrap.css" />
-        <None Include="wwwroot\bootstrap\css\bootstrap.css.map" />
-        <None Include="wwwroot\bootstrap\css\bootstrap.min.css" />
-        <None Include="wwwroot\bootstrap\css\bootstrap.min.css.map" />
-        <None Include="wwwroot\bootstrap\js\bootstrap.bundle.js" />
-        <None Include="wwwroot\bootstrap\js\bootstrap.bundle.js.map" />
-        <None Include="wwwroot\bootstrap\js\bootstrap.bundle.min.js" />
-        <None Include="wwwroot\bootstrap\js\bootstrap.bundle.min.js.map" />
-        <None Include="wwwroot\bootstrap\js\bootstrap.js" />
-        <None Include="wwwroot\bootstrap\js\bootstrap.js.map" />
-        <None Include="wwwroot\bootstrap\js\bootstrap.min.js" />
-        <None Include="wwwroot\bootstrap\js\bootstrap.min.js.map" />
-        <None Include="wwwroot\css\all.min.css" />
-        <None Include="wwwroot\css\animate.css" />
-        <None Include="wwwroot\css\magnific-popup.css" />
-        <None Include="wwwroot\css\main.css" />
-        <None Include="wwwroot\css\meanmenu.min.css" />
-        <None Include="wwwroot\css\owl.carousel.css" />
-        <None Include="wwwroot\css\responsive.css" />
-        <None Include="wwwroot\css\scss\base\_mixins.scss" />
-        <None Include="wwwroot\css\scss\base\_typography.scss" />
-        <None Include="wwwroot\css\scss\base\_variables.scss" />
-        <None Include="wwwroot\css\scss\common\_common.scss" />
-        <None Include="wwwroot\css\scss\common\_footer.scss" />
-        <None Include="wwwroot\css\scss\common\_header.scss" />
-        <None Include="wwwroot\css\scss\common\_hover.scss" />
-        <None Include="wwwroot\css\scss\main.scss" />
-        <None Include="wwwroot\css\scss\pages\_404.css" />
-        <None Include="wwwroot\css\scss\pages\_404.scss" />
-        <None Include="wwwroot\css\scss\pages\_about.scss" />
-        <None Include="wwwroot\css\scss\pages\_contact.scss" />
-        <None Include="wwwroot\css\scss\pages\_shop.scss" />
-        <None Include="wwwroot\css\scss\sections\_about.scss" />
-        <None Include="wwwroot\css\scss\sections\_cart-banner.scss" />
-        <None Include="wwwroot\css\scss\sections\_hero.scss" />
-        <None Include="wwwroot\css\scss\sections\_list.scss" />
-        <None Include="wwwroot\css\scss\sections\_news.scss" />
-        <None Include="wwwroot\css\scss\sections\_shop-banner.scss" />
-        <None Include="wwwroot\css\scss\sections\_testimonials.scss" />
-        <None Include="wwwroot\imgstorebook\240_F_405931625_dtLZDca2FCBTefOyKNFwL1cpLJEDFDIj.jpg" />
-        <None Include="wwwroot\imgstorebook\240_F_405931625_dtLZDca2FCBTefOyKNFwL1cpLJEDFDIj_preview_rev_1.jpg" />
-        <None Include="wwwroot\imgstorebook\author-book-store-book-cover-06.jpg" />
-        <None Include="wwwroot\imgstorebook\author-book-store-book-cover-07.jpg" />
-        <None Include="wwwroot\imgstorebook\author-book-store-book-cover-08.jpg" />
-        <None Include="wwwroot\imgstorebook\author-book-store-book-img-01.jpg" />
-        <None Include="wwwroot\imgstorebook\author-book-store-book-img-02.jpg" />
-        <None Include="wwwroot\imgstorebook\author-book-store-book-img-04.jpg" />
-        <None Include="wwwroot\imgstorebook\background.jpg" />
-        <None Include="wwwroot\imgstorebook\tải xuống.jpg" />
-        <None Include="wwwroot\img\1.jpg" />
-        <None Include="wwwroot\img\a.jpg" />
-        <None Include="wwwroot\img\abt.jpg" />
-        <None Include="wwwroot\img\avaters\avatar1.png" />
-        <None Include="wwwroot\img\avaters\avatar2.png" />
-        <None Include="wwwroot\img\avaters\avatar3.png" />
-        <None Include="wwwroot\img\breadcrumb-bg.jpg" />
-        <None Include="wwwroot\img\company-logos\1.png" />
-        <None Include="wwwroot\img\company-logos\2.png" />
-        <None Include="wwwroot\img\company-logos\3.png" />
-        <None Include="wwwroot\img\company-logos\4.png" />
-        <None Include="wwwroot\img\company-logos\5.png" />
-        <None Include="wwwroot\img\dd.jpg" />
-        <None Include="wwwroot\img\favicon.png" />
-        <None Include="wwwroot\img\feature-bg.jpg" />
-        <None Include="wwwroot\img\hero-bg-2.jpg" />
-        <None Include="wwwroot\img\hero-bg-3.jpg" />
-        <None Include="wwwroot\img\hero-bg.jpg" />
-        <None Include="wwwroot\img\homepage-bg-pattern.png" />
-        <None Include="wwwroot\img\latest-news\news-bg-1.jpg" />
-        <None Include="wwwroot\img\latest-news\news-bg-2.jpg" />
-        <None Include="wwwroot\img\latest-news\news-bg-3.jpg" />
-        <None Include="wwwroot\img\latest-news\news-bg-4.jpg" />
-        <None Include="wwwroot\img\latest-news\news-bg-5.jpg" />
-        <None Include="wwwroot\img\latest-news\news-bg-6.jpg" />
-        <None Include="wwwroot\img\logo.png" />
-        <None Include="wwwroot\img\products\product-img-1.jpg" />
-        <None Include="wwwroot\img\products\product-img-2.jpg" />
-        <None Include="wwwroot\img\products\product-img-3.jpg" />
-        <None Include="wwwroot\img\products\product-img-4.jpg" />
-        <None Include="wwwroot\img\products\product-img-5.jpg" />
-        <None Include="wwwroot\img\products\product-img-6.jpg" />
-        <None Include="wwwroot\img\team\team-1.jpg" />
-        <None Include="wwwroot\img\team\team-2.jpg" />
-        <None Include="wwwroot\img\team\team-3.jpg" />
-        <None Include="wwwroot\js\form-validate.js" />
-        <None Include="wwwroot\js\jquery-1.11.3.min.js" />
-        <None Include="wwwroot\js\jquery.countdown.js" />
-        <None Include="wwwroot\js\jquery.isotope-3.0.6.min.js" />
-        <None Include="wwwroot\js\jquery.magnific-popup.min.js" />
-        <None Include="wwwroot\js\jquery.meanmenu.min.js" />
-        <None Include="wwwroot\js\main.js" />
-        <None Include="wwwroot\js\owl.carousel.min.js" />
-        <None Include="wwwroot\js\sticker.js" />
-        <None Include="wwwroot\js\waypoints.js" />
-        <None Include="wwwroot\webfonts\fa-brands-400.eot" />
-        <None Include="wwwroot\webfonts\fa-brands-400.eot_" />
-        <None Include="wwwroot\webfonts\fa-brands-400.svg" />
-        <None Include="wwwroot\webfonts\fa-brands-400.ttf" />
-        <None Include="wwwroot\webfonts\fa-brands-400.woff" />
-        <None Include="wwwroot\webfonts\fa-brands-400.woff2" />
-        <None Include="wwwroot\webfonts\fa-regular-400.eot" />
-        <None Include="wwwroot\webfonts\fa-regular-400.eot_" />
-        <None Include="wwwroot\webfonts\fa-regular-400.svg" />
-        <None Include="wwwroot\webfonts\fa-regular-400.ttf" />
-        <None Include="wwwroot\webfonts\fa-regular-400.woff" />
-        <None Include="wwwroot\webfonts\fa-regular-400.woff2" />
-        <None Include="wwwroot\webfonts\fa-solid-900.eot" />
-        <None Include="wwwroot\webfonts\fa-solid-900.eot_" />
-        <None Include="wwwroot\webfonts\fa-solid-900.svg" />
-        <None Include="wwwroot\webfonts\fa-solid-900.ttf" />
-        <None Include="wwwroot\webfonts\fa-solid-900.woff" />
-        <None Include="wwwroot\webfonts\fa-solid-900.woff2" />
+        <None Include="wwwroot\bootstrap\css\bootstrap-grid.css"/>
+        <None Include="wwwroot\bootstrap\css\bootstrap-grid.css.map"/>
+        <None Include="wwwroot\bootstrap\css\bootstrap-grid.min.css"/>
+        <None Include="wwwroot\bootstrap\css\bootstrap-grid.min.css.map"/>
+        <None Include="wwwroot\bootstrap\css\bootstrap-reboot.css"/>
+        <None Include="wwwroot\bootstrap\css\bootstrap-reboot.css.map"/>
+        <None Include="wwwroot\bootstrap\css\bootstrap-reboot.min.css"/>
+        <None Include="wwwroot\bootstrap\css\bootstrap-reboot.min.css.map"/>
+        <None Include="wwwroot\bootstrap\css\bootstrap.css"/>
+        <None Include="wwwroot\bootstrap\css\bootstrap.css.map"/>
+        <None Include="wwwroot\bootstrap\css\bootstrap.min.css"/>
+        <None Include="wwwroot\bootstrap\css\bootstrap.min.css.map"/>
+        <None Include="wwwroot\bootstrap\js\bootstrap.bundle.js"/>
+        <None Include="wwwroot\bootstrap\js\bootstrap.bundle.js.map"/>
+        <None Include="wwwroot\bootstrap\js\bootstrap.bundle.min.js"/>
+        <None Include="wwwroot\bootstrap\js\bootstrap.bundle.min.js.map"/>
+        <None Include="wwwroot\bootstrap\js\bootstrap.js"/>
+        <None Include="wwwroot\bootstrap\js\bootstrap.js.map"/>
+        <None Include="wwwroot\bootstrap\js\bootstrap.min.js"/>
+        <None Include="wwwroot\bootstrap\js\bootstrap.min.js.map"/>
+        <None Include="wwwroot\css\all.min.css"/>
+        <None Include="wwwroot\css\animate.css"/>
+        <None Include="wwwroot\css\magnific-popup.css"/>
+        <None Include="wwwroot\css\main.css"/>
+        <None Include="wwwroot\css\meanmenu.min.css"/>
+        <None Include="wwwroot\css\owl.carousel.css"/>
+        <None Include="wwwroot\css\responsive.css"/>
+        <None Include="wwwroot\css\scss\base\_mixins.scss"/>
+        <None Include="wwwroot\css\scss\base\_typography.scss"/>
+        <None Include="wwwroot\css\scss\base\_variables.scss"/>
+        <None Include="wwwroot\css\scss\common\_common.scss"/>
+        <None Include="wwwroot\css\scss\common\_footer.scss"/>
+        <None Include="wwwroot\css\scss\common\_header.scss"/>
+        <None Include="wwwroot\css\scss\common\_hover.scss"/>
+        <None Include="wwwroot\css\scss\main.scss"/>
+        <None Include="wwwroot\css\scss\pages\_404.css"/>
+        <None Include="wwwroot\css\scss\pages\_404.scss"/>
+        <None Include="wwwroot\css\scss\pages\_about.scss"/>
+        <None Include="wwwroot\css\scss\pages\_contact.scss"/>
+        <None Include="wwwroot\css\scss\pages\_shop.scss"/>
+        <None Include="wwwroot\css\scss\sections\_about.scss"/>
+        <None Include="wwwroot\css\scss\sections\_cart-banner.scss"/>
+        <None Include="wwwroot\css\scss\sections\_hero.scss"/>
+        <None Include="wwwroot\css\scss\sections\_list.scss"/>
+        <None Include="wwwroot\css\scss\sections\_news.scss"/>
+        <None Include="wwwroot\css\scss\sections\_shop-banner.scss"/>
+        <None Include="wwwroot\css\scss\sections\_testimonials.scss"/>
+        <None Include="wwwroot\imgstorebook\240_F_405931625_dtLZDca2FCBTefOyKNFwL1cpLJEDFDIj.jpg"/>
+        <None Include="wwwroot\imgstorebook\240_F_405931625_dtLZDca2FCBTefOyKNFwL1cpLJEDFDIj_preview_rev_1.jpg"/>
+        <None Include="wwwroot\imgstorebook\author-book-store-book-cover-06.jpg"/>
+        <None Include="wwwroot\imgstorebook\author-book-store-book-cover-07.jpg"/>
+        <None Include="wwwroot\imgstorebook\author-book-store-book-cover-08.jpg"/>
+        <None Include="wwwroot\imgstorebook\author-book-store-book-img-01.jpg"/>
+        <None Include="wwwroot\imgstorebook\author-book-store-book-img-02.jpg"/>
+        <None Include="wwwroot\imgstorebook\author-book-store-book-img-04.jpg"/>
+        <None Include="wwwroot\imgstorebook\background.jpg"/>
+        <None Include="wwwroot\imgstorebook\tải xuống.jpg"/>
+        <None Include="wwwroot\img\1.jpg"/>
+        <None Include="wwwroot\img\a.jpg"/>
+        <None Include="wwwroot\img\abt.jpg"/>
+        <None Include="wwwroot\img\avaters\avatar1.png"/>
+        <None Include="wwwroot\img\avaters\avatar2.png"/>
+        <None Include="wwwroot\img\avaters\avatar3.png"/>
+        <None Include="wwwroot\img\breadcrumb-bg.jpg"/>
+        <None Include="wwwroot\img\company-logos\1.png"/>
+        <None Include="wwwroot\img\company-logos\2.png"/>
+        <None Include="wwwroot\img\company-logos\3.png"/>
+        <None Include="wwwroot\img\company-logos\4.png"/>
+        <None Include="wwwroot\img\company-logos\5.png"/>
+        <None Include="wwwroot\img\dd.jpg"/>
+        <None Include="wwwroot\img\favicon.png"/>
+        <None Include="wwwroot\img\feature-bg.jpg"/>
+        <None Include="wwwroot\img\hero-bg-2.jpg"/>
+        <None Include="wwwroot\img\hero-bg-3.jpg"/>
+        <None Include="wwwroot\img\hero-bg.jpg"/>
+        <None Include="wwwroot\img\homepage-bg-pattern.png"/>
+        <None Include="wwwroot\img\latest-news\news-bg-1.jpg"/>
+        <None Include="wwwroot\img\latest-news\news-bg-2.jpg"/>
+        <None Include="wwwroot\img\latest-news\news-bg-3.jpg"/>
+        <None Include="wwwroot\img\latest-news\news-bg-4.jpg"/>
+        <None Include="wwwroot\img\latest-news\news-bg-5.jpg"/>
+        <None Include="wwwroot\img\latest-news\news-bg-6.jpg"/>
+        <None Include="wwwroot\img\logo.png"/>
+        <None Include="wwwroot\img\products\product-img-1.jpg"/>
+        <None Include="wwwroot\img\products\product-img-2.jpg"/>
+        <None Include="wwwroot\img\products\product-img-3.jpg"/>
+        <None Include="wwwroot\img\products\product-img-4.jpg"/>
+        <None Include="wwwroot\img\products\product-img-5.jpg"/>
+        <None Include="wwwroot\img\products\product-img-6.jpg"/>
+        <None Include="wwwroot\img\team\team-1.jpg"/>
+        <None Include="wwwroot\img\team\team-2.jpg"/>
+        <None Include="wwwroot\img\team\team-3.jpg"/>
+        <None Include="wwwroot\js\form-validate.js"/>
+        <None Include="wwwroot\js\jquery-1.11.3.min.js"/>
+        <None Include="wwwroot\js\jquery.countdown.js"/>
+        <None Include="wwwroot\js\jquery.isotope-3.0.6.min.js"/>
+        <None Include="wwwroot\js\jquery.magnific-popup.min.js"/>
+        <None Include="wwwroot\js\jquery.meanmenu.min.js"/>
+        <None Include="wwwroot\js\main.js"/>
+        <None Include="wwwroot\js\owl.carousel.min.js"/>
+        <None Include="wwwroot\js\sticker.js"/>
+        <None Include="wwwroot\js\waypoints.js"/>
+        <None Include="wwwroot\webfonts\fa-brands-400.eot"/>
+        <None Include="wwwroot\webfonts\fa-brands-400.eot_"/>
+        <None Include="wwwroot\webfonts\fa-brands-400.svg"/>
+        <None Include="wwwroot\webfonts\fa-brands-400.ttf"/>
+        <None Include="wwwroot\webfonts\fa-brands-400.woff"/>
+        <None Include="wwwroot\webfonts\fa-brands-400.woff2"/>
+        <None Include="wwwroot\webfonts\fa-regular-400.eot"/>
+        <None Include="wwwroot\webfonts\fa-regular-400.eot_"/>
+        <None Include="wwwroot\webfonts\fa-regular-400.svg"/>
+        <None Include="wwwroot\webfonts\fa-regular-400.ttf"/>
+        <None Include="wwwroot\webfonts\fa-regular-400.woff"/>
+        <None Include="wwwroot\webfonts\fa-regular-400.woff2"/>
+        <None Include="wwwroot\webfonts\fa-solid-900.eot"/>
+        <None Include="wwwroot\webfonts\fa-solid-900.eot_"/>
+        <None Include="wwwroot\webfonts\fa-solid-900.svg"/>
+        <None Include="wwwroot\webfonts\fa-solid-900.ttf"/>
+        <None Include="wwwroot\webfonts\fa-solid-900.woff"/>
+        <None Include="wwwroot\webfonts\fa-solid-900.woff2"/>
     </ItemGroup>
 
     <ItemGroup>
         <Content Update="wwwroot\css\scss\prepros-6.config">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Content>
-        <Content Include="wwwroot\template-admin\.github\codeql\codeql-config.yml" />
-        <Content Include="wwwroot\template-admin\.github\CONTRIBUTING.md" />
-        <Content Include="wwwroot\template-admin\.github\dependabot.yml" />
-        <Content Include="wwwroot\template-admin\.github\ISSUE_TEMPLATE\bug-report-for-adminlte-v3.1-x.md" />
-        <Content Include="wwwroot\template-admin\.github\ISSUE_TEMPLATE\feature-request-for-adminlte-v4-x.md" />
-        <Content Include="wwwroot\template-admin\.github\workflows\ci.yml" />
-        <Content Include="wwwroot\template-admin\.github\workflows\codeql.yml" />
-        <Content Include="wwwroot\template-admin\.github\workflows\docs.yml" />
-        <Content Include="wwwroot\template-admin\.github\workflows\lint.yml" />
+        <Content Include="wwwroot\template-admin\.github\codeql\codeql-config.yml"/>
+        <Content Include="wwwroot\template-admin\.github\CONTRIBUTING.md"/>
+        <Content Include="wwwroot\template-admin\.github\dependabot.yml"/>
+        <Content Include="wwwroot\template-admin\.github\ISSUE_TEMPLATE\bug-report-for-adminlte-v3.1-x.md"/>
+        <Content Include="wwwroot\template-admin\.github\ISSUE_TEMPLATE\feature-request-for-adminlte-v4-x.md"/>
+        <Content Include="wwwroot\template-admin\.github\workflows\ci.yml"/>
+        <Content Include="wwwroot\template-admin\.github\workflows\codeql.yml"/>
+        <Content Include="wwwroot\template-admin\.github\workflows\docs.yml"/>
+        <Content Include="wwwroot\template-admin\.github\workflows\lint.yml"/>
     </ItemGroup>
 
 </Project>

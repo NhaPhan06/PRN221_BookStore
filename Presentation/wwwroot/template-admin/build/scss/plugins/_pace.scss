@@ -129,13 +129,13 @@
 
 
       .pace-activity::before {
-          border-right-color: rgba($color, .2);
-          border-left-color: rgba($color, .2);
+        border-right-color: rgba($color, .2);
+        border-left-color: rgba($color, .2);
       }
 
       .pace-activity::after {
-          border-top-color: rgba($color, .2);
-          border-bottom-color: rgba($color, .2);
+        border-top-color: rgba($color, .2);
+        border-bottom-color: rgba($color, .2);
       }
     }
   }

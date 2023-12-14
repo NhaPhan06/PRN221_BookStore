@@ -3,7 +3,8 @@ layout: page
 title: Timeline Component
 ---
 
-The timeline component displays an event history. You can use it for descriptions of events that occurred in a particular time section.
+The timeline component displays an event history. You can use it for descriptions of events that occurred in a
+particular time section.
 
 ##### Default
 
@@ -43,6 +44,7 @@ The timeline component displays an event history. You can use it for description
   </div>
 </div>
 ```
+
 {: .max-height-300}
 
 ##### Extra style

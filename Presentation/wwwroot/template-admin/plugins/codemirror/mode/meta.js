@@ -1,31 +1,48 @@
 // CodeMirror, copyright (c) by Marijn Haverbeke and others
 // Distributed under an MIT license: https://codemirror.net/LICENSE
 
-(function(mod) {
+(function (mod) {
   if (typeof exports == "object" && typeof module == "object") // CommonJS
     mod(require("../lib/codemirror"));
   else if (typeof define == "function" && define.amd) // AMD
     define(["../lib/codemirror"], mod);
   else // Plain browser env
     mod(CodeMirror);
-})(function(CodeMirror) {
+})(function (CodeMirror) {
   "use strict";
 
   CodeMirror.modeInfo = [
     {name: "APL", mime: "text/apl", mode: "apl", ext: ["dyalog", "apl"]},
-    {name: "PGP", mimes: ["application/pgp", "application/pgp-encrypted", "application/pgp-keys", "application/pgp-signature"], mode: "asciiarmor", ext: ["asc", "pgp", "sig"]},
+    {
+      name: "PGP",
+      mimes: ["application/pgp", "application/pgp-encrypted", "application/pgp-keys", "application/pgp-signature"],
+      mode: "asciiarmor",
+      ext: ["asc", "pgp", "sig"]
+    },
     {name: "ASN.1", mime: "text/x-ttcn-asn", mode: "asn.1", ext: ["asn", "asn1"]},
     {name: "Asterisk", mime: "text/x-asterisk", mode: "asterisk", file: /^extensions\.conf$/i},
     {name: "Brainfuck", mime: "text/x-brainfuck", mode: "brainfuck", ext: ["b", "bf"]},
     {name: "C", mime: "text/x-csrc", mode: "clike", ext: ["c", "h", "ino"]},
-    {name: "C++", mime: "text/x-c++src", mode: "clike", ext: ["cpp", "c++", "cc", "cxx", "hpp", "h++", "hh", "hxx"], alias: ["cpp"]},
+    {
+      name: "C++",
+      mime: "text/x-c++src",
+      mode: "clike",
+      ext: ["cpp", "c++", "cc", "cxx", "hpp", "h++", "hh", "hxx"],
+      alias: ["cpp"]
+    },
     {name: "Cobol", mime: "text/x-cobol", mode: "cobol", ext: ["cob", "cpy", "cbl"]},
     {name: "C#", mime: "text/x-csharp", mode: "clike", ext: ["cs"], alias: ["csharp", "cs"]},
     {name: "Clojure", mime: "text/x-clojure", mode: "clojure", ext: ["clj", "cljc", "cljx"]},
     {name: "ClojureScript", mime: "text/x-clojurescript", mode: "clojure", ext: ["cljs"]},
     {name: "Closure Stylesheets (GSS)", mime: "text/x-gss", mode: "css", ext: ["gss"]},
     {name: "CMake", mime: "text/x-cmake", mode: "cmake", ext: ["cmake", "cmake.in"], file: /^CMakeLists\.txt$/},
-    {name: "CoffeeScript", mimes: ["application/vnd.coffeescript", "text/coffeescript", "text/x-coffeescript"], mode: "coffeescript", ext: ["coffee"], alias: ["coffee", "coffee-script"]},
+    {
+      name: "CoffeeScript",
+      mimes: ["application/vnd.coffeescript", "text/coffeescript", "text/x-coffeescript"],
+      mode: "coffeescript",
+      ext: ["coffee"],
+      alias: ["coffee", "coffee-script"]
+    },
     {name: "Common Lisp", mime: "text/x-common-lisp", mode: "commonlisp", ext: ["cl", "lisp", "el"], alias: ["lisp"]},
     {name: "Cypher", mime: "application/x-cypher-query", mode: "cypher", ext: ["cyp", "cypher"]},
     {name: "Cython", mime: "text/x-cython", mode: "python", ext: ["pyx", "pxd", "pxi"]},
@@ -70,9 +87,20 @@
     {name: "Pug", mime: "text/x-pug", mode: "pug", ext: ["jade", "pug"], alias: ["jade"]},
     {name: "Java", mime: "text/x-java", mode: "clike", ext: ["java"]},
     {name: "Java Server Pages", mime: "application/x-jsp", mode: "htmlembedded", ext: ["jsp"], alias: ["jsp"]},
-    {name: "JavaScript", mimes: ["text/javascript", "text/ecmascript", "application/javascript", "application/x-javascript", "application/ecmascript"],
-     mode: "javascript", ext: ["js"], alias: ["ecmascript", "js", "node"]},
-    {name: "JSON", mimes: ["application/json", "application/x-json"], mode: "javascript", ext: ["json", "map"], alias: ["json5"]},
+    {
+      name: "JavaScript",
+      mimes: ["text/javascript", "text/ecmascript", "application/javascript", "application/x-javascript", "application/ecmascript"],
+      mode: "javascript",
+      ext: ["js"],
+      alias: ["ecmascript", "js", "node"]
+    },
+    {
+      name: "JSON",
+      mimes: ["application/json", "application/x-json"],
+      mode: "javascript",
+      ext: ["json", "map"],
+      alias: ["json5"]
+    },
     {name: "JSON-LD", mime: "application/ld+json", mode: "javascript", ext: ["jsonld"], alias: ["jsonld"]},
     {name: "JSX", mime: "text/jsx", mode: "jsx", ext: ["jsx"]},
     {name: "Jinja2", mime: "text/jinja2", mode: "jinja2", ext: ["j2", "jinja", "jinja2"]},
@@ -92,23 +120,42 @@
     {name: "MySQL", mime: "text/x-mysql", mode: "sql"},
     {name: "Nginx", mime: "text/x-nginx-conf", mode: "nginx", file: /nginx.*\.conf$/i},
     {name: "NSIS", mime: "text/x-nsis", mode: "nsis", ext: ["nsh", "nsi"]},
-    {name: "NTriples", mimes: ["application/n-triples", "application/n-quads", "text/n-triples"],
-     mode: "ntriples", ext: ["nt", "nq"]},
+    {
+      name: "NTriples", mimes: ["application/n-triples", "application/n-quads", "text/n-triples"],
+      mode: "ntriples", ext: ["nt", "nq"]
+    },
     {name: "Objective-C", mime: "text/x-objectivec", mode: "clike", ext: ["m"], alias: ["objective-c", "objc"]},
-    {name: "Objective-C++", mime: "text/x-objectivec++", mode: "clike", ext: ["mm"], alias: ["objective-c++", "objc++"]},
+    {
+      name: "Objective-C++",
+      mime: "text/x-objectivec++",
+      mode: "clike",
+      ext: ["mm"],
+      alias: ["objective-c++", "objc++"]
+    },
     {name: "OCaml", mime: "text/x-ocaml", mode: "mllike", ext: ["ml", "mli", "mll", "mly"]},
     {name: "Octave", mime: "text/x-octave", mode: "octave", ext: ["m"]},
     {name: "Oz", mime: "text/x-oz", mode: "oz", ext: ["oz"]},
     {name: "Pascal", mime: "text/x-pascal", mode: "pascal", ext: ["p", "pas"]},
     {name: "PEG.js", mime: "null", mode: "pegjs", ext: ["jsonld"]},
     {name: "Perl", mime: "text/x-perl", mode: "perl", ext: ["pl", "pm"]},
-    {name: "PHP", mimes: ["text/x-php", "application/x-httpd-php", "application/x-httpd-php-open"], mode: "php", ext: ["php", "php3", "php4", "php5", "php7", "phtml"]},
+    {
+      name: "PHP",
+      mimes: ["text/x-php", "application/x-httpd-php", "application/x-httpd-php-open"],
+      mode: "php",
+      ext: ["php", "php3", "php4", "php5", "php7", "phtml"]
+    },
     {name: "Pig", mime: "text/x-pig", mode: "pig", ext: ["pig"]},
     {name: "Plain Text", mime: "text/plain", mode: "null", ext: ["txt", "text", "conf", "def", "list", "log"]},
     {name: "PLSQL", mime: "text/x-plsql", mode: "sql", ext: ["pls"]},
     {name: "PostgreSQL", mime: "text/x-pgsql", mode: "sql"},
     {name: "PowerShell", mime: "application/x-powershell", mode: "powershell", ext: ["ps1", "psd1", "psm1"]},
-    {name: "Properties files", mime: "text/x-properties", mode: "properties", ext: ["properties", "ini", "in"], alias: ["ini", "properties"]},
+    {
+      name: "Properties files",
+      mime: "text/x-properties",
+      mode: "properties",
+      ext: ["properties", "ini", "in"],
+      alias: ["ini", "properties"]
+    },
     {name: "ProtoBuf", mime: "text/x-protobuf", mode: "protobuf", ext: ["proto"]},
     {name: "Python", mime: "text/x-python", mode: "python", ext: ["BUILD", "bzl", "py", "pyw"], file: /^(BUCK|BUILD)$/},
     {name: "Puppet", mime: "text/x-puppet", mode: "puppet", ext: ["pp"]},
@@ -124,7 +171,14 @@
     {name: "Scala", mime: "text/x-scala", mode: "clike", ext: ["scala"]},
     {name: "Scheme", mime: "text/x-scheme", mode: "scheme", ext: ["scm", "ss"]},
     {name: "SCSS", mime: "text/x-scss", mode: "css", ext: ["scss"]},
-    {name: "Shell", mimes: ["text/x-sh", "application/x-sh"], mode: "shell", ext: ["sh", "ksh", "bash"], alias: ["bash", "sh", "zsh"], file: /^PKGBUILD$/},
+    {
+      name: "Shell",
+      mimes: ["text/x-sh", "application/x-sh"],
+      mode: "shell",
+      ext: ["sh", "ksh", "bash"],
+      alias: ["bash", "sh", "zsh"],
+      file: /^PKGBUILD$/
+    },
     {name: "Sieve", mime: "application/sieve", mode: "sieve", ext: ["siv", "sieve"]},
     {name: "Slim", mimes: ["text/x-slim", "application/x-slim"], mode: "slim", ext: ["slim"]},
     {name: "Smalltalk", mime: "text/x-stsrc", mode: "smalltalk", ext: ["st"]},
@@ -162,7 +216,13 @@
     {name: "Verilog", mime: "text/x-verilog", mode: "verilog", ext: ["v"]},
     {name: "VHDL", mime: "text/x-vhdl", mode: "vhdl", ext: ["vhd", "vhdl"]},
     {name: "Vue.js Component", mimes: ["script/x-vue", "text/x-vue"], mode: "vue", ext: ["vue"]},
-    {name: "XML", mimes: ["application/xml", "text/xml"], mode: "xml", ext: ["xml", "xsl", "xsd", "svg"], alias: ["rss", "wsdl", "xsd"]},
+    {
+      name: "XML",
+      mimes: ["application/xml", "text/xml"],
+      mode: "xml",
+      ext: ["xml", "xsl", "xsd", "svg"],
+      alias: ["rss", "wsdl", "xsd"]
+    },
     {name: "XQuery", mime: "application/xquery", mode: "xquery", ext: ["xy", "xquery"]},
     {name: "Yacas", mime: "text/x-yacas", mode: "yacas", ext: ["ys"]},
     {name: "YAML", mimes: ["text/x-yaml", "text/yaml"], mode: "yaml", ext: ["yaml", "yml"], alias: ["yml"]},
@@ -178,7 +238,7 @@
     if (info.mimes) info.mime = info.mimes[0];
   }
 
-  CodeMirror.findModeByMIME = function(mime) {
+  CodeMirror.findModeByMIME = function (mime) {
     mime = mime.toLowerCase();
     for (var i = 0; i < CodeMirror.modeInfo.length; i++) {
       var info = CodeMirror.modeInfo[i];
@@ -190,7 +250,7 @@
     if (/\+json$/.test(mime)) return CodeMirror.findModeByMIME("application/json")
   };
 
-  CodeMirror.findModeByExtension = function(ext) {
+  CodeMirror.findModeByExtension = function (ext) {
     ext = ext.toLowerCase();
     for (var i = 0; i < CodeMirror.modeInfo.length; i++) {
       var info = CodeMirror.modeInfo[i];
@@ -199,7 +259,7 @@
     }
   };
 
-  CodeMirror.findModeByFileName = function(filename) {
+  CodeMirror.findModeByFileName = function (filename) {
     for (var i = 0; i < CodeMirror.modeInfo.length; i++) {
       var info = CodeMirror.modeInfo[i];
       if (info.file && info.file.test(filename)) return info;
@@ -209,7 +269,7 @@
     if (ext) return CodeMirror.findModeByExtension(ext);
   };
 
-  CodeMirror.findModeByName = function(name) {
+  CodeMirror.findModeByName = function (name) {
     name = name.toLowerCase();
     for (var i = 0; i < CodeMirror.modeInfo.length; i++) {
       var info = CodeMirror.modeInfo[i];

@@ -1,22 +1,42 @@
 ﻿@page
-@model Presentation.Pages.RegisterModel
+@model RegisterModel
 @{
     Layout = "_LayoutLogin";
 }
 <div class="fix-menu">
     <div class="theme-loader">
         <div class="ball-scale">
-            <div class='contain'>
-                <div class="ring"><div class="frame"></div></div>
-                <div class="ring"><div class="frame"></div></div>
-                <div class="ring"><div class="frame"></div></div>
-                <div class="ring"><div class="frame"></div></div>
-                <div class="ring"><div class="frame"></div></div>
-                <div class="ring"><div class="frame"></div></div>
-                <div class="ring"><div class="frame"></div></div>
-                <div class="ring"><div class="frame"></div></div>
-                <div class="ring"><div class="frame"></div></div>
-                <div class="ring"><div class="frame"></div></div>
+            <div class="contain">
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -38,7 +58,7 @@
                                         <h3 class="text-center txt-primary">Sign up. It is fast and easy.</h3>
                                     </div>
                                 </div>
-                                <hr />
+                                <hr/>
                                 <div class="input-group">
                                     <input type="text" asp-for="CreateUser.Username" class="form-control" placeholder="Choose Username">
                                     <span class="md-line"></span>
@@ -73,7 +93,7 @@
                                 </div>
                                 <div class="input-group">
                                     <label asp-for="CreateUser.Birthdate" class="control-label" style="color: black"></label>
-                                    <input asp-for="CreateUser.Birthdate" type="date" class="form-control" />
+                                    <input asp-for="CreateUser.Birthdate" type="date" class="form-control"/>
                                     <span asp-validation-for="CreateUser.Birthdate" class="text-danger"></span>
                                 </div>
                                 @*<div class="row m-t-25 text-left">
@@ -101,7 +121,7 @@
                                         <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Sign up now.</button>
                                     </div>
                                 </div>
-                                
+
                                 @*<div class="row">
                                     <div class="col-md-10">
                                         <p class="text-inverse text-left m-b-0">Thank you and enjoy our website.</p>
@@ -123,5 +143,5 @@
         </div>
         <!-- end of container-fluid -->
     </section>
-    
+
 </div>

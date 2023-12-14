@@ -1,7 +1,7 @@
 /*var width = $(window).width(), height = $(window).height();
 alert('width : ' +width + 'height : ' + height);*/
 "use strict";
-$(document).ready(function() {
+$(document).ready(function () {
     var $window = $(window);
     //add id to main menu for mobile menu start
     var getBody = $("body");
@@ -10,7 +10,7 @@ $(document).ready(function() {
     //add id to main menu for mobile menu end
 
     // card js start
-    $(".card-header-right .close-card").on('click', function() {
+    $(".card-header-right .close-card").on('click', function () {
         var $this = $(this);
         $this.parents('.card').animate({
             'opacity': '0',
@@ -18,21 +18,21 @@ $(document).ready(function() {
             'transform': 'scale3d(.3, .3, .3)'
         });
 
-        setTimeout(function() {
+        setTimeout(function () {
             $this.parents('.card').remove();
         }, 800);
     });
-    $(".card-header-right .reload-card").on('click', function() {
+    $(".card-header-right .reload-card").on('click', function () {
         var $this = $(this);
 
         $this.parents('.card').addClass("card-load");
         $this.parents('.card').append('<div class="card-loader"><i class="icofont icofont-refresh rotate-refresh"></div>');
-        setTimeout(function() {
+        setTimeout(function () {
             $this.parents('.card').children(".card-loader").remove();
             $this.parents('.card').removeClass("card-load");
         }, 3000);
     });
-    $(".card-header-right .card-option .icofont-simple-left").on('click', function() {
+    $(".card-header-right .card-option .icofont-simple-left").on('click', function () {
         var $this = $(this);
         if ($this.hasClass('icofont-simple-right')) {
             $this.parents('.card-option').animate({
@@ -47,32 +47,32 @@ $(document).ready(function() {
         // $this.children("li .icofont-simple-left").toggleClass("");
     });
 
-    $(".card-header-right .minimize-card").on('click', function() {
+    $(".card-header-right .minimize-card").on('click', function () {
         var $this = $(this);
         var port = $($this.parents('.card'));
         var card = $(port).children('.card-block').slideToggle();
         $(this).toggleClass("icofont-plus").fadeIn('slow');
     });
-    $(".card-header-right .full-card").on('click', function() {
+    $(".card-header-right .full-card").on('click', function () {
         var $this = $(this);
         var port = $($this.parents('.card'));
         port.toggleClass("full-card");
         $(this).toggleClass("icofont-resize");
     });
 
-    $(".card-header-right .icofont-spinner-alt-5").on('mouseenter mouseleave', function() {
+    $(".card-header-right .icofont-spinner-alt-5").on('mouseenter mouseleave', function () {
         $(this).toggleClass("rotate-refresh").fadeIn('slow');
     });
-    $("#more-details").on('click', function() {
+    $("#more-details").on('click', function () {
         $(".more-details").slideToggle(500);
     });
-    $(".mobile-options").on('click', function() {
+    $(".mobile-options").on('click', function () {
         $(".navbar-container .nav-right").slideToggle('slow');
     });
-    $(".main-search").on('click', function() {
+    $(".main-search").on('click', function () {
         $("#morphsearch").addClass('open');
     });
-    $(".morphsearch-close").on('click', function() {
+    $(".morphsearch-close").on('click', function () {
         $("#morphsearch").removeClass('open');
     });
     // card js end
@@ -86,11 +86,11 @@ $(document).ready(function() {
         setHeight: "calc(100% - 80px)",
     });
 });
-$(document).ready(function() {
-    $(function() {
+$(document).ready(function () {
+    $(function () {
         $('[data-toggle="tooltip"]').tooltip()
     })
-    $('.theme-loader').fadeOut('slow', function() {
+    $('.theme-loader').fadeOut('slow', function () {
         $(this).remove();
     });
 });
@@ -120,7 +120,7 @@ function toggleFullScreen() {
 }
 
 //light box
-$(document).on('click', '[data-toggle="lightbox"]', function(event) {
+$(document).on('click', '[data-toggle="lightbox"]', function (event) {
     event.preventDefault();
     $(this).ekkoLightbox();
 });
@@ -129,11 +129,10 @@ $(document).on('click', '[data-toggle="lightbox"]', function(event) {
 // Upgrade Button
 var $window = $(window);
 var nav = $('.fixed-button');
-    $window.scroll(function(){
-        if ($window.scrollTop() >= 200) {
-         nav.addClass('active');
-     }
-     else {
-         nav.removeClass('active');
-     }
- });
+$window.scroll(function () {
+    if ($window.scrollTop() >= 200) {
+        nav.addClass('active');
+    } else {
+        nav.removeClass('active');
+    }
+});

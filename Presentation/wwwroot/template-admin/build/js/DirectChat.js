@@ -34,13 +34,6 @@ class DirectChat {
     this._element = element
   }
 
-  toggle() {
-    $(this._element).parents(SELECTOR_DIRECT_CHAT).first().toggleClass(CLASS_NAME_DIRECT_CHAT_OPEN)
-    $(this._element).trigger($.Event(EVENT_TOGGLED))
-  }
-
-  // Static
-
   static _jQueryInterface(config) {
     return this.each(function () {
       let data = $(this).data(DATA_KEY)
@@ -52,6 +45,13 @@ class DirectChat {
 
       data[config]()
     })
+  }
+
+  // Static
+
+  toggle() {
+    $(this._element).parents(SELECTOR_DIRECT_CHAT).first().toggleClass(CLASS_NAME_DIRECT_CHAT_OPEN)
+    $(this._element).trigger($.Event(EVENT_TOGGLED))
   }
 }
 

@@ -18,6 +18,7 @@
     top: 0;
     width: 4px;
   }
+
   // Element
   > div {
     &::before,
@@ -47,6 +48,7 @@
         font-size: 12px;
         padding: 10px;
       }
+
       // Header
       > .timeline-header {
         border-bottom: 1px solid $card-border-color;
@@ -60,6 +62,7 @@
           font-weight: 600;
         }
       }
+
       // Item body and footer
       > .timeline-body,
       > .timeline-footer {
@@ -70,6 +73,7 @@
         > img {
           margin: 10px;
         }
+
         > dl,
         ol,
         ul {
@@ -83,6 +87,7 @@
         }
       }
     }
+
     // The icons at line
     > .fa,
     > .fas,
@@ -103,10 +108,12 @@
       top: 0;
       width: 30px;
     }
+
     > .svg-inline--fa {
       padding: 7px;
     }
   }
+
   // Time label
   > .time-label {
     > span {
@@ -133,11 +140,12 @@
   }
 }
 
-@include dark-mode () {
+@include dark-mode() {
   .timeline {
     &::before {
       background-color: $gray-600;
     }
+
     > div > .timeline-item {
       background-color: $dark;
       color: $white;
@@ -147,6 +155,7 @@
         color: $gray-400;
         border-color: $gray-600;
       }
+
       > .time {
         color: $gray-400;
       }

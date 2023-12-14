@@ -3,31 +3,26 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
 
-namespace Presentation.Pages;
+namespace Presentation.Pages {
+    public class Cart : PageModel {
+        public IList<Carts> Carts { get; set; } = default!;
 
-public class Cart : PageModel
-{
-    
-    public IList<Carts> Carts { get; set; } = default!;
-    
-    [BindProperty]
-    public decimal total { get; set; } = default;
-    
-    public void OnGet()
-    {
-        Carts = new List<Carts>();
-        var jsoncart = HttpContext.Session.GetString("cart");
-        if (jsoncart != null) Carts = JsonConvert.DeserializeObject<List<Carts>>(jsoncart);
-        if (Carts.Count != 0)
-        {
-            foreach (var c in Carts)
-            {
-                total += c.Price * c.StockQuantity;
+        [BindProperty] public decimal total { get; set; }
+
+        public void OnGet() {
+            Carts = new List<Carts>();
+            string? jsoncart = HttpContext.Session.GetString("cart");
+            if (jsoncart != null) {
+                Carts = JsonConvert.DeserializeObject<List<Carts>>(jsoncart);
             }
-        }
-        else
-        {
-            total = 0;
+
+            if (Carts.Count != 0) {
+                foreach (Carts c in Carts) {
+                    total += c.Price * c.StockQuantity;
+                }
+            } else {
+                total = 0;
+            }
         }
     }
 }

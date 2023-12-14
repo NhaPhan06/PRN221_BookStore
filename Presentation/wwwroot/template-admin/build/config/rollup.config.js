@@ -1,6 +1,6 @@
 'use strict'
 
-const { babel } = require('@rollup/plugin-babel')
+const {babel} = require('@rollup/plugin-babel')
 
 const pkg = require('../../package')
 const year = new Date().getFullYear()

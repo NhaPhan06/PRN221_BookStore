@@ -57,6 +57,24 @@ class Layout {
 
   // Public
 
+  static _jQueryInterface(config = '') {
+    return this.each(function () {
+      let data = $(this).data(DATA_KEY)
+      const _options = $.extend({}, Default, $(this).data())
+
+      if (!data) {
+        data = new Layout($(this), _options)
+        $(this).data(DATA_KEY, data)
+      }
+
+      if (config === 'init' || config === '') {
+        data._init()
+      } else if (config === 'fixLayoutHeight' || config === 'fixLoginRegisterHeight') {
+        data[config]()
+      }
+    })
+  }
+
   fixLayoutHeight(extra = null) {
     const $body = $('body')
     let controlSidebar = 0
@@ -114,6 +132,8 @@ class Layout {
     }
   }
 
+  // Private
+
   fixLoginRegisterHeight() {
     const $body = $('body')
     const $selector = $(`${SELECTOR_LOGIN_BOX}, ${SELECTOR_REGISTER_BOX}`)
@@ -133,8 +153,6 @@ class Layout {
       }
     }
   }
-
-  // Private
 
   _init() {
     // Activate layout height watcher
@@ -205,28 +223,10 @@ class Layout {
     return max
   }
 
-  _isFooterFixed() {
-    return $(SELECTOR_FOOTER).css('position') === 'fixed'
-  }
-
   // Static
 
-  static _jQueryInterface(config = '') {
-    return this.each(function () {
-      let data = $(this).data(DATA_KEY)
-      const _options = $.extend({}, Default, $(this).data())
-
-      if (!data) {
-        data = new Layout($(this), _options)
-        $(this).data(DATA_KEY, data)
-      }
-
-      if (config === 'init' || config === '') {
-        data._init()
-      } else if (config === 'fixLayoutHeight' || config === 'fixLoginRegisterHeight') {
-        data[config]()
-      }
-    })
+  _isFooterFixed() {
+    return $(SELECTOR_FOOTER).css('position') === 'fixed'
   }
 }
 

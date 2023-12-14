@@ -42,7 +42,7 @@
 }
 
 .direct-chat-msg {
-  @include clearfix ();
+  @include clearfix();
   margin-bottom: 10px;
 }
 
@@ -163,10 +163,10 @@
 
 //Contacts list -- for displaying contacts in direct chat contacts pane
 .contacts-list {
-  @include list-unstyled ();
+  @include list-unstyled();
 
   > li {
-    @include clearfix ();
+    @include clearfix();
     border-bottom: 1px solid rgba($black, .2);
     margin: 0;
     padding: 10px;
@@ -223,7 +223,7 @@
   }
 }
 
-@include dark-mode () {
+@include dark-mode() {
   .direct-chat-text {
     background-color: lighten($dark, 7.5%);
     border-color: lighten($dark, 10%);

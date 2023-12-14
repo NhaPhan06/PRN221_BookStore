@@ -163,6 +163,7 @@ body,
     .main-header.border-bottom-0 ~ .content-wrapper {
       margin-top: $main-header-height-inner;
     }
+
     .content-wrapper {
       margin-top: $main-header-height;
     }
@@ -651,7 +652,7 @@ body:not(.layout-fixed) {
   }
 }
 
-@include dark-mode () {
+@include dark-mode() {
   background-color: $dark-main-bg;
   color: $white;
 

@@ -40,29 +40,6 @@ class NavbarSearch {
 
   // Public
 
-  open() {
-    $(this._config.target).css('display', 'flex').hide().fadeIn().addClass(CLASS_NAME_OPEN)
-    $(`${this._config.target} ${SELECTOR_SEARCH_INPUT}`).focus()
-  }
-
-  close() {
-    $(this._config.target).fadeOut().removeClass(CLASS_NAME_OPEN)
-
-    if (this._config.resetOnClose) {
-      $(`${this._config.target} ${SELECTOR_SEARCH_INPUT}`).val('')
-    }
-  }
-
-  toggle() {
-    if ($(this._config.target).hasClass(CLASS_NAME_OPEN)) {
-      this.close()
-    } else {
-      this.open()
-    }
-  }
-
-  // Static
-
   static _jQueryInterface(options) {
     return this.each(function () {
       let data = $(this).data(DATA_KEY)
@@ -79,6 +56,29 @@ class NavbarSearch {
 
       data[options]()
     })
+  }
+
+  open() {
+    $(this._config.target).css('display', 'flex').hide().fadeIn().addClass(CLASS_NAME_OPEN)
+    $(`${this._config.target} ${SELECTOR_SEARCH_INPUT}`).focus()
+  }
+
+  close() {
+    $(this._config.target).fadeOut().removeClass(CLASS_NAME_OPEN)
+
+    if (this._config.resetOnClose) {
+      $(`${this._config.target} ${SELECTOR_SEARCH_INPUT}`).val('')
+    }
+  }
+
+  // Static
+
+  toggle() {
+    if ($(this._config.target).hasClass(CLASS_NAME_OPEN)) {
+      this.close()
+    } else {
+      this.open()
+    }
   }
 }
 

@@ -1,11 +1,11 @@
 /**
-  * bootstrap-switch - Turn checkboxes and radio buttons into toggle switches.
-  *
-  * @version v3.3.4
-  * @homepage https://bttstrp.github.io/bootstrap-switch
-  * @author Mattia Larentis <mattia@larentis.eu> (http://larentis.eu)
-  * @license Apache-2.0
-  */
+ * bootstrap-switch - Turn checkboxes and radio buttons into toggle switches.
+ *
+ * @version v3.3.4
+ * @homepage https://bttstrp.github.io/bootstrap-switch
+ * @author Mattia Larentis <mattia@larentis.eu> (http://larentis.eu)
+ * @license Apache-2.0
+ */
 
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
@@ -106,7 +106,7 @@
           return classes.map(_this._getClass.bind(_this)).concat([_this.options.baseClass], _this._getClasses(_this.options.wrapperClass)).join(' ');
         }
       });
-      this.$container = $('<div>', { class: this._getClass('container') });
+      this.$container = $('<div>', {class: this._getClass('container')});
       this.$on = $('<span>', {
         html: this.options.onText,
         class: this._getClass('handle-on') + ' ' + this._getClass(this.options.onColor)
@@ -757,6 +757,7 @@
       }
       return ret;
     }
+
     return Array.prototype.reduce.call(this, reducer, this);
   };
   $.fn.bootstrapSwitch.Constructor = BootstrapSwitch;
@@ -778,7 +779,9 @@
     labelWidth: 'auto',
     baseClass: 'bootstrap-switch',
     wrapperClass: 'wrapper',
-    onInit: function onInit() {},
-    onSwitchChange: function onSwitchChange() {}
+    onInit: function onInit() {
+    },
+    onSwitchChange: function onSwitchChange() {
+    }
   };
 });

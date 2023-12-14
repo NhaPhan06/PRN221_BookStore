@@ -43,37 +43,6 @@ class TodoList {
 
   // Public
 
-  toggle(item) {
-    item.parents('li').toggleClass(CLASS_NAME_TODO_LIST_DONE)
-    if (!$(item).prop('checked')) {
-      this.unCheck($(item))
-      return
-    }
-
-    this.check(item)
-  }
-
-  check(item) {
-    this._config.onCheck.call(item)
-  }
-
-  unCheck(item) {
-    this._config.onUnCheck.call(item)
-  }
-
-  // Private
-
-  _init() {
-    const $toggleSelector = this._element
-
-    $toggleSelector.find('input:checkbox:checked').parents('li').toggleClass(CLASS_NAME_TODO_LIST_DONE)
-    $toggleSelector.on('change', 'input:checkbox', event => {
-      this.toggle($(event.target))
-    })
-  }
-
-  // Static
-
   static _jQueryInterface(config) {
     return this.each(function () {
       let data = $(this).data(DATA_KEY)
@@ -90,6 +59,37 @@ class TodoList {
       if (config === 'init') {
         plugin[config]()
       }
+    })
+  }
+
+  toggle(item) {
+    item.parents('li').toggleClass(CLASS_NAME_TODO_LIST_DONE)
+    if (!$(item).prop('checked')) {
+      this.unCheck($(item))
+      return
+    }
+
+    this.check(item)
+  }
+
+  check(item) {
+    this._config.onCheck.call(item)
+  }
+
+  // Private
+
+  unCheck(item) {
+    this._config.onUnCheck.call(item)
+  }
+
+  // Static
+
+  _init() {
+    const $toggleSelector = this._element
+
+    $toggleSelector.find('input:checkbox:checked').parents('li').toggleClass(CLASS_NAME_TODO_LIST_DONE)
+    $toggleSelector.on('change', 'input:checkbox', event => {
+      this.toggle($(event.target))
     })
   }
 }

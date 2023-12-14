@@ -59,7 +59,7 @@
         }
       },
       innerMode: localMode,
-      indent: function(state, a, b) {
+      indent: function (state, a, b) {
         var m = localMode(state)
         return m.mode.indent ? m.mode.indent(m.state, a, b) : CodeMirror.Pass
       },

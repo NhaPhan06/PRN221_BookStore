@@ -45,11 +45,11 @@
         box-shadow: 0 0 0 1px $body-bg, 0 0 0 2px rgba($color, .25);
       }
 
-      &::-moz-range-thumb     {
+      &::-moz-range-thumb {
         box-shadow: 0 0 0 1px $body-bg, 0 0 0 2px rgba($color, .25);
       }
 
-      &::-ms-thumb            {
+      &::-ms-thumb {
         box-shadow: 0 0 0 1px $body-bg, 0 0 0 2px rgba($color, .25);
       }
     }
@@ -97,6 +97,7 @@
       &[type="checkbox"] ~ .custom-control-label::after {
         background-image: $custom-checkbox-indicator-icon-checked !important;
       }
+
       &[type="radio"] ~ .custom-control-label::after {
         background-image: $custom-radio-indicator-icon-checked !important;
       }

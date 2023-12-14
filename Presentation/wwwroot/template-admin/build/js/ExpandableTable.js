@@ -8,9 +8,9 @@
 import $ from 'jquery'
 
 /**
-  * Constants
-  * ====================================================
-  */
+ * Constants
+ * ====================================================
+ */
 
 const NAME = 'ExpandableTable'
 const DATA_KEY = 'lte.expandableTable'
@@ -26,9 +26,9 @@ const SELECTOR_DATA_TOGGLE = '[data-widget="expandable-table"]'
 const SELECTOR_ARIA_ATTR = 'aria-expanded'
 
 /**
-  * Class Definition
-  * ====================================================
-  */
+ * Class Definition
+ * ====================================================
+ */
 class ExpandableTable {
   constructor(element, options) {
     this._options = options
@@ -36,6 +36,21 @@ class ExpandableTable {
   }
 
   // Public
+
+  static _jQueryInterface(operation) {
+    return this.each(function () {
+      let data = $(this).data(DATA_KEY)
+
+      if (!data) {
+        data = new ExpandableTable($(this))
+        $(this).data(DATA_KEY, data)
+      }
+
+      if (typeof operation === 'string' && /init|toggleRow/.test(operation)) {
+        data[operation]()
+      }
+    })
+  }
 
   init() {
     $(SELECTOR_DATA_TOGGLE).each((_, $header) => {
@@ -49,6 +64,8 @@ class ExpandableTable {
       }
     })
   }
+
+  // Static
 
   toggleRow() {
     let $element = this._element
@@ -78,29 +95,12 @@ class ExpandableTable {
       $element.trigger($.Event(EVENT_EXPANDED))
     }
   }
-
-  // Static
-
-  static _jQueryInterface(operation) {
-    return this.each(function () {
-      let data = $(this).data(DATA_KEY)
-
-      if (!data) {
-        data = new ExpandableTable($(this))
-        $(this).data(DATA_KEY, data)
-      }
-
-      if (typeof operation === 'string' && /init|toggleRow/.test(operation)) {
-        data[operation]()
-      }
-    })
-  }
 }
 
 /**
-  * Data API
-  * ====================================================
-  */
+ * Data API
+ * ====================================================
+ */
 $(SELECTOR_TABLE).ready(function () {
   ExpandableTable._jQueryInterface.call($(this), 'init')
 })
@@ -110,9 +110,9 @@ $(document).on('click', SELECTOR_DATA_TOGGLE, function () {
 })
 
 /**
-  * jQuery API
-  * ====================================================
-  */
+ * jQuery API
+ * ====================================================
+ */
 
 $.fn[NAME] = ExpandableTable._jQueryInterface
 $.fn[NAME].Constructor = ExpandableTable

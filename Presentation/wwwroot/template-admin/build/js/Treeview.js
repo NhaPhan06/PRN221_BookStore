@@ -51,6 +51,22 @@ class Treeview {
 
   // Public
 
+  static _jQueryInterface(config) {
+    return this.each(function () {
+      let data = $(this).data(DATA_KEY)
+      const _options = $.extend({}, Default, $(this).data())
+
+      if (!data) {
+        data = new Treeview($(this), _options)
+        $(this).data(DATA_KEY, data)
+      }
+
+      if (config === 'init') {
+        data[config]()
+      }
+    })
+  }
+
   init() {
     $(`${SELECTOR_LI}${SELECTOR_OPEN} ${SELECTOR_TREEVIEW_MENU}${SELECTOR_OPEN}`).css('display', 'block')
     this._setupListeners()
@@ -87,6 +103,8 @@ class Treeview {
     })
   }
 
+  // Private
+
   toggle(event) {
     const $relativeTarget = $(event.currentTarget)
     const $parent = $relativeTarget.parent()
@@ -115,8 +133,6 @@ class Treeview {
     }
   }
 
-  // Private
-
   _setupListeners() {
     const elementId = this._element.attr('id') !== undefined ? `#${this._element.attr('id')}` : ''
     $(document).on('click', `${elementId}${this._config.trigger}`, event => {
@@ -124,28 +140,12 @@ class Treeview {
     })
   }
 
+  // Static
+
   _expandSidebar() {
     if ($('body').hasClass(CLASS_NAME_SIDEBAR_COLLAPSED)) {
       $(this._config.sidebarButtonSelector).PushMenu('expand')
     }
-  }
-
-  // Static
-
-  static _jQueryInterface(config) {
-    return this.each(function () {
-      let data = $(this).data(DATA_KEY)
-      const _options = $.extend({}, Default, $(this).data())
-
-      if (!data) {
-        data = new Treeview($(this), _options)
-        $(this).data(DATA_KEY, data)
-      }
-
-      if (config === 'init') {
-        data[config]()
-      }
-    })
   }
 }
 

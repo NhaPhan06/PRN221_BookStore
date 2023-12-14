@@ -18,15 +18,13 @@ builder.Services.AddSession();
 builder.Services.AddRazorPages();
 
 //ADD SESSION
-builder.Services.AddSession(options =>
-{
+builder.Services.AddSession(options => {
     options.IdleTimeout = TimeSpan.FromMinutes(30);
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
 
 WebApplication app = builder.Build();
-
 
 
 // Configure the HTTP request pipeline.
@@ -44,11 +42,9 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
-app.UseEndpoints(endpoints =>
-{
+app.UseEndpoints(endpoints => {
     endpoints.MapRazorPages();
-    endpoints.MapGet("/", c =>
-    {
+    endpoints.MapGet("/", c => {
         c.Response.Redirect("/LoginPage");
         return Task.CompletedTask;
     });

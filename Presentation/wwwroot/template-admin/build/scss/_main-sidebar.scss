@@ -774,12 +774,14 @@
         .nav-icon {
           margin-left: .55rem;
         }
+
         &.active {
           > .nav-icon {
             margin-left: .36rem;
           }
         }
       }
+
       &.nav-child-indent {
         .nav-treeview {
           .nav-treeview {
@@ -996,6 +998,7 @@
   width: 100%;
   flex-wrap: nowrap;
 }
+
 .sidebar nav .form-inline {
   margin-bottom: .2rem;
 }
@@ -1005,12 +1008,14 @@
   &.sidebar-collapse .main-sidebar {
     margin-left: 0;
   }
+
   .content-wrapper,
   .main-header,
   .main-footer {
     z-index: 9999;
     position: relative;
   }
+
   .control-sidebar {
     z-index: 9999;
   }
@@ -1119,11 +1124,13 @@
     .sidebar {
       height: calc(100% - ((#{$main-header-height-sm-inner} + #{$sidebar-custom-height * .95}) + #{$main-header-bottom-border-width}));
     }
+
     .sidebar-custom {
       height: $sidebar-custom-height * .95;
       padding: $sidebar-custom-padding-x $sidebar-custom-padding-y;
     }
   }
+
   .main-sidebar-custom {
     .sidebar {
       height: calc(100% - ((#{$main-header-height-inner} + #{$sidebar-custom-height}) + #{$main-header-bottom-border-width}));
@@ -1172,6 +1179,7 @@
   .main-sidebar {
     display: none !important;
   }
+
   .content-wrapper,
   .main-header {
     margin-left: 0 !important;

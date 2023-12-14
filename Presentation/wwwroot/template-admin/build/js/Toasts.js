@@ -68,6 +68,19 @@ class Toasts {
 
   // Public
 
+  static _jQueryInterface(option, config) {
+    return this.each(function () {
+      const _options = $.extend({}, Default, config)
+      const toast = new Toasts($(this), _options)
+
+      if (option === 'create') {
+        toast[option]()
+      }
+    })
+  }
+
+  // Static
+
   create() {
     const toast = $('<div class="toast" role="alert" aria-live="assertive" aria-atomic="true"/>')
 
@@ -137,8 +150,6 @@ class Toasts {
     }
   }
 
-  // Static
-
   _getContainerId() {
     if (this._config.position == POSITION_TOP_RIGHT) {
       return SELECTOR_CONTAINER_TOP_RIGHT
@@ -156,6 +167,8 @@ class Toasts {
       return SELECTOR_CONTAINER_BOTTOM_LEFT
     }
   }
+
+  // Static
 
   _prepareContainer() {
     if ($(this._getContainerId()).length === 0) {
@@ -178,19 +191,6 @@ class Toasts {
     } else {
       $(this._getContainerId()).removeClass('fixed')
     }
-  }
-
-  // Static
-
-  static _jQueryInterface(option, config) {
-    return this.each(function () {
-      const _options = $.extend({}, Default, config)
-      const toast = new Toasts($(this), _options)
-
-      if (option === 'create') {
-        toast[option]()
-      }
-    })
   }
 }
 

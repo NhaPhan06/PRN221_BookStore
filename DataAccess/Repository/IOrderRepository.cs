@@ -1,6 +1,5 @@
 ﻿using DataAccess.DataAccess;
 using DataAccess.Repository.Generic;
-using System.Data;
 
 namespace DataAccess.Repository {
     public interface IOrderRepository : IGeneric<Order> {

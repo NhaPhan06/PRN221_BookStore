@@ -22,6 +22,8 @@ namespace DataAccess.Repository.Implement {
                 query = query.Where(book => book.Category.Name.Contains(getBooksDto.Category));
             }
 
+            query.Where(x => x.Status == Status.Active);
+
             if (getBooksDto.Sort is { Field: not null, Direction: not null }) {
                 string sortField = getBooksDto.Sort.Field;
                 string sortDirection = getBooksDto.Sort.Direction;
@@ -76,6 +78,9 @@ namespace DataAccess.Repository.Implement {
             if (!string.IsNullOrEmpty(getBooksDto.Category)) {
                 query = query.Where(book => book.Category.Name.Contains(getBooksDto.Category));
             }
+
+            query.Where(x => x.Status == Status.Active);
+
 
             Task<int> result = query.CountAsync();
 

@@ -296,6 +296,7 @@
   // Box overlay for LOADING STATE effect on Tab Panels
   > .overlay-wrapper {
     position: relative;
+
     > .overlay {
       border-top-left-radius: 0;
       border-top-right-radius: 0;
@@ -482,7 +483,7 @@ blockquote {
   padding: .375rem .6rem;
 }
 
-@include dark-mode () {
+@include dark-mode() {
   a:not(.btn):hover {
     color: lighten($link-color, 10%);
   }

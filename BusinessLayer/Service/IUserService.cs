@@ -1,5 +1,4 @@
-﻿
-using DataAccess.DataAccess;
+﻿using DataAccess.DataAccess;
 using DataAccess.Model;
 
 namespace BusinessLayer.Service {
@@ -8,6 +7,6 @@ namespace BusinessLayer.Service {
         User CheckEmailUsername(string email, string username);
         void CreateUser(CreateUser createUser);
         User GetUserById(Guid id);
-        User UpdateUser(Guid id,User user);
+        User UpdateUser(Guid id, User user);
     }
 }

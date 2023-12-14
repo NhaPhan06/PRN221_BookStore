@@ -5,14 +5,14 @@
 //
 // by Dimage Sapelkin (https://github.com/kerabromsmu)
 
-(function(mod) {
+(function (mod) {
   if (typeof exports == "object" && typeof module == "object") // CommonJS
     mod(require("../../lib/codemirror"), require("../../addon/mode/simple"));
   else if (typeof define == "function" && define.amd) // AMD
     define(["../../lib/codemirror", "../../addon/mode/simple"], mod);
   else // Plain browser env
     mod(CodeMirror);
-})(function(CodeMirror) {
+})(function (CodeMirror) {
   "use strict";
 
   CodeMirror.defineSimpleMode("factor", {
@@ -28,7 +28,11 @@
       {regex: /(?:0x[\d,a-f]+)|(?:0o[0-7]+)|(?:0b[0,1]+)|(?:\-?\d+.?\d*)(?=\s)/, token: "number"},
       //{regex: /[+-]?/} //fractional
       // definition: defining word, defined word, etc
-      {regex: /((?:GENERIC)|\:?\:)(\s+)(\S+)(\s+)(\()/, token: ["keyword", null, "def", null, "bracket"], next: "stack"},
+      {
+        regex: /((?:GENERIC)|\:?\:)(\s+)(\S+)(\s+)(\()/,
+        token: ["keyword", null, "def", null, "bracket"],
+        next: "stack"
+      },
       // method definition: defining word, type, defined word, etc
       {regex: /(M\:)(\s+)(\S+)(\s+)(\S+)/, token: ["keyword", null, "def", null, "tag"]},
       // vocabulary using --> state
