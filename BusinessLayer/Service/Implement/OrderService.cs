@@ -1,5 +1,7 @@
 ﻿using DataAccess.DataAccess;
 using DataAccess.Enum;
+using DataAccess.Model;
+using DataAccess.Repository;
 using DataAccess.Repository.Generic.UnitOfWork;
 
 namespace BusinessLayer.Service.Implement {
@@ -9,6 +11,27 @@ namespace BusinessLayer.Service.Implement {
         public OrderService(IUnitOfWork unitOfWork) {
             _unitOfWork = unitOfWork;
         }
+
+        public Task CreateOrder(List<Carts> cart, Order order)
+        {
+            order.OrderDate = DateTime.Now;
+            order.Status = OrderStatus.Confirm.ToString();
+            order.TotalAmount = cart.Sum(x => x.Price * x.StockQuantity);
+            foreach (var item in cart)
+            {
+                var orderDetail = new OrderDetail();
+                orderDetail.OrderDetailId = Guid.NewGuid();
+                orderDetail.BookId = item.BookId;
+                orderDetail.Price = item.Price;
+                orderDetail.Quantity = item.StockQuantity;
+                orderDetail.OrderId = order.OrderId;
+                order.OrderDetails.Add(orderDetail);
+            }
+            _unitOfWork.OrderRepository.Add(order);
+            _unitOfWork.Save();
+            return Task.CompletedTask;
+        }
+
 
         public List<Order> GetAll() {
             return _unitOfWork.OrderRepository.GetAllOrder();
