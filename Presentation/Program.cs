@@ -17,6 +17,14 @@ builder.Services.AddSession();
 // Add services to the container.
 builder.Services.AddRazorPages();
 
+//ADD SESSION
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
 WebApplication app = builder.Build();
 
 
@@ -36,5 +44,13 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
-
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapRazorPages();
+    endpoints.MapGet("/", c =>
+    {
+        c.Response.Redirect("/LoginPage");
+        return Task.CompletedTask;
+    });
+});
 app.Run();
