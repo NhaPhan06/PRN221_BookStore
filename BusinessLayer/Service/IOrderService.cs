@@ -9,6 +9,6 @@ namespace BusinessLayer.Service {
         Order ReciveOrder(Guid id);
         Order DeliveryOrder(Guid id);
         Order ConfirmOrder(Guid id);
-
+        List<Order> GetOrdersByUserId(Guid id);
     }
 }

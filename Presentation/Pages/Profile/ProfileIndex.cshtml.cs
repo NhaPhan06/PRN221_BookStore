@@ -9,13 +9,16 @@ namespace Presentation.Pages.Profile
     public class ProfileIndexModel : PageModel
     {
         private readonly IUserService _userService;
-
-        public ProfileIndexModel(IUserService userService)
+        private readonly IOrderService _orderService;
+        public ProfileIndexModel(IUserService userService, IOrderService orderService)
         {
             _userService = userService;
+            _orderService = orderService;
         }
+
         [BindProperty]
         public User Users { get; set; } = default;
+        public List<Order> orders { get; set; } = default!;
         public IActionResult OnGet()
         {
             var accId = HttpContext.Session.GetString("UserID");
@@ -26,13 +29,14 @@ namespace Presentation.Pages.Profile
             else
             {
                 Guid id = new Guid(accId);
+                Users = _userService.GetUserById(id);
                 if (Users.UserId != id)
                 {
                     return RedirectToPage("/LoginPage");
                 }
                 else
                 {
-                    Users = _userService.GetUserById(id);
+                    orders = _orderService.GetOrdersByUserId(Users.UserId);
                     return Page();
                 }
             }         
