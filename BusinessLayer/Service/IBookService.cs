@@ -8,5 +8,6 @@ namespace BusinessLayer.Service {
         Task<int> CountBookList(GetBooksDto getBooksDto);
         void Add(Book book);
         Task<Book?> GetDetail(string id);
+        Task<Book> GetBookById(Guid id);
     }
 }

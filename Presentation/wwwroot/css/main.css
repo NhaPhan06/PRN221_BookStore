@@ -2493,6 +2493,10 @@ input[type="number"] {
     margin-bottom: 15px;
 }
 
+.single-product-form button.cart-btn {
+    margin-bottom: 15px;
+}
+
 .single-product-content h4 {
     font-size: 20px;
     font-weight: 600;
