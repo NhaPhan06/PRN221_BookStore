@@ -29,7 +29,7 @@ namespace BusinessLayer.Service.Implement {
         public Order ReciveOrder(Guid id)
         {
             var orders = _unitOfWork.OrderRepository.GetOrderById(id);
-            orders.Status = OrderStatus.Recive.ToString();
+            orders.Status = OrderStatus.Receive.ToString();
             var Update = _unitOfWork.OrderRepository.UpdateOrder(orders);
             _unitOfWork.OrderRepository.SaveChange();
             return Update;
