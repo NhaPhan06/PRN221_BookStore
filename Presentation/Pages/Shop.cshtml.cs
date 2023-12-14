@@ -29,7 +29,6 @@ namespace Presentation.Pages {
         public IList<DataAccess.DataAccess.Book> Book { get; set; } = default!;
 
         public async Task OnGetAsync() {
-            // IEnumerable<DataAccess.DataAccess.Book>? books = await _bookService.GetAll();
             GetBooksDto getBooksDto = new() {
                 Title = Title,
                 Category = Category,
