@@ -230,7 +230,7 @@
                                             <p>
                                                 <input placeholder="Phone" type="text" value="" readonly>
                                             </p>
-                                            <button class="btn_nha" type="submit" style=" width: fit-content; align-self: end">  Order </button>
+                                            <button class="btn_nha" type="submit"> Order </button>
                                         </form>
                                     </div>
                                 </div>
@@ -249,16 +249,23 @@
                                  id="collapseTwo">
                                 <div class="card-body">
                                     <div class="billing-address-form">
-                                        <form asp-page-handler="Other">
-                                            <p>
-                                                <input placeholder="Name" type="text">
-                                            </p>
-                                            <p>
-                                                <input placeholder="Address" type="text">
-                                            </p>
-                                            <p>
-                                                <input placeholder="Phone" type="tel">
-                                            </p>
+                                        <form method="post" asp-page-handler="Other">
+                                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                            <div class="form-group">
+                                                <label asp-for="receiver.ReceiverName" class="control-label"></label>
+                                                <input asp-for="receiver.ReceiverName" required="required" class="form-control"/>
+                                                <span asp-validation-for="receiver.ReceiverName" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="receiver.Address" class="control-label"></label>
+                                                <input asp-for="receiver.Address" required="required" class="form-control"/>
+                                                <span asp-validation-for="receiver.Address" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="receiver.PhoneNumber" class="control-label"></label>
+                                                <input asp-for="receiver.PhoneNumber" required="required" class="form-control"/>
+                                                <span asp-validation-for="receiver.PhoneNumber" class="text-danger"></span>
+                                            </div>
                                             <button class="btn_nha" type="submit"> Order </button>
                                         </form>
                                     </div>
@@ -280,7 +287,33 @@
                                  id="collapseThree">
                                 <div class="card-body">
                                     <div class="card-details">
-                                        <p>Your card details goes here.</p>
+                                        <div class="cart-table-wrap">
+                                            <table class="cart-table">
+                                                <thead class="cart-table-head">
+                                                <tr class="table-head-row">
+                                                    <th class="product-image">Product Image</th>
+                                                    <th class="product-name">Name</th>
+                                                    <th class="product-price">Price</th>
+                                                    <th class="product-quantity">Quantity</th>
+                                                    <th class="product-total">Total</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                @foreach (var item in Model.Carts)
+                                                {
+                                                    <tr class="table-body-row">
+                                                        <td class="product-image">
+                                                            <img alt="" src="@item.ImageUrl">
+                                                        </td>
+                                                        <td class="product-name">@item.Title</td>
+                                                        <td class="product-price">$@item.Price</td>
+                                                        <td class="product-quantity">@item.StockQuantity</td>
+                                                        <td class="product-total">$@(item.Price * item.StockQuantity)</td>
+                                                    </tr>
+                                                }
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -304,35 +337,20 @@
                             <td>Product</td>
                             <td>Total</td>
                         </tr>
-                        <tr>
-                            <td>Strawberry</td>
-                            <td>$85.00</td>
-                        </tr>
-                        <tr>
-                            <td>Berry</td>
-                            <td>$70.00</td>
-                        </tr>
-                        <tr>
-                            <td>Lemon</td>
-                            <td>$35.00</td>
-                        </tr>
-                        </tbody>
-                        <tbody class="checkout-details">
-                        <tr>
-                            <td>Subtotal</td>
-                            <td>$190</td>
-                        </tr>
-                        <tr>
-                            <td>Shipping</td>
-                            <td>$50</td>
-                        </tr>
+                        @foreach (var item in Model.Carts)
+                        {
+                            <tr>
+                                <td>@item.Title</td>
+                                <td>@item.Price</td>
+                            </tr>
+                        }
                         <tr>
                             <td>Total</td>
-                            <td>$240</td>
+                            <td>@Model.total</td>
                         </tr>
                         </tbody>
                     </table>
-                    <a class="boxed-btn" href="#">Place Order</a>
+                    <button class="btn_nha" href="#">Cancel</button>
                 </div>
             </div>
         </div>

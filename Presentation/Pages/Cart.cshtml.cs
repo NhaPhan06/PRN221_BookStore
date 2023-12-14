@@ -16,11 +16,8 @@ public class Cart : PageModel
     public void OnGet()
     {
         Carts = new List<Carts>();
-        
         var jsoncart = HttpContext.Session.GetString("cart");
-
         if (jsoncart != null) Carts = JsonConvert.DeserializeObject<List<Carts>>(jsoncart);
-
         if (Carts.Count != 0)
         {
             foreach (var c in Carts)
@@ -32,6 +29,5 @@ public class Cart : PageModel
         {
             total = 0;
         }
-        
     }
 }
