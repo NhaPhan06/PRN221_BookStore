@@ -79,6 +79,18 @@ a.cart-btn {
   }
 }
 
+button.cart-btn {
+  font-family: 'Poppins', sans-serif;
+  display: inline-block;
+  background-color: $primary-color;
+  color: #fff;
+  padding: 10px 20px;
+
+  i {
+    margin-right: 5px;
+  }
+}
+
 .single-product-img img {
   border-radius: 5px;
   box-shadow: 0 0 20px #ddd;

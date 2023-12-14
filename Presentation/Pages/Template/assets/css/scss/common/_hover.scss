@@ -216,6 +216,15 @@ a.cart-btn {
   }
 }
 
+button.cart-btn {
+  transition: 0.3s;
+
+  &:hover {
+    background-color: $text-color;
+    color: $primary-color;
+  }
+}
+
 .recent-posts ul li {
   transition: 0.3s;
 
