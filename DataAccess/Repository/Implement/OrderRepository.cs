@@ -20,7 +20,7 @@ public class OrderRepository : Generic<Order>, IOrderRepository
 
     public Order GetOrderById(Guid id)
     {
-        var orders = _context.Set<Order>().FirstOrDefault(c => c.OrderId == id);
+        var orders = _context.Set<Order>().Include(o => o.User).FirstOrDefault(c => c.OrderId == id);
         return orders;
     }
 
@@ -45,5 +45,11 @@ public class OrderRepository : Generic<Order>, IOrderRepository
     {
         _context.Set<Order>().Update(order);
         return order;
+    }
+    
+    public List<Order> Get10()
+    {
+        var date = DateTime.Now - new TimeSpan(0, 24, 0, 0);
+        return _context.Orders.Where(c => c.Status == "Confirm" && c.OrderDate <= date).OrderByDescending(o => o.OrderDate).Take(10).ToList();
     }
 }

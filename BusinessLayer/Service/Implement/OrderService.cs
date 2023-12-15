@@ -28,8 +28,11 @@ public class OrderService : IOrderService
             orderDetail.Quantity = item.StockQuantity;
             orderDetail.OrderId = order.OrderId;
             order.OrderDetails.Add(orderDetail);
+            
+            var book = _unitOfWork.BookRepository.GetById(item.BookId);
+            book.StockQuantity -= item.StockQuantity;
+            _unitOfWork.BookRepository.Update(book);
         }
-
         _unitOfWork.OrderRepository.Add(order);
         _unitOfWork.Save();
         return Task.CompletedTask;
@@ -90,5 +93,10 @@ public class OrderService : IOrderService
     public List<Order> GetOrdersByUserId(Guid id)
     {
         return _unitOfWork.OrderRepository.GetOrdersByUserId(id);
+    }
+
+    public IList<Order> Get10Orders()
+    {
+        return _unitOfWork.OrderRepository.Get10();
     }
 }

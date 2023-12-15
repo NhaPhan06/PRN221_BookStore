@@ -1,0 +1,109 @@
+@page
+@using ModelLayer.Model
+@model Presentation.Pages.Admin.OrderDetailManager
+
+@{
+    Layout = "Shared/_LayoutAdmin";
+}
+
+
+<!-- Main content -->
+<section class="content">
+
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Order</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-md-12 col-lg-3 order-2 order-md-1" style="margin-left: 10%">
+                    <h2 class="text-primary"> Order Information</h2>
+                    <br>
+                    <br>
+                    <h5 style="font-weight: bold"> Buyer </h5> <h5> @Model.Order.User.Firstname + @Model.Order.User.Lastname </h5>
+                    <br>
+                    <h5 style="font-weight: bold"> Receiver </h5> <h5> @Model.Order.ReceiverName</h5>
+                    <br>
+                    <h5 style="font-weight: bold"> Receiving Phone </h5> <h5> @Model.Order.Address</h5>
+                    <br >
+                    <h5 style="font-weight: bold"> Receiving Address </h5> <h5> @Model.Order.Address</h5>
+                    <br>
+                    <div class="row">
+                        <div class="col-lm-6" style="margin-right: 20px">
+                            <form method="post" asp-page-handler="Cancel">
+                                <input hidden="hidden" name="Id" value="@Model.Order.OrderId"/>
+                                <button class="btn_nha" type="submit"> Cancel </button>
+                            </form>
+                        </div>
+                        <div class="col-lm-6">
+                            <form method="post" asp-page-handler="Confirm">
+                                <input hidden="hidden" name="Id" value="@Model.Order.OrderId"/>
+                                <button class="btn_nha" type="submit"> Confirm </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-12 col-lg-7 order-1 order-md-2">
+                    <h3 class="text-primary"> Orders Detail</h3>
+                    <table class="table table-striped projects">
+                        <thead>
+                        <tr>
+                            <th>
+                                Book ID
+                            </th>
+                            <th>
+                                Title
+                            </th>
+                            <th>
+                                Author
+                            </th>
+                            <th>
+                                Quantity
+                            </th>
+                            <th>
+                                Total Price
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var item in Model.OrderDetails)
+                        {
+                            <tr>
+                                <td>
+                                    <i>
+                                        @item.BookId
+                                    </i>
+                                </td>
+                                <td>
+                                    <i>
+                                        @item.Book.Title
+                                    </i>
+                                </td>
+                                <td>
+                                    <i>
+                                        @item.Book.Author
+                                    </i>
+                                </td>
+                                <td>
+                                    <i>
+                                        @item.Quantity
+                                    </i>
+                                </td>
+                                <td>
+                                    <i>
+                                        @item.Price
+                                    </i>
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+
+</section>

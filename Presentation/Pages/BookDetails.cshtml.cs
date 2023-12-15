@@ -46,7 +46,7 @@ public class BookDetails : PageModel
             foreach (var c in cartsList)
                 if (c.BookId == book.BookId)
                 {
-                    c.StockQuantity += 1;
+                    c.StockQuantity += quantity;
                     check = true;
                     break;
                 }
@@ -54,7 +54,7 @@ public class BookDetails : PageModel
             if (check == false)
             {
                 newCart.BookId = book.BookId;
-                newCart.StockQuantity = 1;
+                newCart.StockQuantity = quantity;
                 newCart.Title = book.Title;
                 newCart.Price = book.Price;
                 newCart.ImageUrl = book.ImageUrl;
@@ -64,7 +64,7 @@ public class BookDetails : PageModel
         else
         {
             newCart.BookId = book.BookId;
-            newCart.StockQuantity = 1;
+            newCart.StockQuantity = quantity;
             newCart.Title = book.Title;
             newCart.Price = book.Price;
             newCart.ImageUrl = book.ImageUrl;

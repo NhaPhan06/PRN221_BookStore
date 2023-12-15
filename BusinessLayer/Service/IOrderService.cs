@@ -14,4 +14,5 @@ public interface IOrderService
     Order DeliveryOrder(Guid id);
     Order ConfirmOrder(Guid id);
     List<Order> GetOrdersByUserId(Guid id);
+    IList<Order> Get10Orders();
 }

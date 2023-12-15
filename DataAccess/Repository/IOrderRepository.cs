@@ -5,6 +5,7 @@ namespace DataAccess.Repository;
 
 public interface IOrderRepository : IGeneric<Order>
 {
+    public List<Order> Get10();
     public List<Order> GetAllOrder();
     public List<Order> Search();
 
