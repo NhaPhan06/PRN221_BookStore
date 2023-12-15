@@ -50,7 +50,8 @@ You can also use the following classes for responsive changes with placing
 > e.g. `<a id="testAnchor" class="anchor"></a>`.
 >
 > To get a smooth scrolling to the anchor you need to add `.scroll-smooth` to your HTML tag like
-> this `<html class="scroll-smooth">` otherwise it jumps directly to your anchor, `.scroll-smooth` can cause issues with a
+> this `<html class="scroll-smooth">` otherwise it jumps directly to your anchor, `.scroll-smooth` can cause issues with
+> a
 > Chrome extension called ScrollAnywhere.
 > {: .quote-info}
 

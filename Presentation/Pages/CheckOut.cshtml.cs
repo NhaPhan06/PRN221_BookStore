@@ -6,11 +6,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
 
 namespace Presentation.Pages {
-
-
     public class CheckOut : PageModel {
-        private readonly IUserService _userService;
         private readonly IOrderService _orderService;
+        private readonly IUserService _userService;
 
         public CheckOut(IUserService userService, IOrderService orderService) {
             _orderService = orderService;
@@ -21,33 +19,34 @@ namespace Presentation.Pages {
         [BindProperty] public Order receiver { get; set; } = default!;
         public List<Carts> Carts { get; set; } = default!;
 
-        [BindProperty] public decimal total { get; set; } = default;
+        [BindProperty] public decimal total { get; set; }
 
         public void OnGet() {
             //Show User Default
-            var userId = HttpContext.Session.GetString("UserID");
+            string? userId = HttpContext.Session.GetString("UserID");
             if (userId != null) {
                 User = _userService.GetUserById(Guid.Parse(userId));
             }
 
             // Show cart
             Carts = new List<Carts>();
-            var jsoncart = HttpContext.Session.GetString("cart");
-            if (jsoncart != null) Carts = JsonConvert.DeserializeObject<List<Carts>>(jsoncart);
+            string? jsoncart = HttpContext.Session.GetString("cart");
+            if (jsoncart != null) {
+                Carts = JsonConvert.DeserializeObject<List<Carts>>(jsoncart);
+            }
+
             if (Carts.Count != 0) {
-                foreach (var c in Carts) {
+                foreach (Carts c in Carts) {
                     total += c.Price * c.StockQuantity;
                 }
             }
-
-
         }
 
         public async Task<IActionResult> OnPostDefault() {
             //create order
-            var order = new Order();
-            var userId = HttpContext.Session.GetString("UserID");
-            var user = _userService.GetUserById(Guid.Parse(userId));
+            Order order = new Order();
+            string? userId = HttpContext.Session.GetString("UserID");
+            User user = _userService.GetUserById(Guid.Parse(userId));
             order.OrderId = Guid.NewGuid();
             order.UserId = user.UserId;
             order.Address = user.Address;
@@ -55,45 +54,41 @@ namespace Presentation.Pages {
             order.ReceiverName = user.Firstname + user.Lastname;
 
             //get cart
-            var jsoncart = HttpContext.Session.GetString("cart");
+            string? jsoncart = HttpContext.Session.GetString("cart");
             Carts = JsonConvert.DeserializeObject<List<Carts>>(jsoncart);
             await _orderService.CreateOrder(Carts, order);
 
             //delete cart
             HttpContext.Session.Remove("cart");
-            
+
             return RedirectToPage("shop");
         }
 
         public async Task<IActionResult> OnPostOther() {
-
             //create order
-            var order = new Order();
-            var userId = HttpContext.Session.GetString("UserID");
-            var user = _userService.GetUserById(Guid.Parse(userId));
+            Order order = new Order();
+            string? userId = HttpContext.Session.GetString("UserID");
+            User user = _userService.GetUserById(Guid.Parse(userId));
             order.OrderId = Guid.NewGuid();
             order.UserId = user.UserId;
             order.Address = receiver.Address;
             order.PhoneNumber = receiver.PhoneNumber;
             order.ReceiverName = receiver.ReceiverName;
             //get cart
-            var jsoncart = HttpContext.Session.GetString("cart");
+            string? jsoncart = HttpContext.Session.GetString("cart");
             Carts = JsonConvert.DeserializeObject<List<Carts>>(jsoncart);
             await _orderService.CreateOrder(Carts, order);
-            
+
             //delete cart
             HttpContext.Session.Remove("cart");
-            
+
             return RedirectToPage("shop");
         }
 
-        public async Task<IActionResult> OnPostCancel()
-        {
+        public async Task<IActionResult> OnPostCancel() {
             //delete cart
             HttpContext.Session.Remove("cart");
             return RedirectToPage("shop");
         }
-        
-
     }
 }

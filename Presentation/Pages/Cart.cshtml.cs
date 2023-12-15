@@ -24,17 +24,17 @@ namespace Presentation.Pages {
                 total = 0;
             }
         }
-        
+
         public void OnPostRemove(Guid Id) {
             Carts = new List<Carts>();
             string? jsoncart = HttpContext.Session.GetString("cart");
             if (jsoncart != null) {
                 Carts = JsonConvert.DeserializeObject<List<Carts>>(jsoncart);
             }
+
             Carts.Remove(Carts.FirstOrDefault(c => c.BookId == Id));
             HttpContext.Session.SetString("cart", JsonConvert.SerializeObject(Carts));
             Response.Redirect("/Cart");
-            
         }
     }
 }
