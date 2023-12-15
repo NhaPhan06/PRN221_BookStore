@@ -67,7 +67,7 @@
                     <nav class="main-menu">
                         <ul>
                             <li class="current-list-item">
-                                <a href="#">Home</a>
+                                <a href="Home">Home</a>
                                 @*<ul class="sub-menu">
                                     <li>
                                         <a href="index.html">Static Home</a>
@@ -90,7 +90,7 @@
                                         <a href="about.html">About</a>
                                     </li>
                                     <li>
-                                        <a href="cart.html">Cart</a>
+                                        <a href="Cart">Cart</a>
                                     </li>
                                     <li>
                                         <a href="checkout.html">Check Out</a>
@@ -102,7 +102,7 @@
                                         <a href="news.html">News</a>
                                     </li>
                                     <li>
-                                        <a href="shop.html">Shop</a>
+                                        <a href="Shop">Shop</a>
                                     </li>
                                 </ul>
                             </li>
@@ -122,7 +122,7 @@
                                 <a asp-page="/Profile/ProfileIndex">Profile</a>
                             </li>*@
                             <li>
-                                <a href="shop.html">Shop</a>
+                                <a href="Shop">Shop</a>
                                 <ul class="sub-menu">
                                     <li>
                                         <a href="shop.html">Shop</a>
@@ -157,7 +157,7 @@
                                 </li>
                             <li>
                                 <div class="header-icons">
-                                    <a class="shopping-cart" href="cart.html">
+                                    <a class="shopping-cart" href="Cart">
                                         <i class="fas fa-shopping-cart"></i>
                                     </a>
                                     <a class="mobile-hide search-bar-icon" href="#">
@@ -190,9 +190,11 @@
                 </span>
                 <div class="search-bar">
                     <div class="search-bar-tablecell">
-                        <h3>Search For:</h3>
-                        <input type="text" placeholder="Keywords">
-                        <button type="submit">Search <i class="fas fa-search"></i></button>
+                        <form method="get" action="Shop">
+                            <h3>Search For:</h3>
+                            <input placeholder="Keywords" name="title" type="text">
+                            <button type="submit">Search <i class="fas fa-search"></i></button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -558,7 +560,7 @@ testimonail-section -->
                     <h2 class="widget-title">Pages</h2>
                     <ul>
                         <li>
-                            <a href="index.html">Home</a>
+                            <a href="Home">Home</a>
                         </li>
                         <li>
                             <a href="about.html">About</a>
