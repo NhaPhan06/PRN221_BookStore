@@ -1,4 +1,5 @@
-﻿using DataAccess.Infrastructure;
+﻿using DataAccess.DTOS.Auth;
+using DataAccess.Infrastructure;
 using DataAccess.Model;
 using ModelLayer.Model;
 
@@ -13,9 +14,16 @@ public class UserService : IUserService
         _unitOfWork = unitOfWork;
     }
 
-    public User CheckEmailUsername(string email, string username)
+    public User CheckEmail(string email)
     {
-        var account = _unitOfWork.UserRepository.GetEmailUsername(email, username);
+        var account = _unitOfWork.UserRepository.GetEmail(email);
+        if (account != null) return account;
+
+        return null;
+    }
+    public User CheckUsername(string username)
+    {
+        var account = _unitOfWork.UserRepository.GetUsername(username);
         if (account != null) return account;
 
         return null;
@@ -90,6 +98,28 @@ public class UserService : IUserService
         user.Status = Status.Active;
         _unitOfWork.UserRepository.UpdateUser(user);
         _unitOfWork.Save();
+    }
+
+    public bool GetAdminAccount(string username, string password)
+    {
+        return _unitOfWork.UserRepository.GetAdminAccount(username, password);
+    }
+
+    public AuthenticationResult LoginCheckRole(string username, string password)
+    {
+        bool checkAdmin = _unitOfWork.UserRepository.GetAdminAccount(username,password);
+        if(checkAdmin is true)
+        {
+            AuthenticationResult result = new() { IsAuthenticated = true, Role = UserRole.Admin, Email = username };
+            return result;
+        }
+        
+        if(_unitOfWork.UserRepository.Login(username, password) != null)
+        {
+            AuthenticationResult result = new() { IsAuthenticated = true, Role = UserRole.Customer, Email = username };
+            return result;
+        }
+        return new AuthenticationResult { IsAuthenticated = false };  
     }
     
     public Task<List<User>> GetUsers(GetUserDto getUserDto) {

@@ -103,4 +103,10 @@ public class BookRepository : Generic<Book>, IBookRepository
 
         return result;
     }
+
+    public List<Book> GetRandom3Books()
+    {
+        var list = _context.Set<Book>().OrderBy(c => Guid.NewGuid()).Take(3).ToList();
+        return list;
+    }
 }

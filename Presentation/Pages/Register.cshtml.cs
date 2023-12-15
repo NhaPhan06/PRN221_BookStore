@@ -27,11 +27,14 @@ public class RegisterModel : PageModel
     {
         try
         {
-            if (_userService.CheckEmailUsername(CreateUser.Email, CreateUser.Username) != null)
-                throw new Exception("Email đã được sử dụng. Vui lòng nhập lại!");
+            if (_userService.CheckEmail(CreateUser.Email) != null)
+                throw new Exception("Email is used. Please re-enter!");
 
-            if (CreateUser.Birthdate >= DateTime.Now || CreateUser.Birthdate < DateTime.Parse("1940-01-01"))
-                throw new Exception("Ngày sinh không hợp lệ. Vui lòng nhập lại!");
+            if (_userService.CheckUsername(CreateUser.Username) != null)
+                throw new Exception("Username is used. Please re-enter!");
+
+            if (CreateUser.Birthdate >= DateTime.Parse("2014-01-01") || CreateUser.Birthdate < DateTime.Parse("1940-01-01"))
+                throw new Exception("You have to be 10+ to have account!");
 
             _userService.CreateUser(CreateUser);
             return RedirectToPage("/LoginPage");

@@ -41,23 +41,27 @@ public class ProfileIndexModel : PageModel
         return Page();
     }
 
-    public IActionResult OnPost()
+    public void OnPost()
     {
         var accId = HttpContext.Session.GetString("UserID");
         Guid id = new(accId);
         try
         {
+
+            orders = _orderService.GetOrdersByUserId(Users.UserId);
+            OrderDetail = new List<OrderDetail>();
             Users = _userService.UpdateUser(id, Users);
             if (Users == null) throw new Exception();
-
-            return RedirectToPage("/Profile/ProfileIndex");
+            else
+            ViewData["notification"] = "Update Successfully!";
+            /*return Page();*/
         }
         catch (Exception ex)
         {
             ViewData["notification"] = ex.Message;
         }
 
-        return Page();
+        /*return Page();*/
     }
 
     public IActionResult OnGetLogout()
@@ -77,7 +81,7 @@ public class ProfileIndexModel : PageModel
         return Page();
     }
 
-    public IActionResult OnPostCancelOrders(string id)
+    public IActionResult OnGetCancelOrders(string id)
     {
         var accId = HttpContext.Session.GetString("UserID");
         Guid userid = new(accId);

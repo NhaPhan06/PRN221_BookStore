@@ -57,4 +57,9 @@ public class BookService : IBookService
     {
         _unitOfWork.BookRepository.Update(toBeUpdated);
     }
+
+    public List<Book> GetRandom3Books()
+    {
+        return _unitOfWork.BookRepository.GetRandom3Books();
+    }
 }

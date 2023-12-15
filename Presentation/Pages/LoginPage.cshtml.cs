@@ -1,6 +1,8 @@
 ﻿using BusinessLayer.Service;
+using DataAccess.DTOS.Auth;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Security.Principal;
 
 namespace Presentation.Pages;
 
@@ -23,10 +25,47 @@ public class LoginPageModel : PageModel
 
     public IActionResult OnPost()
     {
-        try
+        AuthenticationResult result = _userService.LoginCheckRole(Username, Password);
+        if(result.IsAuthenticated)
+        {
+            if(result.Role == UserRole.Admin)
+            {
+                HttpContext.Session.SetString("AdminEmail",result.Email);
+                return RedirectToPage("/Admin/User");
+            }
+            else if(result.Role == UserRole.Customer)
+            {
+                var account = _userService.Login(Username, Password);
+                if (account == null)
+                {
+                    ViewData["notification"] = "Account does not exist!";
+                    return Page();
+                }
+
+                if (account.Status.ToUpper() == "INACTIVE")
+                {
+                    ViewData["notification"] = "Your account is banned!";
+                    return Page();
+                }
+                HttpContext.Session.SetString("UserID", account.UserId.ToString());
+                HttpContext.Session.SetString("UserName", account.Username);
+                return RedirectToPage("/Home");
+            }
+        }
+        else
+        {
+            ViewData["notification"] = "Account does not exist!";
+            return Page();
+        }
+        /*try
         {
             var account = _userService.Login(Username, Password);
-            if (account == null)
+            var admin = _userService.GetAdminAccount(Username, Password);
+            if(admin == true)
+            {
+                return RedirectToPage("/Admin/User");
+            }
+            else if (account == null)
             {
                 ViewData["notification"] = "Account does not exist!";
                 return Page();
@@ -45,7 +84,7 @@ public class LoginPageModel : PageModel
         catch (Exception ex)
         {
             ViewData["notification"] = ex.Message;
-        }
+        }*/
 
         return Page();
     }
