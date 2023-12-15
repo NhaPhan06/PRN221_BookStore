@@ -3,12 +3,15 @@ using DataAccess.DataAccess;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Presentation.Pages.Orders {
-    public class OrderListcshtmlModel : PageModel {
+namespace Presentation.Pages.Orders
+{
+    public class OrderListcshtmlModel : PageModel
+    {
         private readonly IOrderDetailService _orderDetailService;
         private readonly IOrderService _orderService;
 
-        public OrderListcshtmlModel(IOrderService orderService, IOrderDetailService orderDetailService) {
+        public OrderListcshtmlModel(IOrderService orderService, IOrderDetailService orderDetailService)
+        {
             _orderService = orderService;
             _orderDetailService = orderDetailService;
         }
@@ -17,26 +20,31 @@ namespace Presentation.Pages.Orders {
         public Order Order { get; set; }
         public OrderDetail OrderDetail { get; set; }
 
-        public void OnGet() {
+        public void OnGet()
+        {
             orders = _orderService.GetAll();
         }
 
-        public IActionResult OnGetDisable(Guid id) {
+        public IActionResult OnGetDisable(Guid id)
+        {
             _orderService.DisableOrder(id);
             return RedirectToPage("OrderListcshtml");
         }
 
-        public IActionResult OnGetRecive(Guid id) {
+        public IActionResult OnGetRecive(Guid id)
+        {
             _orderService.ReciveOrder(id);
             return RedirectToPage("OrderListcshtml");
         }
 
-        public IActionResult OnGetDelivery(Guid id) {
+        public IActionResult OnGetDelivery(Guid id)
+        {
             _orderService.DeliveryOrder(id);
             return RedirectToPage("OrderListcshtml");
         }
 
-        public IActionResult OnGetConfirm(Guid id) {
+        public IActionResult OnGetConfirm(Guid id)
+        {
             _orderService.ConfirmOrder(id);
             return RedirectToPage("OrderListcshtml");
         }

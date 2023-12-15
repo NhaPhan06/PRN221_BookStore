@@ -3,11 +3,14 @@ using DataAccess.DataAccess;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Presentation.Pages {
-    public class LoginPageModel : PageModel {
+namespace Presentation.Pages
+{
+    public class LoginPageModel : PageModel
+    {
         private readonly IUserService _userService;
 
-        public LoginPageModel(IUserService userService) {
+        public LoginPageModel(IUserService userService)
+        {
             _userService = userService;
         }
 
@@ -15,25 +18,32 @@ namespace Presentation.Pages {
 
         [BindProperty] public string Password { get; set; }
 
-        public void OnGet() {
+        public void OnGet()
+        {
         }
 
-        public IActionResult OnPost() {
-            try {
+        public IActionResult OnPost()
+        {
+            try
+            {
                 User? account = _userService.Login(Username, Password);
-                if (account == null) {
+                if (account == null)
+                {
                     ViewData["notification"] = "Account does not exist!";
                     return Page();
                 }
 
-                if (account.Status == "INACTIVE") {
+                if (account.Status.ToUpper().ToString() == "INACTIVE")
+                {
                     ViewData["notification"] = "Your account is banned!";
                     return Page();
                 }
 
                 HttpContext.Session.SetString("UserID", account.UserId.ToString());
                 return RedirectToPage("/Home");
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 ViewData["notification"] = ex.Message;
             }
 
