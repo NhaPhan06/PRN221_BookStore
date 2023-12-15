@@ -12,9 +12,18 @@ namespace Presentation.Pages.Admin {
 
         public IList<ModelLayer.Model.User> Users { get; set; } = new List<ModelLayer.Model.User>();
 
-        public async Task OnGetAsync() {
-            var data = await _userService.GetAll();
-            Users = data;
+        public async Task<IActionResult> OnGetAsync() {
+            if (HttpContext.Session.GetString("AdminEmail") != null)
+            {
+                var data = await _userService.GetAll();
+                Users = data;
+                return Page();
+            }
+            else
+            {
+                HttpContext.Session.Remove("UserID");
+                return RedirectToPage("../LoginPage");
+            }
         }
 
         public Task<IActionResult> OnGetBan(Guid guid) {

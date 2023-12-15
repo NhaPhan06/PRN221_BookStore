@@ -1,4 +1,5 @@
-﻿using DataAccess.Model;
+﻿using DataAccess.DTOS.Auth;
+using DataAccess.Model;
 using ModelLayer.Model;
 
 namespace BusinessLayer.Service;
@@ -14,4 +15,5 @@ public interface IUserService
     void BanUser(Guid guid);
     void UnbanUser(Guid guid);
     bool GetAdminAccount(string username, string password);
+    AuthenticationResult LoginCheckRole(string username, string password);
 }

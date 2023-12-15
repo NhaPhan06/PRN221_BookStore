@@ -60,40 +60,40 @@
                                 </div>
                                 <hr/>
                                 <div class="input-group">
-                                    <input type="text" asp-for="CreateUser.Username" class="form-control" placeholder="Choose Username">
+                                    <input type="text" required title="Please enter username" asp-for="CreateUser.Username" class="form-control" placeholder="Choose Username">
                                     <span class="md-line"></span>
                                 </div>
                                 <div class="input-group">
-                                    <input type="text" asp-for="CreateUser.Email" class="form-control" placeholder="Your Email Address">
+                                    <input type="email" required title="Please enter email" asp-for="CreateUser.Email" class="form-control" placeholder="Your Email Address">
                                     <span class="md-line"></span>
                                 </div>
                                 <div class="input-group">
-                                    <input type="password" asp-for="CreateUser.Password" class="form-control" placeholder="Choose Password">
+                                    <input type="password" required title="Please enter password" asp-for="CreateUser.Password" class="form-control" placeholder="Choose Password">
                                     <span class="md-line"></span>
                                 </div>
                                 <div class="input-group">
-                                    <input type="text" asp-for="CreateUser.Firstname" class="form-control" placeholder="Your Firstname">
+                                    <input type="text" required title="Please enter your first name" asp-for="CreateUser.Firstname" class="form-control" placeholder="Your Firstname">
                                     <span class="md-line"></span>
                                 </div>
                                 <div class="input-group">
-                                    <input type="text" asp-for="CreateUser.Lastname" class="form-control" placeholder="Your Lastname">
+                                    <input type="text" required title="Please enter your last name" asp-for="CreateUser.Lastname" class="form-control" placeholder="Your Lastname">
                                     <span class="md-line"></span>
                                 </div>
                                 <div class="input-group">
-                                    <input type="text" asp-for="CreateUser.City" class="form-control" placeholder="City">
+                                    <input type="text" required title="Please enter your city" asp-for="CreateUser.City" class="form-control" placeholder="City">
                                     <span class="md-line"></span>
                                 </div>
                                 <div class="input-group">
-                                    <input type="text" asp-for="CreateUser.Address" class="form-control" placeholder="Address">
+                                    <input type="text" required title="Please enter your address" asp-for="CreateUser.Address" class="form-control" placeholder="Address">
                                     <span class="md-line"></span>
                                 </div>
                                 <div class="input-group">
-                                    <input type="text" asp-for="CreateUser.PhoneNumber" class="form-control" placeholder="Phone Number">
+                                    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required title="Please enter a 10-digit phone number" asp-for="CreateUser.PhoneNumber" class="form-control" placeholder="Phone Number">
                                     <span class="md-line"></span>
                                 </div>
                                 <div class="input-group">
                                     <label asp-for="CreateUser.Birthdate" class="control-label" style="color: black"></label>
-                                    <input asp-for="CreateUser.Birthdate" type="date" class="form-control"/>
+                                    <input asp-for="CreateUser.Birthdate" type="date" required id="dateDate" asp-format="{0:yyyy-MM-dd}" class="form-control" />
                                     <span asp-validation-for="CreateUser.Birthdate" class="text-danger"></span>
                                 </div>
                                 @*<div class="row m-t-25 text-left">
@@ -116,6 +116,9 @@
                                         </div>
                                     </div>
                                 </div>*@
+                                <div class="form-group text-danger">
+                                    @ViewData["notification"]
+                                </div>
                                 <div class="row m-t-30">
                                     <div class="col-md-12">
                                         <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Sign up now.</button>

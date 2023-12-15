@@ -1,4 +1,5 @@
-﻿using DataAccess.Infrastructure;
+﻿using DataAccess.DTOS.Auth;
+using DataAccess.Infrastructure;
 using DataAccess.Model;
 using ModelLayer.Model;
 
@@ -95,5 +96,22 @@ public class UserService : IUserService
     public bool GetAdminAccount(string username, string password)
     {
         return _unitOfWork.UserRepository.GetAdminAccount(username, password);
+    }
+
+    public AuthenticationResult LoginCheckRole(string username, string password)
+    {
+        bool checkAdmin = _unitOfWork.UserRepository.GetAdminAccount(username,password);
+        if(checkAdmin is true)
+        {
+            AuthenticationResult result = new() { IsAuthenticated = true, Role = UserRole.Admin, Email = username };
+            return result;
+        }
+        
+        if(_unitOfWork.UserRepository.Login(username, password) != null)
+        {
+            AuthenticationResult result = new() { IsAuthenticated = true, Role = UserRole.Customer, Email = username };
+            return result;
+        }
+        return new AuthenticationResult { IsAuthenticated = false };  
     }
 }
