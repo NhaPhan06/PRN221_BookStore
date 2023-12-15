@@ -82,7 +82,7 @@
                                    <a asp-page="./BookDetails" asp-route-id="@item.BookId">
                                                                        <img alt=""
                                                                             src="imgstorebook/author-book-store-book-cover-06.jpg">
-                                                                   </a>
+                                                                   </a> 
                                 </div>
                                 <h3>@item.Title</h3>
                                 <p class="product-price"><span>Per 1</span> @item.Price$ </p>
@@ -101,7 +101,7 @@
                         @for (var i = 1; i < Model.TotalPages; i++)
                         {
                             <li>
-                                <a class="@(i == Model.CurrentPage ? "active" : "")" asp-route-currentpage="@i"asp-route-category="@Model.Category" asp-page="./Shop" asp-route-title="@Model.Title">@i</a>
+                                <a class="@(i == Model.CurrentPage ? "active" : "")" asp-route-currentpage="@i" asp-route-category="@Model.Category" asp-page="./Shop" asp-route-title="@Model.Title">@i</a>
                             </li>
                         }
                     </ul>

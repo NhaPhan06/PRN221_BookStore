@@ -1,5 +1,6 @@
 ﻿@page
 @model BookDetails
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
     Layout = "Shared/_Layout";
@@ -38,7 +39,11 @@
                         <form action="index.html">
                             <input placeholder="0" type="number">
                         </form>
-                        <a class="cart-btn" href="cart.html"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                        
+                        <form method="post" asp-page-handler="AddToCart">
+                            <input type="hidden" value="@Model.Book.BookId"/>
+                            <button class="btn_nha" type="submit"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                        </form> 
                         <p>
                             <strong>Categories: </strong>@Model.Book.Category?.Name
                         </p>
