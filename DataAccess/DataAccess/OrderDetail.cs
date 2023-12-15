@@ -1,5 +1,7 @@
-﻿namespace DataAccess.DataAccess {
-    public class OrderDetail {
+﻿namespace DataAccess.DataAccess
+{
+    public class OrderDetail
+    {
         public Guid OrderDetailId { get; set; }
         public Guid OrderId { get; set; }
         public Guid BookId { get; set; }

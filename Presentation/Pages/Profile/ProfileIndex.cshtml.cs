@@ -3,14 +3,17 @@ using DataAccess.DataAccess;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Presentation.Pages.Profile {
-    public class ProfileIndexModel : PageModel {
+namespace Presentation.Pages.Profile
+{
+    public class ProfileIndexModel : PageModel
+    {
         private readonly IOrderDetailService _orderDetailService;
         private readonly IOrderService _orderService;
         private readonly IUserService _userService;
 
         public ProfileIndexModel(IUserService userService, IOrderService orderService,
-            IOrderDetailService orderDetailService) {
+            IOrderDetailService orderDetailService)
+        {
             _userService = userService;
             _orderService = orderService;
             _orderDetailService = orderDetailService;
@@ -24,16 +27,19 @@ namespace Presentation.Pages.Profile {
 
         public List<OrderDetail> OrderDetail { get; set; } = default!;
 
-        public IActionResult OnGet() {
+        public IActionResult OnGet()
+        {
             string? accId = HttpContext.Session.GetString("UserID");
-            if (accId == null) {
+            if (accId == null)
+            {
                 return RedirectToPage("/LoginPage");
             }
 
             Guid id = new(accId);
             Users = _userService.GetUserById(id);
             OrderDetail = new List<OrderDetail>();
-            if (Users.UserId != id) {
+            if (Users.UserId != id)
+            {
                 return RedirectToPage("/LoginPage");
             }
 
@@ -41,34 +47,54 @@ namespace Presentation.Pages.Profile {
             return Page();
         }
 
-        public IActionResult OnPost() {
+        public IActionResult OnPost()
+        {
             string? accId = HttpContext.Session.GetString("UserID");
             Guid id = new(accId);
-            try {
+            try
+            {
                 Users = _userService.UpdateUser(id, Users);
-                if (Users == null) {
+                if (Users == null)
+                {
                     throw new Exception();
                 }
 
                 return RedirectToPage("/Profile/ProfileIndex");
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 ViewData["notification"] = ex.Message;
             }
 
             return Page();
         }
 
-        public IActionResult OnGetLogout() {
+        public IActionResult OnGetLogout()
+        {
             HttpContext.Session.Remove("UserID");
             return RedirectToPage("/Home");
         }
 
-        public IActionResult OnGetOrderDetails(string id) {
+        public IActionResult OnGetOrderDetails(string id)
+        {
             string? accId = HttpContext.Session.GetString("UserID");
             Guid userid = new(accId);
             Users = _userService.GetUserById(userid);
             orders = _orderService.GetOrdersByUserId(Users.UserId);
             Guid orId = Guid.Parse(id);
+            OrderDetail = _orderDetailService.GetOrderDetailByOrderId(orId);
+            return Page();
+        }
+        public IActionResult OnPostCancelOrders(string id)
+        {
+            string? accId = HttpContext.Session.GetString("UserID");
+            Guid userid = new(accId);
+            Guid orId = Guid.Parse(id);
+            Users = _userService.GetUserById(userid);
+
+            _orderService.DisableOrder(orId);
+            orders = _orderService.GetOrdersByUserId(Users.UserId);
+
             OrderDetail = _orderDetailService.GetOrderDetailByOrderId(orId);
             return Page();
         }

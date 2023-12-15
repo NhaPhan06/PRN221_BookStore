@@ -15,7 +15,23 @@
         width: 100%; /* Đảm bảo bảng chiếm toàn bộ chiều rộng của container */
     }
 </style>
+<script>
+    // Function to show a confirmation dialog and submit the form if confirmed
+    function showConfirmationAndSubmit() {
+        var result = confirm('Are you sure you want to cancel?');
 
+        if (result) {
+            // If the user clicks "Yes", submit the form
+            document.getElementById('cancelForm').submit();
+        }
+    }
+
+    // Attach the showConfirmationAndSubmit function to the click event of the cancel button
+    document.getElementById('cancelButton').addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent the default behavior of the anchor tag
+        showConfirmationAndSubmit();
+    });
+</script>
 <!--PreLoader-->
 <div class="loader">
     <div class="loader-inner">
@@ -32,11 +48,10 @@
                     <!-- logo -->
                     <div class="site-logo">
                         <a href="index.html">
-                            <img src="imgstorebook/240_F_405931625_dtLZDca2FCBTefOyKNFwL1cpLJEDFDIj_preview_rev_1.jpg" alt="">
+                            <img alt="" src="/img/logo.png">
                         </a>
                     </div>
                     <!-- logo -->
-
                     <!-- menu start -->
                     <nav class="main-menu">
                         <ul>
@@ -63,15 +78,20 @@
                                     }
                                 </li>
                             <li>
+
                                 <div class="header-icons">
-                                    <a class="shopping-cart" href="/Cart">
+
+                                    <a class="shopping-cart" href="cart.html">
                                         <i class="fas fa-shopping-cart"></i>
                                     </a>
                                     <a class="mobile-hide search-bar-icon" href="#">
                                         <i class="fas fa-search"></i>
                                     </a>
+
                                 </div>
+
                             </li>
+
                         </ul>
                     </nav>
                     <a class="mobile-show search-bar-icon" href="#">
@@ -84,7 +104,6 @@
         </div>
     </div>
 </div>
-
 <!-- end header -->
 <!-- search area -->
 <div class="search-area">
@@ -122,249 +141,265 @@
 <!-- end breadcrumb section -->
 <!-- check out section -->
 <div class="checkout-section mt-150 mb-150">
-<div class="container">
-<div class="row">
-<div class="col-lg-8">
-    <div class="checkout-accordion-wrap">
-        <div class="accordion" id="accordionExample">
-            <div class="card single-accordion">
-                <div class="card-header" id="headingOne">
-                    <h5 class="mb-0">
-                        <button aria-controls="collapseOne" aria-expanded="true" class="btn btn-link"
-                                data-target="#collapseOne" data-toggle="collapse" type="button">
-                            Profile Details
-                        </button>
-                    </h5>
-                </div>
-
-                <div aria-labelledby="headingOne" class="collapse" data-parent="#accordionExample"
-                     id="collapseOne">
-                    <div class="card-body">
-                        <div class="billing-address-form">
-                            <form method="post">
-                                <p>
-                                    <label asp-for="Users.Username" class="control-label"></label>
-                                    <input asp-for="Users.Username" class="form-control" readonly="readonly"/>
-                                    <span asp-validation-for="Users.Username" class="text-danger"></span>
-                                </p>
-                                <p>
-                                    <label asp-for="Users.Email" class="control-label"></label>
-                                    <input asp-for="Users.Email" class="form-control" readonly="readonly"/>
-                                    <span asp-validation-for="Users.Email" class="text-danger"></span>
-                                </p>
-                                <p>
-                                    <label asp-for="Users.Birthdate" class="control-label"></label>
-                                    <input asp-for="Users.Birthdate" type="date" class="form-control" readonly="readonly"/>
-                                    <span asp-validation-for="Users.Birthdate" class="text-danger"></span>
-                                </p>
-                                <p>
-                                    <label asp-for="Users.Firstname" class="control-label"></label>
-                                    <input asp-for="Users.Firstname" class="form-control"/>
-                                    <span asp-validation-for="Users.Firstname" class="text-danger"></span>
-                                </p>
-                                <p>
-                                    <label asp-for="Users.Lastname" class="control-label"></label>
-                                    <input asp-for="Users.Lastname" class="form-control"/>
-                                    <span asp-validation-for="Users.Lastname" class="text-danger"></span>
-                                </p>
-                                <p>
-                                    <label asp-for="Users.City" class="control-label"></label>
-                                    <input asp-for="Users.City" class="form-control"/>
-                                    <span asp-validation-for="Users.City" class="text-danger"></span>
-                                </p>
-                                <p>
-                                    <label asp-for="Users.Address" class="control-label"></label>
-                                    <input asp-for="Users.Address" class="form-control"/>
-                                    <span asp-validation-for="Users.Address" class="text-danger"></span>
-                                </p>
-                                <p>
-                                    <label asp-for="Users.PhoneNumber" class="control-label"></label>
-                                    <input asp-for="Users.PhoneNumber" class="form-control"/>
-                                    <span asp-validation-for="Users.PhoneNumber" class="text-danger"></span>
-                                </p>
-                                <button type="submit" value="Save" class="boxed-btn">Update Profile</button>
-                                <div class="form-group text-danger">
-                                    @ViewData["notification"]
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card single-accordion">
-                <div class="card-header" id="headingTwo">
-                    <h5 class="mb-0">
-                        <button aria-controls="collapseTwo" aria-expanded="false"
-                                class="btn btn-link collapsed"
-                                data-target="#collapseTwo" data-toggle="collapse"
-                                type="button">
-                            Orders History
-                        </button>
-                    </h5>
-                </div>
-                <div aria-labelledby="headingTwo" class="collapse show" data-parent="#accordionExample"
-                     id="collapseTwo">
-                    <div class="card-body">
-                        <div class="shipping-address-form">
-                            <div class="table-container">
-                                <table class="table">
-                                    <thead>
-                                    <tr>
-                                        <th>
-                                            @Html.DisplayNameFor(model => model.orders[0].TotalAmount)
-                                        </th>
-                                        <th>
-                                            @Html.DisplayNameFor(model => model.orders[0].Address)
-                                        </th>
-                                        <th>
-                                            @Html.DisplayNameFor(model => model.orders[0].Status)
-                                        </th>
-                                        <th>
-                                            @Html.DisplayNameFor(model => model.orders[0].PhoneNumber)
-                                        </th>
-                                        <th>
-                                            @Html.DisplayNameFor(model => model.orders[0].ReceiverName)
-                                        </th>
-                                        <th>
-                                            @Html.DisplayNameFor(model => model.orders[0].PaymentMethod)
-                                        </th>
-                                        <th>
-                                            @Html.DisplayNameFor(model => model.orders[0].OrderDate)
-                                        </th>
-                                        <th>
-                                            @Html.DisplayNameFor(model => model.orders[0].DeliveryDate)
-                                        </th>
-                                        <th>
-                                            Action
-                                        </th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach (var item in Model.orders)
-                                    {
-                                        <tr>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.TotalAmount)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Address)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Status)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.PhoneNumber)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.ReceiverName)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.PaymentMethod)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.OrderDate)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.DeliveryDate)
-                                            </td>
-                                            <td>
-                                                <a asp-route-id="@item.OrderId" asp-route-handler="OrderDetails" class="btn btn-primary btn-sm">
-                                                    <i class="fas fa-folder">View</i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    }
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @*<div class="card single-accordion">
-                            <div class="card-header" id="headingThree">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="checkout-accordion-wrap">
+                    <div class="accordion" id="accordionExample">
+                        <div class="card single-accordion">
+                            <div class="card-header" id="headingOne">
                                 <h5 class="mb-0">
-                                    <button aria-controls="collapseThree" aria-expanded="false"
-                                            class="btn btn-link collapsed"
-                                            data-target="#collapseThree" data-toggle="collapse"
-                                            type="button">
-                                        Card Details
+                                    <button aria-controls="collapseOne" aria-expanded="true" class="btn btn-link"
+                                            data-target="#collapseOne" data-toggle="collapse" type="button">
+                                        Profile Details
                                     </button>
                                 </h5>
                             </div>
-                            <div aria-labelledby="headingThree" class="collapse" data-parent="#accordionExample"
-                                 id="collapseThree">
+
+                            <div aria-labelledby="headingOne" class="collapse" data-parent="#accordionExample"
+                                 id="collapseOne">
                                 <div class="card-body">
-                                    <div class="card-details">
-                                        <p>Your card details goes here.</p>
+                                    <div class="billing-address-form">
+                                        <form method="post">
+                                            <p>
+                                                <label asp-for="Users.Username" class="control-label"></label>
+                                                <input asp-for="Users.Username" class="form-control" readonly="readonly" />
+                                                <span asp-validation-for="Users.Username" class="text-danger"></span>
+                                            </p>
+                                            <p>
+                                                <label asp-for="Users.Email" class="control-label"></label>
+                                                <input asp-for="Users.Email" class="form-control" readonly="readonly" />
+                                                <span asp-validation-for="Users.Email" class="text-danger"></span>
+                                            </p>
+                                            <p>
+                                                <label asp-for="Users.Birthdate" class="control-label"></label>
+                                                <input asp-for="Users.Birthdate" type="date" class="form-control" readonly="readonly" />
+                                                <span asp-validation-for="Users.Birthdate" class="text-danger"></span>
+                                            </p>
+                                            <p>
+                                                <label asp-for="Users.Firstname" class="control-label"></label>
+                                                <input asp-for="Users.Firstname" class="form-control" />
+                                                <span asp-validation-for="Users.Firstname" class="text-danger"></span>
+                                            </p>
+                                            <p>
+                                                <label asp-for="Users.Lastname" class="control-label"></label>
+                                                <input asp-for="Users.Lastname" class="form-control" />
+                                                <span asp-validation-for="Users.Lastname" class="text-danger"></span>
+                                            </p>
+                                            <p>
+                                                <label asp-for="Users.City" class="control-label"></label>
+                                                <input asp-for="Users.City" class="form-control" />
+                                                <span asp-validation-for="Users.City" class="text-danger"></span>
+                                            </p>
+                                            <p>
+                                                <label asp-for="Users.Address" class="control-label"></label>
+                                                <input asp-for="Users.Address" class="form-control" />
+                                                <span asp-validation-for="Users.Address" class="text-danger"></span>
+                                            </p>
+                                            <p>
+                                                <label asp-for="Users.PhoneNumber" class="control-label"></label>
+                                                <input asp-for="Users.PhoneNumber" class="form-control" />
+                                                <span asp-validation-for="Users.PhoneNumber" class="text-danger"></span>
+                                            </p>
+                                            <button type="submit" value="Save" class="boxed-btn">Update Profile</button>
+                                            <div class="form-group text-danger">
+                                                @ViewData["notification"]
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-                        </div>*@
-        </div>
+                        </div>
+                        <div class="card single-accordion">
+                            <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0">
+                                    <button aria-controls="collapseTwo" aria-expanded="false"
+                                            class="btn btn-link collapsed"
+                                            data-target="#collapseTwo" data-toggle="collapse"
+                                            type="button">
+                                        Orders History
+                                    </button>
+                                </h5>
+                            </div>
+                            <div aria-labelledby="headingTwo" class="collapse show" data-parent="#accordionExample"
+                                 id="collapseTwo">
+                                <div class="card-body">
+                                    <div class="shipping-address-form">
+                                        <div class="table-container">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.orders[0].TotalAmount)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.orders[0].Address)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.orders[0].Status)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.orders[0].PhoneNumber)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.orders[0].ReceiverName)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.orders[0].PaymentMethod)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.orders[0].OrderDate)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.orders[0].DeliveryDate)
+                                                        </th>
+                                                        <th>
+                                                            Action
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model.orders)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.TotalAmount)$
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Address)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Status)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.PhoneNumber)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.ReceiverName)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.PaymentMethod)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.OrderDate)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.DeliveryDate)
+                                                            </td>
+                                                            <td>
+                                                                <a asp-route-id="@item.OrderId" asp-route-handler="OrderDetails" class="btn btn-primary btn-sm">
+                                                                    <i class="fas fa-folder">View</i>
+                                                                </a>
+                                                                
+                                                                @if (item.Status.Equals(DataAccess.Enum.OrderStatus.Confirm.ToString()) || item.Status.Equals(DataAccess.Enum.OrderStatus.Delivery.ToString()))
+                                                                {
+                                                                    @*<a id="cancelButton" class="btn btn-danger btn-sm">
+                                                                        <i class="fas fa-times-circle">Cancel</i>
+                                                                    </a>
 
-    </div>
-</div>
-
-<div class="col-lg-4">
-    <div class="card single-accordion">
-        <div class="card-header" id="headingThree">
-            <h5 class="mb-0">
-                <button aria-controls="collapseThree" aria-expanded="false"
+                                                                    <form method="post" id="cancelForm" asp-page-handler="CancelOrders" asp-route-id="@item.OrderId">
+                                                                        <!-- Your other form fields go here if needed -->
+                                                                        <input type="submit" style="display: none;" />
+                                                                    </form>*@
+                                                                    <a id="cancelForm" asp-route-id="@item.OrderId" asp-route-handler="CancelOrders" class="btn btn-danger btn-sm">
+                                                                        <i class="fas fa-times-circle">Cancel</i>
+                                                                    </a>
+                                                                    
+                                                                }
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @*<div class="card single-accordion">
+                        <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                        <button aria-controls="collapseThree" aria-expanded="false"
                         class="btn btn-link collapsed"
                         data-target="#collapseThree" data-toggle="collapse"
                         type="button">
-                    Order Details
-                </button>
-            </h5>
-        </div>
-        <div aria-labelledby="headingThree" class="collapse show" data-parent="#accordionExample"
-             id="collapseThree">
-            <div class="card-body">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.OrderDetail[0].Book)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.OrderDetail[0].Quantity)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.OrderDetail[0].Price)
-                        </th>
-                        <th>
-                            Action
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach (var item in Model.OrderDetail)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Book.Title)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Quantity)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Price)
-                            </td>
-                            <td>
-                                <a class="boxed-btn" href="#">Cancel Order</a>
-                            </td>
-                        </tr>
-                    }
-                    </tbody>
-                </table>
+                        Card Details
+                        </button>
+                        </h5>
+                        </div>
+                        <div aria-labelledby="headingThree" class="collapse" data-parent="#accordionExample"
+                        id="collapseThree">
+                        <div class="card-body">
+                        <div class="card-details">
+                        <p>Your card details goes here.</p>
+                        </div>
+                        </div>
+                        </div>
+                        </div>*@
+                    </div>
+
+                </div>
             </div>
 
+            <div class="col-lg-4">
+                <div class="card single-accordion">
+                    <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                            <button aria-controls="collapseThree" aria-expanded="false"
+                                    class="btn btn-link collapsed"
+                                    data-target="#collapseThree" data-toggle="collapse"
+                                    type="button">
+                                Order Details
+                            </button>
+                        </h5>
+                    </div>
+                    <div aria-labelledby="headingThree" class="collapse show" data-parent="#accordionExample"
+                         id="collapseThree">
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.OrderDetail[0].Book)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.OrderDetail[0].Quantity)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.OrderDetail[0].Price)
+                                        </th>
+                                        @*<th>
+                                            Action
+                                        </th>*@
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.OrderDetail)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Book.Title)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Quantity)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Price)
+                                            </td>
+                                            @*<td>
+                                                <a class="boxed-btn" href="#">Cancel Order</a>
+                                            </td>*@
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-</div>
-</div>
 </div>
 <!-- end check out section -->
 <!-- logo carousel -->

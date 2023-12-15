@@ -1,7 +1,9 @@
 ﻿using DataAccess.DataAccess;
 
-namespace BusinessLayer.Service {
-    public interface IOrderDetailService {
+namespace BusinessLayer.Service
+{
+    public interface IOrderDetailService
+    {
         OrderDetail GetOrderDetailById(Guid id);
         List<OrderDetail> GetAllOrderDetailByOrderId(Guid id);
         List<OrderDetail> GetOrderDetailByOrderId(Guid orderId);
