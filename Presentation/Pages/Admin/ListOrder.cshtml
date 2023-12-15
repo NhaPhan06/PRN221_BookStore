@@ -19,44 +19,53 @@
                     <div class="card-body">
                         <table class="table table-bordered table-hover" id="example2">
                             <thead>
-                            <tr>
-                                <th> ID </th>
-                                <th> Order Date</th>
-                                <th> Delivery Date</th>
-                                <th>Received Date</th>
-                                <th>Total Amount</th>
-                                <th>Status</th>
-                            </tr>
+                                <tr>
+                                    <th> ID </th>
+                                    <th> Order Date</th>
+                                    <th> Delivery Date</th>
+                                    <th>Received Date</th>
+                                    <th>Total Amount</th>
+                                    <th>Status</th>
+                                </tr>
                             </thead>
                             <tbody>
-                            @foreach (var item in Model.Order)
-                            {
-                                <tr>
-                                    <td>@item.OrderId</td>
-                                    <td>@item.OrderDate</td>
-                                    <td>@item.DeliveryDate</td>
-                                    <td>@item.ReceivedDate</td>
-                                    <td class="project-state">
-                                        @if (item.Status == OrderStatus.Receive.ToString())
-                                        {
-                                            <span class="badge badge-success">@Status.Active</span>
-                                        }
-                                        @*@if(item.Status == OrderStatus.Cancel.ToString())*@
-                                        {
-                                            <span class="badge badge-danger">@Status.Inactive</span>
-                                        }
-                                    </td>
-                                </tr>
-                            }
+                                @foreach (var item in Model.Order)
+                                {
+                                    <tr>
+                                        <td>@item.OrderId</td>
+                                        <td>@item.OrderDate</td>
+                                        <td>@item.DeliveryDate</td>
+                                        <td>@item.ReceivedDate</td>
+                                        <td>@item.TotalAmount</td>
+                                        <td class="project-state">
+                                            @if (item.Status == OrderStatus.DONE.ToString())
+                                            {
+                                                <span class="badge badge-success">@OrderStatus.DONE.ToString()</span>
+                                            }
+                                            @if (item.Status == OrderStatus.CANCEL.ToString())
+                                            {
+                                                <span class="badge badge-danger">@OrderStatus.CANCEL.ToString()</span>
+                                            }
+                                            @if (item.Status == OrderStatus.CONFIRM.ToString())
+                                            {
+                                                <span class="badge badge-danger">@OrderStatus.CONFIRM.ToString()</span>
+                                            }
+                                            @if (item.Status == OrderStatus.PENDING.ToString())
+                                            {
+                                                <span class="badge badge-danger">@OrderStatus.PENDING.ToString()</span>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
                             </tbody>
                             <tfoot>
-                            <tr>
-                                <th>Rendering engine</th>
-                                <th>Browser</th>
-                                <th>Platform(s)</th>
-                                <th>Engine version</th>
-                                <th>CSS grade</th>
-                            </tr>
+                                <tr>
+                                    <th>Rendering engine</th>
+                                    <th>Browser</th>
+                                    <th>Platform(s)</th>
+                                    <th>Engine version</th>
+                                    <th>CSS grade</th>
+                                </tr>
                             </tfoot>
                         </table>
                     </div>
