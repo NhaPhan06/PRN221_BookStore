@@ -207,7 +207,7 @@
                                             </p>
                                             <p>
                                                 <label asp-for="Users.PhoneNumber" class="control-label"></label>
-                                                <input asp-for="Users.PhoneNumber" class="form-control" />
+                                                <input type="tel" pattern="[0-9]{10}" required title="Please enter a 10-digit phone number" asp-for="Users.PhoneNumber" class="form-control" />
                                                 <span asp-validation-for="Users.PhoneNumber" class="text-danger"></span>
                                             </p>
                                             <button type="submit" value="Save" class="boxed-btn">Update Profile</button>

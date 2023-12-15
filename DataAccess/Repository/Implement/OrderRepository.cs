@@ -1,4 +1,5 @@
-﻿using DataAccess.Infrastructure;
+﻿using DataAccess.Enum;
+using DataAccess.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using ModelLayer.Model;
 
@@ -50,6 +51,6 @@ public class OrderRepository : Generic<Order>, IOrderRepository
     public List<Order> Get10()
     {
         var date = DateTime.Now - new TimeSpan(0, 24, 0, 0);
-        return _context.Orders.Where(c => c.Status == "Confirm" && c.OrderDate <= date).OrderByDescending(o => o.OrderDate).Take(10).ToList();
+        return _context.Orders.Where(c => c.Status == OrderStatus.PENDING.ToString() && c.OrderDate <= date).OrderByDescending(o => o.OrderDate).Take(10).ToList();
     }
 }

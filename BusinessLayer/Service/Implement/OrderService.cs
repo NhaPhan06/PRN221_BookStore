@@ -17,7 +17,7 @@ public class OrderService : IOrderService
     public Task CreateOrder(List<Carts> cart, Order order)
     {
         order.OrderDate = DateTime.Now;
-        order.Status = OrderStatus.CONFIRM.ToString();
+        order.Status = OrderStatus.PENDING.ToString();
         order.TotalAmount = cart.Sum(x => x.Price * x.StockQuantity);
         foreach (var item in cart)
         {
