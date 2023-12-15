@@ -78,6 +78,20 @@ public class UserService : IUserService
         return Task.FromResult(data);
     }
 
+    public void BanUser(Guid guid) {
+        var user = _unitOfWork.UserRepository.GetById(guid);
+        user.Status = Status.Inactive;
+        _unitOfWork.UserRepository.UpdateUser(user);
+        _unitOfWork.Save();
+    }
+
+    public void UnbanUser(Guid guid) {
+        var user = _unitOfWork.UserRepository.GetById(guid);
+        user.Status = Status.Active;
+        _unitOfWork.UserRepository.UpdateUser(user);
+        _unitOfWork.Save();
+    }
+
     public bool GetAdminAccount(string username, string password)
     {
         return _unitOfWork.UserRepository.GetAdminAccount(username, password);
