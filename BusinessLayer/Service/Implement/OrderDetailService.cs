@@ -14,5 +14,13 @@ namespace BusinessLayer.Service.Implement {
         {
             return _unitOfWork.OrderDetailRepository.GetOrderDetailByOrderId(orderId);
         }
+        public List<OrderDetail> GetAllOrderDetailByOrderId(Guid id)
+        {
+           return _unitOfWork.OrderDetailRepository.GetAllOrderDetailByOrderId(id);
+            
+        }
+
+        public OrderDetail GetOrderDetailById(Guid id) => _unitOfWork.OrderDetailRepository.GetById(id);
+        
     }
 }
