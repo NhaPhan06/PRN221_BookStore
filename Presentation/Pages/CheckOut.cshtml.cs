@@ -19,7 +19,7 @@ namespace Presentation.Pages {
         [BindProperty] public Order receiver { get; set; } = default!;
         public List<Carts> Carts { get; set; } = default!;
 
-        [BindProperty] public decimal total { get; set; }
+        [BindProperty] public decimal Total { get; set; } = default;
 
         public void OnGet() {
             //Show User Default
@@ -36,8 +36,8 @@ namespace Presentation.Pages {
             }
 
             if (Carts.Count != 0) {
-                foreach (Carts c in Carts) {
-                    total += c.Price * c.StockQuantity;
+                foreach (var c in Carts) {
+                    Total += c.Price * c.StockQuantity;
                 }
             }
         }
