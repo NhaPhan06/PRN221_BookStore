@@ -6,7 +6,5 @@ namespace DataAccess.Repository {
         List<OrderDetail> GetOrderDetailByOrderId(Guid id);
         public OrderDetail GetOrderDetailById(Guid id);
         List<OrderDetail> GetAllOrderDetailByOrderId(Guid id);
-
-
     }
 }

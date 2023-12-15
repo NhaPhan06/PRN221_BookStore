@@ -2,8 +2,7 @@
 using DataAccess.Model;
 
 namespace BusinessLayer.Service {
-    public interface IOrderService
-    {
+    public interface IOrderService {
         Task CreateOrder(List<Carts> cart, Order order);
         List<Order> GetAll();
         List<Order> Search();

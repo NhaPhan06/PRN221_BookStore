@@ -8,7 +8,7 @@
     ViewData["Title"] = "Shop";
 
     var categories = typeof(BookCategory).GetFields(
-        BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy)
+            BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy)
         .Where(info => info is { IsLiteral: true, IsInitOnly: false })
         .Select(info => info.GetRawConstantValue()?.ToString())
         .ToList();
@@ -79,10 +79,10 @@
                             <form method="post" asp-page-handler="AddToCart">
                                 <input type="hidden" name="Id" value="@item.BookId"/>
                                 <div class="product-image">
-                                   <a asp-page="./BookDetails" asp-route-id="@item.BookId">
-                                                                       <img alt=""
-                                                                            src="imgstorebook/author-book-store-book-cover-06.jpg">
-                                                                   </a>
+                                    <a asp-page="./BookDetails" asp-route-id="@item.BookId">
+                                        <img alt=""
+                                             src="imgstorebook/author-book-store-book-cover-06.jpg">
+                                    </a>
                                 </div>
                                 <h3>@item.Title</h3>
                                 <p class="product-price"><span>Per 1</span> @item.Price$ </p>
