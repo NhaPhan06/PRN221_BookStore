@@ -475,7 +475,10 @@ a.boxed-btn, a.bordered-btn, a.cart-btn {
 }
 
 .breadcrumb-bg {
-    background-image: url(../img/breadcrumb-bg.jpg);
+    background-image: url(../imgstorebook/background.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 .breadcrumb-text p {

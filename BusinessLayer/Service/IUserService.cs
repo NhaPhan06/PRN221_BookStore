@@ -11,4 +11,5 @@ public interface IUserService
     User GetUserById(Guid id);
     User UpdateUser(Guid id, User user);
     Task<List<User>> GetAll();
+    bool GetAdminAccount(string username, string password);
 }

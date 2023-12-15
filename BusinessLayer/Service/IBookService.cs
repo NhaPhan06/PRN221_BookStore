@@ -11,4 +11,5 @@ public interface IBookService
     void Add(Book book);
     Task<Book?> GetDetail(string id);
     Task<Book> GetBookById(Guid id);
+    List<Book> GetRandom3Books();
 }

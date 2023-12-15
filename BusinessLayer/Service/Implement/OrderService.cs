@@ -17,7 +17,7 @@ public class OrderService : IOrderService
     public Task CreateOrder(List<Carts> cart, Order order)
     {
         order.OrderDate = DateTime.Now;
-        order.Status = OrderStatus.Confirm.ToString();
+        order.Status = OrderStatus.CONFIRM.ToString();
         order.TotalAmount = cart.Sum(x => x.Price * x.StockQuantity);
         foreach (var item in cart)
         {
@@ -49,7 +49,7 @@ public class OrderService : IOrderService
     public Order DisableOrder(Guid id)
     {
         var orders = _unitOfWork.OrderRepository.GetOrderById(id);
-        orders.Status = OrderStatus.Disable.ToString();
+        orders.Status = OrderStatus.CANCEL.ToString();
         var Update = _unitOfWork.OrderRepository.UpdateOrder(orders);
         _unitOfWork.OrderRepository.SaveChange();
         return Update;
@@ -58,7 +58,7 @@ public class OrderService : IOrderService
     public Order ReciveOrder(Guid id)
     {
         var orders = _unitOfWork.OrderRepository.GetOrderById(id);
-        orders.Status = OrderStatus.Receive.ToString();
+        orders.Status = OrderStatus.DONE.ToString();
         var Update = _unitOfWork.OrderRepository.UpdateOrder(orders);
         _unitOfWork.OrderRepository.SaveChange();
         return Update;
@@ -67,7 +67,7 @@ public class OrderService : IOrderService
     public Order DeliveryOrder(Guid id)
     {
         var orders = _unitOfWork.OrderRepository.GetOrderById(id);
-        orders.Status = OrderStatus.Delivery.ToString();
+        orders.Status = OrderStatus.PENDING.ToString();
         var Update = _unitOfWork.OrderRepository.UpdateOrder(orders);
         _unitOfWork.OrderRepository.SaveChange();
         return Update;
@@ -76,7 +76,7 @@ public class OrderService : IOrderService
     public Order ConfirmOrder(Guid id)
     {
         var orders = _unitOfWork.OrderRepository.GetOrderById(id);
-        orders.Status = OrderStatus.Confirm.ToString();
+        orders.Status = OrderStatus.CONFIRM.ToString();
         var Update = _unitOfWork.OrderRepository.UpdateOrder(orders);
         _unitOfWork.OrderRepository.SaveChange();
         return Update;

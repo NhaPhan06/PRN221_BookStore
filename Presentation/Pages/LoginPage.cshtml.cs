@@ -26,7 +26,12 @@ public class LoginPageModel : PageModel
         try
         {
             var account = _userService.Login(Username, Password);
-            if (account == null)
+            var admin = _userService.GetAdminAccount(Username, Password);
+            if(admin == true)
+            {
+                return RedirectToPage("/Admin/Index");
+            }
+            else if (account == null)
             {
                 ViewData["notification"] = "Account does not exist!";
                 return Page();

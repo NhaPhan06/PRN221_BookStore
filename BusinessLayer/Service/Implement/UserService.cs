@@ -77,4 +77,9 @@ public class UserService : IUserService
         var data = _unitOfWork.UserRepository.GetAll().ToList();
         return Task.FromResult(data);
     }
+
+    public bool GetAdminAccount(string username, string password)
+    {
+        return _unitOfWork.UserRepository.GetAdminAccount(username, password);
+    }
 }

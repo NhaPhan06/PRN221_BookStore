@@ -1,4 +1,5 @@
 ﻿using DataAccess.Infrastructure;
+using Microsoft.Extensions.Configuration;
 using ModelLayer.Model;
 
 namespace DataAccess.Repository.Implement;
@@ -7,6 +8,29 @@ public class UserRepository : Generic<User>, IUserRepository
 {
     public UserRepository(PRN_BookStoreContext context) : base(context)
     {
+    }
+
+    public bool GetAdminAccount(string us, string pass)
+    {
+        IConfiguration config = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", true, true)
+                .Build();
+
+        // Check if the configuration key exists
+        if (config.GetSection("AdminAccount").Exists())
+        {
+            string emailJson = config["AdminAccount:adminemail"];
+            string passwordJson = config["AdminAccount:adminpassword"];
+
+            // Check if both email and password match
+            if (emailJson == us && passwordJson == pass)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public User GetEmailUsername(string email, string username)

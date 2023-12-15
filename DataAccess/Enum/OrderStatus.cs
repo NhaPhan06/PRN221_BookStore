@@ -2,8 +2,8 @@
 
 public enum OrderStatus
 {
-    Confirm,
-    Delivery,
-    Receive,
-    Disable
+    PENDING,
+    CONFIRM,
+    DONE,
+    CANCEL
 }
