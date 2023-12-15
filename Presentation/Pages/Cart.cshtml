@@ -259,7 +259,14 @@
                         </tbody>
                     </table>
                     <div class="cart-buttons">
-                        <a class="boxed-btn black" asp-page="CheckOut">Check Out</a>
+                        @if (HttpContext.Session.GetString("UserId") is not null)
+                        {
+                            <a class="boxed-btn black" asp-page="CheckOut">Check Out</a>
+                        }
+                        else
+                        {
+                            <a class="boxed-btn black" asp-page="LoginPage">Check Out</a>
+                        }
                     </div>
                 </div>
             </div>
