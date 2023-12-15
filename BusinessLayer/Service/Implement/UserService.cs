@@ -14,9 +14,16 @@ public class UserService : IUserService
         _unitOfWork = unitOfWork;
     }
 
-    public User CheckEmailUsername(string email, string username)
+    public User CheckEmail(string email)
     {
-        var account = _unitOfWork.UserRepository.GetEmailUsername(email, username);
+        var account = _unitOfWork.UserRepository.GetEmail(email);
+        if (account != null) return account;
+
+        return null;
+    }
+    public User CheckUsername(string username)
+    {
+        var account = _unitOfWork.UserRepository.GetUsername(username);
         if (account != null) return account;
 
         return null;

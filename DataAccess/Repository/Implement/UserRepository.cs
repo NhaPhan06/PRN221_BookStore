@@ -33,10 +33,19 @@ public class UserRepository : Generic<User>, IUserRepository
         return false;
     }
 
-    public User GetEmailUsername(string email, string username)
+    public User GetEmail(string email)
     {
         var account = _context.Set<User>()
-            .FirstOrDefault(a => a.Email.Equals(email) || a.Username.Equals(username));
+            .FirstOrDefault(a => a.Email.Equals(email));
+        return account;
+    }
+
+    
+
+    public User GetUsername(string username)
+    {
+        var account = _context.Set<User>()
+            .FirstOrDefault(a => a.Username.Equals(username));
         return account;
     }
 
