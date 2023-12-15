@@ -32,6 +32,7 @@ namespace Presentation.Pages {
                 }
 
                 HttpContext.Session.SetString("UserID", account.UserId.ToString());
+                HttpContext.Session.SetString("UserName",account.Username);
                 return RedirectToPage("/Home");
             } catch (Exception ex) {
                 ViewData["notification"] = ex.Message;
