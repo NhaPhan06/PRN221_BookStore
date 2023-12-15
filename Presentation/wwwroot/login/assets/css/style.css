@@ -8885,7 +8885,7 @@ body[themebg-pattern="pattern9"] {
 
 .open .selector-toggle > a:before {
     font-family: 'themify';
-    font-size: 25spx;
+    font-size: 25 spx;
     content: "\e646";
     position: relative;
     float: left;

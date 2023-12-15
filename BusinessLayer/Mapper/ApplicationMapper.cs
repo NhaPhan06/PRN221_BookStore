@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 
-namespace BusinessLayer.Mapper {
-    public class ApplicationMapper : Profile {
-    }
+namespace BusinessLayer.Mapper;
+
+public class ApplicationMapper : Profile
+{
 }

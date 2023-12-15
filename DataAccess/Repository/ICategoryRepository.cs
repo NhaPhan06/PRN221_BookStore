@@ -1,7 +1,8 @@
-﻿using DataAccess.DataAccess;
-using DataAccess.Repository.Generic;
+﻿using DataAccess.Infrastructure;
+using ModelLayer.Model;
 
-namespace DataAccess.Repository {
-    public interface ICategoryRepository : IGeneric<Category> {
-    }
+namespace DataAccess.Repository;
+
+public interface ICategoryRepository : IGeneric<Category>
+{
 }

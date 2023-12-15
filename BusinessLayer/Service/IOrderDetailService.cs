@@ -1,11 +1,10 @@
-﻿using DataAccess.DataAccess;
+﻿using ModelLayer.Model;
 
-namespace BusinessLayer.Service
+namespace BusinessLayer.Service;
+
+public interface IOrderDetailService
 {
-    public interface IOrderDetailService
-    {
-        OrderDetail GetOrderDetailById(Guid id);
-        List<OrderDetail> GetAllOrderDetailByOrderId(Guid id);
-        List<OrderDetail> GetOrderDetailByOrderId(Guid orderId);
-    }
+    OrderDetail GetOrderDetailById(Guid id);
+    List<OrderDetail> GetAllOrderDetailByOrderId(Guid id);
+    List<OrderDetail> GetOrderDetailByOrderId(Guid orderId);
 }

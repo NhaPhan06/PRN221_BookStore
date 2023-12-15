@@ -1,50 +1,60 @@
-﻿using DataAccess.DataAccess;
+﻿using DataAccess.Infrastructure;
 using DataAccess.Model;
-using DataAccess.Repository.Generic.UnitOfWork;
+using ModelLayer.Model;
 
-namespace BusinessLayer.Service.Implement {
-    public class BookService : IBookService {
-        private readonly IUnitOfWork _unitOfWork;
+namespace BusinessLayer.Service.Implement;
 
-        public BookService(IUnitOfWork unitOfWork) {
-            _unitOfWork = unitOfWork;
-        }
+public class BookService : IBookService
+{
+    private readonly IUnitOfWork _unitOfWork;
 
-        public Task<List<Book>> GetAll() {
-            IEnumerable<Book> result = _unitOfWork.BookRepository.GetAll();
-            return Task.FromResult(result.ToList());
-        }
+    public BookService(IUnitOfWork unitOfWork)
+    {
+        _unitOfWork = unitOfWork;
+    }
 
-        public Task<List<Book>> GetBookList(GetBooksDto getBooksDto) {
-            return _unitOfWork.BookRepository.GetBookList(getBooksDto);
-        }
+    public Task<List<Book>> GetAll()
+    {
+        var result = _unitOfWork.BookRepository.GetAll();
+        return Task.FromResult(result.ToList());
+    }
 
-        public Task<int> CountBookList(GetBooksDto getBooksDto) {
-            Task<int> result = _unitOfWork.BookRepository.GetBookCount(getBooksDto);
-            return result;
-        }
+    public Task<List<Book>> GetBookList(GetBooksDto getBooksDto)
+    {
+        return _unitOfWork.BookRepository.GetBookList(getBooksDto);
+    }
 
-        public void Add(Book book) {
-            _unitOfWork.BookRepository.Add(book);
-            _unitOfWork.Save();
-        }
+    public Task<int> CountBookList(GetBooksDto getBooksDto)
+    {
+        var result = _unitOfWork.BookRepository.GetBookCount(getBooksDto);
+        return result;
+    }
 
-        public async Task<Book> GetBookById(Guid id) {
-            return _unitOfWork.BookRepository.GetById(id);
-        }
+    public void Add(Book book)
+    {
+        _unitOfWork.BookRepository.Add(book);
+        _unitOfWork.Save();
+    }
 
-        public Task<Book?> GetDetail(string id) {
-            Task<Book?> result = _unitOfWork.BookRepository.GetDetail(id);
-            return result;
-        }
+    public async Task<Book> GetBookById(Guid id)
+    {
+        return _unitOfWork.BookRepository.GetById(id);
+    }
 
-        public void SoftDelete(Book toBeDeleted) {
-            toBeDeleted.Status = Status.Inactive;
-            _unitOfWork.BookRepository.Update(toBeDeleted);
-        }
+    public Task<Book?> GetDetail(string id)
+    {
+        var result = _unitOfWork.BookRepository.GetDetail(id);
+        return result;
+    }
 
-        public void UpdateBook(Book toBeUpdated) {
-            _unitOfWork.BookRepository.Update(toBeUpdated);
-        }
+    public void SoftDelete(Book toBeDeleted)
+    {
+        toBeDeleted.Status = Status.Inactive;
+        _unitOfWork.BookRepository.Update(toBeDeleted);
+    }
+
+    public void UpdateBook(Book toBeUpdated)
+    {
+        _unitOfWork.BookRepository.Update(toBeUpdated);
     }
 }

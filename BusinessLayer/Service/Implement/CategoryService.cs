@@ -1,17 +1,20 @@
-﻿using DataAccess.DataAccess;
-using DataAccess.Repository.Generic.UnitOfWork;
+﻿using DataAccess.Infrastructure;
+using ModelLayer.Model;
 
-namespace BusinessLayer.Service.Implement {
-    public class CategoryService : ICategoryService {
-        private readonly IUnitOfWork _unitOfWork;
+namespace BusinessLayer.Service.Implement;
 
-        public CategoryService(IUnitOfWork unitOfWork) {
-            _unitOfWork = unitOfWork;
-        }
+public class CategoryService : ICategoryService
+{
+    private readonly IUnitOfWork _unitOfWork;
 
-        public Task<IEnumerable<Category>> GetAll() {
-            IEnumerable<Category> result = _unitOfWork.CategoryRepository.GetAll();
-            return Task.FromResult(result);
-        }
+    public CategoryService(IUnitOfWork unitOfWork)
+    {
+        _unitOfWork = unitOfWork;
+    }
+
+    public Task<IEnumerable<Category>> GetAll()
+    {
+        var result = _unitOfWork.CategoryRepository.GetAll();
+        return Task.FromResult(result);
     }
 }

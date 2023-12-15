@@ -1,25 +1,18 @@
 ﻿@page
+@using System.Reflection
+@using DataAccess.Model
 @model BookDetails
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-
 @{
     Layout = "Shared/_Layout";
-    ViewData["Title"] = Model.Book.Title;
+    ViewData["Title"] = "BookDetail";
+
+    var categories = typeof(BookCategory).GetFields(
+        BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy)
+        .Where(info => info is { IsLiteral: true, IsInitOnly: false })
+        .Select(info => info.GetRawConstantValue()?.ToString())
+        .ToList();
 }
-<!-- breadcrumb-section -->
-<div class="breadcrumb-section breadcrumb-bg">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 offset-lg-2 text-center">
-                <div class="breadcrumb-text">
-                    <p>See more Details</p>
-                    <h1>@Model.Book.Title</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end breadcrumb section -->
 
 <!-- single product -->
 <div class="single-product mt-150 mb-150">
@@ -40,7 +33,7 @@
                             <input placeholder="1" name="quantity" type="number" min="1" max="5">
                             <input type="hidden" name="Id" value="@Model.Book.BookId"/>
                             <button class="btn_nha" type="submit"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                        </form> 
+                        </form>
                         <p>
                             <strong>Categories: </strong>@Model.Book.Category?.Name
                         </p>

@@ -67,22 +67,30 @@
                             <li>
                                 <a href="Shop">Shop</a>
                             </li>
-                                <li>
-                                    @if (@Context.Session.GetString("UserID") == null)
-                                    {
-                                        <a asp-page="/LoginPage"><i class="fa fa-user" aria-hidden="true"></i></a>
-                                    }
-                                    else if (@Context.Session.GetString("UserID") != null)
-                                    {
-                                        <div class="header-icons">
-                                            <a href="#"><i class="fa fa-user" aria-hidden="true"></i>   @Context.Session.GetString("UserName")</a>
-                                            <ul class="sub-menu">
-                                                <li><a asp-page="/Profile/ProfileIndex">Profile</a></li>
-                                                <li><a asp-page-handler="Logout" asp-route-handler="OnGetLogout">Logout</a></li>
-                                            </ul>
-                                        </div>
-                                    }
-                                </li>
+                            <li>
+                                @if (Context.Session.GetString("UserID") == null)
+                                {
+                                    <a asp-page="/LoginPage">
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                    </a>
+                                }
+                                else if (Context.Session.GetString("UserID") != null)
+                                {
+                                    <div class="header-icons">
+                                        <a href="#">
+                                            <i class="fa fa-user" aria-hidden="true"></i> @Context.Session.GetString("UserName")
+                                        </a>
+                                        <ul class="sub-menu">
+                                            <li>
+                                                <a asp-page="/Profile/ProfileIndex">Profile</a>
+                                            </li>
+                                            <li>
+                                                <a asp-page-handler="Logout" asp-route-handler="OnGetLogout">Logout</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                }
+                            </li>
                             <li>
                                 <div class="header-icons">
                                     <a class="shopping-cart" href="Cart">

@@ -1,18 +1,17 @@
-﻿using DataAccess.DataAccess;
-using DataAccess.Model;
+﻿using DataAccess.Model;
+using ModelLayer.Model;
 
-namespace BusinessLayer.Service
+namespace BusinessLayer.Service;
+
+public interface IOrderService
 {
-    public interface IOrderService
-    {
-        Task CreateOrder(List<Carts> cart, Order order);
-        List<Order> GetAll();
-        List<Order> Search();
-        Order DisableOrder(Guid id);
-        Order GetOrderById(Guid id);
-        Order ReciveOrder(Guid id);
-        Order DeliveryOrder(Guid id);
-        Order ConfirmOrder(Guid id);
-        List<Order> GetOrdersByUserId(Guid id);
-    }
+    Task CreateOrder(List<Carts> cart, Order order);
+    List<Order> GetAll();
+    List<Order> Search();
+    Order DisableOrder(Guid id);
+    Order GetOrderById(Guid id);
+    Order ReciveOrder(Guid id);
+    Order DeliveryOrder(Guid id);
+    Order ConfirmOrder(Guid id);
+    List<Order> GetOrdersByUserId(Guid id);
 }

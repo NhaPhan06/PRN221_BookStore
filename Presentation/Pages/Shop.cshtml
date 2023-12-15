@@ -8,7 +8,7 @@
     ViewData["Title"] = "Shop";
 
     var categories = typeof(BookCategory).GetFields(
-            BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy)
+        BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy)
         .Where(info => info is { IsLiteral: true, IsInitOnly: false })
         .Select(info => info.GetRawConstantValue()?.ToString())
         .ToList();

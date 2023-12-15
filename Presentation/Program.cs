@@ -1,16 +1,8 @@
 using BusinessLayer;
-using DataAccess;
-using Microsoft.EntityFrameworkCore;
 
-WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDependencyInjection();
-
-//Add DB
-string connString = builder.Configuration.GetConnectionString("DatabaseConnection");
-builder.Services.AddDbContext<PRN_BookStoreContext>(options => {
-    options.UseSqlServer(connString).EnableSensitiveDataLogging();
-});
+builder.Services.AddDependencyInjection(builder.Configuration);
 
 builder.Services.AddSession();
 
@@ -18,17 +10,19 @@ builder.Services.AddSession();
 builder.Services.AddRazorPages();
 
 //ADD SESSION
-builder.Services.AddSession(options => {
+builder.Services.AddSession(options =>
+{
     options.IdleTimeout = TimeSpan.FromMinutes(30);
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
 
-WebApplication app = builder.Build();
+var app = builder.Build();
 
 
 // Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment()) {
+if (!app.Environment.IsDevelopment())
+{
     app.UseExceptionHandler("/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
@@ -42,10 +36,12 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
-app.UseEndpoints(endpoints => {
+app.UseEndpoints(endpoints =>
+{
     endpoints.MapRazorPages();
-    endpoints.MapGet("/", c => {
-        c.Response.Redirect("/LoginPage");
+    endpoints.MapGet("/", c =>
+    {
+        c.Response.Redirect("/Home");
         return Task.CompletedTask;
     });
 });

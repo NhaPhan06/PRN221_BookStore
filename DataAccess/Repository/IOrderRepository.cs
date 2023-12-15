@@ -1,15 +1,16 @@
-﻿using DataAccess.DataAccess;
-using DataAccess.Repository.Generic;
+﻿using DataAccess.Infrastructure;
+using ModelLayer.Model;
 
-namespace DataAccess.Repository {
-    public interface IOrderRepository : IGeneric<Order> {
-        public List<Order> GetAllOrder();
-        public List<Order> Search();
+namespace DataAccess.Repository;
 
-        public Order UpdateOrder(Order order);
+public interface IOrderRepository : IGeneric<Order>
+{
+    public List<Order> GetAllOrder();
+    public List<Order> Search();
 
-        public Order GetOrderById(Guid id);
-        void SaveChange();
-        List<Order> GetOrdersByUserId(Guid id);
-    }
+    public Order UpdateOrder(Order order);
+
+    public Order GetOrderById(Guid id);
+    void SaveChange();
+    List<Order> GetOrdersByUserId(Guid id);
 }

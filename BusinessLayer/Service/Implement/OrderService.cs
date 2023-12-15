@@ -1,95 +1,94 @@
-﻿using DataAccess.DataAccess;
-using DataAccess.Enum;
+﻿using DataAccess.Enum;
+using DataAccess.Infrastructure;
 using DataAccess.Model;
-using DataAccess.Repository.Generic.UnitOfWork;
+using ModelLayer.Model;
 
-namespace BusinessLayer.Service.Implement
+namespace BusinessLayer.Service.Implement;
+
+public class OrderService : IOrderService
 {
-    public class OrderService : IOrderService
+    private readonly IUnitOfWork _unitOfWork;
+
+    public OrderService(IUnitOfWork unitOfWork)
     {
-        private readonly IUnitOfWork _unitOfWork;
+        _unitOfWork = unitOfWork;
+    }
 
-        public OrderService(IUnitOfWork unitOfWork)
+    public Task CreateOrder(List<Carts> cart, Order order)
+    {
+        order.OrderDate = DateTime.Now;
+        order.Status = OrderStatus.Confirm.ToString();
+        order.TotalAmount = cart.Sum(x => x.Price * x.StockQuantity);
+        foreach (var item in cart)
         {
-            _unitOfWork = unitOfWork;
+            var orderDetail = new OrderDetail();
+            orderDetail.OrderDetailId = Guid.NewGuid();
+            orderDetail.BookId = item.BookId;
+            orderDetail.Price = item.Price;
+            orderDetail.Quantity = item.StockQuantity;
+            orderDetail.OrderId = order.OrderId;
+            order.OrderDetails.Add(orderDetail);
         }
 
-        public Task CreateOrder(List<Carts> cart, Order order)
-        {
-            order.OrderDate = DateTime.Now;
-            order.Status = OrderStatus.Confirm.ToString();
-            order.TotalAmount = cart.Sum(x => x.Price * x.StockQuantity);
-            foreach (Carts item in cart)
-            {
-                OrderDetail orderDetail = new OrderDetail();
-                orderDetail.OrderDetailId = Guid.NewGuid();
-                orderDetail.BookId = item.BookId;
-                orderDetail.Price = item.Price;
-                orderDetail.Quantity = item.StockQuantity;
-                orderDetail.OrderId = order.OrderId;
-                order.OrderDetails.Add(orderDetail);
-            }
-
-            _unitOfWork.OrderRepository.Add(order);
-            _unitOfWork.Save();
-            return Task.CompletedTask;
-        }
+        _unitOfWork.OrderRepository.Add(order);
+        _unitOfWork.Save();
+        return Task.CompletedTask;
+    }
 
 
-        public List<Order> GetAll()
-        {
-            return _unitOfWork.OrderRepository.GetAllOrder();
-        }
+    public List<Order> GetAll()
+    {
+        return _unitOfWork.OrderRepository.GetAllOrder();
+    }
 
-        public List<Order> Search()
-        {
-            throw new NotImplementedException();
-        }
+    public List<Order> Search()
+    {
+        throw new NotImplementedException();
+    }
 
-        public Order DisableOrder(Guid id)
-        {
-            Order orders = _unitOfWork.OrderRepository.GetOrderById(id);
-            orders.Status = OrderStatus.Disable.ToString();
-            Order Update = _unitOfWork.OrderRepository.UpdateOrder(orders);
-            _unitOfWork.OrderRepository.SaveChange();
-            return Update;
-        }
+    public Order DisableOrder(Guid id)
+    {
+        var orders = _unitOfWork.OrderRepository.GetOrderById(id);
+        orders.Status = OrderStatus.Disable.ToString();
+        var Update = _unitOfWork.OrderRepository.UpdateOrder(orders);
+        _unitOfWork.OrderRepository.SaveChange();
+        return Update;
+    }
 
-        public Order ReciveOrder(Guid id)
-        {
-            Order orders = _unitOfWork.OrderRepository.GetOrderById(id);
-            orders.Status = OrderStatus.Receive.ToString();
-            Order Update = _unitOfWork.OrderRepository.UpdateOrder(orders);
-            _unitOfWork.OrderRepository.SaveChange();
-            return Update;
-        }
+    public Order ReciveOrder(Guid id)
+    {
+        var orders = _unitOfWork.OrderRepository.GetOrderById(id);
+        orders.Status = OrderStatus.Receive.ToString();
+        var Update = _unitOfWork.OrderRepository.UpdateOrder(orders);
+        _unitOfWork.OrderRepository.SaveChange();
+        return Update;
+    }
 
-        public Order DeliveryOrder(Guid id)
-        {
-            Order orders = _unitOfWork.OrderRepository.GetOrderById(id);
-            orders.Status = OrderStatus.Delivery.ToString();
-            Order Update = _unitOfWork.OrderRepository.UpdateOrder(orders);
-            _unitOfWork.OrderRepository.SaveChange();
-            return Update;
-        }
+    public Order DeliveryOrder(Guid id)
+    {
+        var orders = _unitOfWork.OrderRepository.GetOrderById(id);
+        orders.Status = OrderStatus.Delivery.ToString();
+        var Update = _unitOfWork.OrderRepository.UpdateOrder(orders);
+        _unitOfWork.OrderRepository.SaveChange();
+        return Update;
+    }
 
-        public Order ConfirmOrder(Guid id)
-        {
-            Order orders = _unitOfWork.OrderRepository.GetOrderById(id);
-            orders.Status = OrderStatus.Confirm.ToString();
-            Order Update = _unitOfWork.OrderRepository.UpdateOrder(orders);
-            _unitOfWork.OrderRepository.SaveChange();
-            return Update;
-        }
+    public Order ConfirmOrder(Guid id)
+    {
+        var orders = _unitOfWork.OrderRepository.GetOrderById(id);
+        orders.Status = OrderStatus.Confirm.ToString();
+        var Update = _unitOfWork.OrderRepository.UpdateOrder(orders);
+        _unitOfWork.OrderRepository.SaveChange();
+        return Update;
+    }
 
-        public Order GetOrderById(Guid id)
-        {
-            return _unitOfWork.OrderRepository.GetOrderById(id);
-        }
+    public Order GetOrderById(Guid id)
+    {
+        return _unitOfWork.OrderRepository.GetOrderById(id);
+    }
 
-        public List<Order> GetOrdersByUserId(Guid id)
-        {
-            return _unitOfWork.OrderRepository.GetOrdersByUserId(id);
-        }
+    public List<Order> GetOrdersByUserId(Guid id)
+    {
+        return _unitOfWork.OrderRepository.GetOrdersByUserId(id);
     }
 }

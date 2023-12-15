@@ -1,7 +1,8 @@
-﻿using DataAccess.DataAccess;
+﻿using ModelLayer.Model;
 
-namespace BusinessLayer.Service {
-    public interface ICategoryService {
-        Task<IEnumerable<Category>> GetAll();
-    }
+namespace BusinessLayer.Service;
+
+public interface ICategoryService
+{
+    Task<IEnumerable<Category>> GetAll();
 }
