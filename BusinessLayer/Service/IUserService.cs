@@ -13,4 +13,5 @@ public interface IUserService
     Task<List<User>> GetAll();
     void BanUser(Guid guid);
     void UnbanUser(Guid guid);
+    Task<List<User>> GetUsers(GetUserDto getUserDto);
 }

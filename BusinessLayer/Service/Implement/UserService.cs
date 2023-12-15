@@ -91,4 +91,9 @@ public class UserService : IUserService
         _unitOfWork.UserRepository.UpdateUser(user);
         _unitOfWork.Save();
     }
+    
+    public Task<List<User>> GetUsers(GetUserDto getUserDto) {
+        var data = _unitOfWork.UserRepository.GetUsers(getUserDto);
+        return data;
+    }
 }

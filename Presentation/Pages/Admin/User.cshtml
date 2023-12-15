@@ -5,7 +5,50 @@
 @{
     Layout = "Shared/_LayoutAdmin";
 }
-
+<section class="content">
+        <div class="container-fluid">
+            <h2 class="text-center display-4">Enhanced Search</h2>
+            <form method="get">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row">
+                           
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label>Sort Order:</label>
+                                    <select class="select2" style="width: 100%;">
+                                        <option selected value="@SortDirection.Asc">ASC</option>
+                                        <option value="@SortDirection.Desc">DESC</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label>Order By:</label>
+                                    <select class="select2" style="width: 100%;">
+                                        <option selected value="@UserSortField.Username">@UserSortField.Username</option>
+                                        <option value="@UserSortField.Email">@UserSortField.Email</option>
+                                        <option value="@UserSortField.Status">@UserSortField.Status</option>
+                                        <option value="@UserSortField.Birthdate">@UserSortField.Birthdate</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group input-group-lg">
+                                <input type="search" class="form-control form-control-lg" placeholder="Username" name="Username" value="Lorem ipsum">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-lg btn-default">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
 
 <!-- Main content -->
 <section class="content">

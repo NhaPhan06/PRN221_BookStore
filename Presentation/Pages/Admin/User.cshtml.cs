@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Service;
+using DataAccess.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -11,9 +12,19 @@ namespace Presentation.Pages.Admin {
         }
 
         public IList<ModelLayer.Model.User> Users { get; set; } = new List<ModelLayer.Model.User>();
+        public string Username { get; set; }
+        public string SortField { get; set; }
+        public string SortDirection { get; set; }
 
         public async Task OnGetAsync() {
-            var data = await _userService.GetAll();
+            var getUserDto = new GetUserDto() {
+                Username = Username,
+                SortField = SortField,
+                SortDirection = SortDirection
+            };
+                
+            
+            var data = await _userService.GetUsers(getUserDto);
             Users = data;
         }
 
