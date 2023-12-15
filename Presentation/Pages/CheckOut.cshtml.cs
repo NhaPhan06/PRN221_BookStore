@@ -21,7 +21,7 @@ namespace Presentation.Pages {
         [BindProperty] public Order receiver { get; set; } = default!;
         public List<Carts> Carts { get; set; } = default!;
 
-        [BindProperty] public decimal total { get; set; } = default;
+        [BindProperty] public decimal Total { get; set; } = default;
 
         public void OnGet() {
             //Show User Default
@@ -36,7 +36,7 @@ namespace Presentation.Pages {
             if (jsoncart != null) Carts = JsonConvert.DeserializeObject<List<Carts>>(jsoncart);
             if (Carts.Count != 0) {
                 foreach (var c in Carts) {
-                    total += c.Price * c.StockQuantity;
+                    Total += c.Price * c.StockQuantity;
                 }
             }
 
