@@ -77,4 +77,18 @@ public class UserService : IUserService
         var data = _unitOfWork.UserRepository.GetAll().ToList();
         return Task.FromResult(data);
     }
+
+    public void BanUser(Guid guid) {
+        var user = _unitOfWork.UserRepository.GetById(guid);
+        user.Status = Status.Inactive;
+        _unitOfWork.UserRepository.UpdateUser(user);
+        _unitOfWork.Save();
+    }
+
+    public void UnbanUser(Guid guid) {
+        var user = _unitOfWork.UserRepository.GetById(guid);
+        user.Status = Status.Active;
+        _unitOfWork.UserRepository.UpdateUser(user);
+        _unitOfWork.Save();
+    }
 }
