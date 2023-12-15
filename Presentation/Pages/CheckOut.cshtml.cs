@@ -36,7 +36,7 @@ namespace Presentation.Pages {
             if (jsoncart != null) Carts = JsonConvert.DeserializeObject<List<Carts>>(jsoncart);
             if (Carts.Count != 0) {
                 foreach (var c in Carts) {
-                    total += c.Price * c.StockQuantity;
+                    Total += c.Price * c.StockQuantity;
                 }
             }
 
