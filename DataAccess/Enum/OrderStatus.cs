@@ -8,10 +8,10 @@ namespace DataAccess.Enum
 {
     public enum OrderStatus
     {
-        Confirm,
-        Delivery,
-        Recive,
-        Disable
+        CONFIRM,
+        PENDING,
+        DONE,
+        CANCEL,
 
     }
 }

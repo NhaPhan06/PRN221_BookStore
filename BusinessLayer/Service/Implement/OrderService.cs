@@ -21,7 +21,7 @@ namespace BusinessLayer.Service.Implement {
         public Order DisableOrder(Guid id)
         {
             var orders = _unitOfWork.OrderRepository.GetOrderById(id);
-            orders.Status = OrderStatus.Disable.ToString();
+            orders.Status = OrderStatus.CANCEL.ToString();
             var Update = _unitOfWork.OrderRepository.UpdateOrder(orders);
             _unitOfWork.OrderRepository.SaveChange();  
             return Update;
@@ -29,15 +29,15 @@ namespace BusinessLayer.Service.Implement {
         public Order ReciveOrder(Guid id)
         {
             var orders = _unitOfWork.OrderRepository.GetOrderById(id);
-            orders.Status = OrderStatus.Recive.ToString();
+            orders.Status = OrderStatus.DONE.ToString();
             var Update = _unitOfWork.OrderRepository.UpdateOrder(orders);
             _unitOfWork.OrderRepository.SaveChange();
             return Update;
         }
-        public Order DeliveryOrder(Guid id)
+        public Order PendingOrder(Guid id)
         {
             var orders = _unitOfWork.OrderRepository.GetOrderById(id);
-            orders.Status = OrderStatus.Delivery.ToString();
+            orders.Status = OrderStatus.PENDING.ToString();
             var Update = _unitOfWork.OrderRepository.UpdateOrder(orders);
             _unitOfWork.OrderRepository.SaveChange();
             return Update;
@@ -45,7 +45,7 @@ namespace BusinessLayer.Service.Implement {
         public Order ConfirmOrder(Guid id)
         {
             var orders = _unitOfWork.OrderRepository.GetOrderById(id);
-            orders.Status = OrderStatus.Confirm.ToString();
+            orders.Status = OrderStatus.CONFIRM.ToString();
             var Update = _unitOfWork.OrderRepository.UpdateOrder(orders);
             _unitOfWork.OrderRepository.SaveChange();
             return Update;

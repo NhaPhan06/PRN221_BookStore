@@ -7,7 +7,7 @@ namespace BusinessLayer.Service {
         Order DisableOrder(Guid id);
         Order GetOrderById(Guid id);
         Order ReciveOrder(Guid id);
-        Order DeliveryOrder(Guid id);
+        Order PendingOrder(Guid id);
         Order ConfirmOrder(Guid id);
 
     }

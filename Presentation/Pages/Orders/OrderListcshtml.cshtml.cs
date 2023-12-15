@@ -33,9 +33,9 @@ namespace Presentation.Pages.Orders
             _orderService.ReciveOrder(id);
             return RedirectToPage("OrderListcshtml");
         } 
-        public IActionResult OnGetDelivery(Guid id)
+        public IActionResult OnGetPending(Guid id)
         {
-            _orderService.DeliveryOrder(id);
+            _orderService.PendingOrder(id);
             return RedirectToPage("OrderListcshtml");
         }
         public IActionResult OnGetConfirm(Guid id)

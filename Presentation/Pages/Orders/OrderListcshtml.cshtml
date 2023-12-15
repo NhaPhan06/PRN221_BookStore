@@ -80,16 +80,16 @@
                  <td>
                     @{
                         String Check = item.Status;
-                        if (Check == "Confirm")
+                        if (Check == "CONFIRM")
                         
                         {                                                                        
                          <a asp-page-handler="Disable" class="btn btn-rounded btn-danger" asp-route-id="@item.OrderId" >Hủy Đơn</a>                       
                          <a asp-page-handler="Delivery" class="btn btn-rounded btn-danger" asp-route-id="@item.OrderId" >Đang Vận Chuyển</a>                        
                         }
-                        else if(Check == "Delivery")
+                        else if(Check == "PENDING")
                         {
                          <a asp-page-handler="Disable" class="btn btn-rounded btn-danger" asp-route-id="@item.OrderId" >Hủy Đơn</a>
-                         <a asp-page-handler="Recive" class="btn btn-rounded btn-danger" asp-route-id="@item.OrderId" >Nhận Được Hàng</a>                       
+                         <a asp-page-handler="Pending" class="btn btn-rounded btn-danger" asp-route-id="@item.OrderId" >Nhận Được Hàng</a>                       
                         }
                     }
                 </td>
