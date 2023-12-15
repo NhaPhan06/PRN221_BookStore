@@ -73,5 +73,10 @@ namespace BusinessLayer.Service.Implement {
             _unitOfWork.Save();
             return update;
         }
+
+        public Task<List<User>> GetAll() {
+            var data  =  _unitOfWork.UserRepository.GetAll().ToList();
+            return Task.FromResult(data);
+        }
     }
 }
