@@ -12,8 +12,11 @@ namespace Presentation.Pages.Admin {
         }
 
         public IList<ModelLayer.Model.User> Users { get; set; } = new List<ModelLayer.Model.User>();
+        [BindProperty(SupportsGet = true)]
         public string Username { get; set; }
+        [BindProperty(SupportsGet = true)]
         public string SortField { get; set; }
+        [BindProperty(SupportsGet = true)]
         public string SortDirection { get; set; }
 
         public async Task OnGetAsync() {
