@@ -34,4 +34,10 @@ public class Cart : PageModel
         HttpContext.Session.SetString("cart", JsonConvert.SerializeObject(Carts));
         Response.Redirect("/Cart");
     }
+    
+     public IActionResult OnGetLogout()
+        {
+            HttpContext.Session.Remove("UserID");
+            return RedirectToPage("./Home");
+        }
 }

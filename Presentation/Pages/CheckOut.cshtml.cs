@@ -1,4 +1,5 @@
 using BusinessLayer.Service;
+using DataAccess.Enum;
 using DataAccess.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -51,6 +52,8 @@ public class CheckOut : PageModel
         order.PhoneNumber = user.PhoneNumber;
         order.ReceiverName = user.Firstname + user.Lastname;
         order.PaymentMethod = receiver.PaymentMethod;
+        order.UpdatedAt = DateTime.Now;
+        order.Status = OrderStatus.PENDING.ToString();
 
         //get cart
         var jsoncart = HttpContext.Session.GetString("cart");

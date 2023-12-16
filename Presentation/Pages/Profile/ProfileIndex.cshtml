@@ -172,7 +172,7 @@
                                         <form method="post">
                                             <p>
                                                 <label asp-for="Users.Username" class="control-label"></label>
-                                                <input asp-for="Users.Username" class="form-control" readonly="readonly" />
+                                                <input  asp-for="Users.Username" class="form-control" readonly="readonly" />
                                                 <span asp-validation-for="Users.Username" class="text-danger"></span>
                                             </p>
                                             <p>
@@ -187,22 +187,22 @@
                                             </p>
                                             <p>
                                                 <label asp-for="Users.Firstname" class="control-label"></label>
-                                                <input asp-for="Users.Firstname" class="form-control" />
-                                                <span asp-validation-for="Users.Firstname" class="text-danger"></span>
+                                                <input required="required" asp-for="Users.Firstname" class="form-control" />
+                                                <span asp-validation-for="Users.Firstname" class="text-danger"></span >
                                             </p>
                                             <p>
                                                 <label asp-for="Users.Lastname" class="control-label"></label>
-                                                <input asp-for="Users.Lastname" class="form-control" />
+                                                <input required="required" asp-for="Users.Lastname" class="form-control" />
                                                 <span asp-validation-for="Users.Lastname" class="text-danger"></span>
                                             </p>
                                             <p>
                                                 <label asp-for="Users.City" class="control-label"></label>
-                                                <input asp-for="Users.City" class="form-control" />
+                                                <input required="required" asp-for="Users.City" class="form-control" />
                                                 <span asp-validation-for="Users.City" class="text-danger"></span>
                                             </p>
                                             <p>
                                                 <label asp-for="Users.Address" class="control-label"></label>
-                                                <input asp-for="Users.Address" class="form-control" />
+                                                <input required="required" asp-for="Users.Address" class="form-control" />
                                                 <span asp-validation-for="Users.Address" class="text-danger"></span>
                                             </p>
                                             <p>

@@ -106,4 +106,10 @@ public class Shop : PageModel
 
         return Redirect("shop");
     }
+    
+     public IActionResult OnGetLogout()
+        {
+            HttpContext.Session.Remove("UserID");
+            return RedirectToPage("./Home");
+        }
 }
