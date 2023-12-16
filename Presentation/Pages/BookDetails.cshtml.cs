@@ -16,7 +16,7 @@ public class BookDetails : PageModel
         _bookService = bookService;
     }
 
-    [BindProperty] public Book Book { get; set; }
+    [BindProperty] public Book Book { get; set; } = default!;
 
     public async Task OnGetAsync(string id)
     {

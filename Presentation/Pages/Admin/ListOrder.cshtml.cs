@@ -12,9 +12,7 @@ public class ListOrder : PageModel
     {
         _orderService = orderService;
     }
-
     public IList<Order> Order { get;set; } = default!;
-
     public async Task OnGetAsync()
     {
         var data = _orderService.GetAll();
