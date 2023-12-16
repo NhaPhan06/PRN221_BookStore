@@ -29,7 +29,7 @@ namespace Presentation.Pages.Admin {
                     SortDirection = SortDirection
                 };
 
-                var data = await _userService.GetAll();
+                var data = await _userService.GetUsers(getUserDto);
                 Users = data;
                 return Page();
             }
