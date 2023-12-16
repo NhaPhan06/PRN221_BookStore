@@ -51,6 +51,7 @@ public class
         order.Address = user.Address;
         order.PhoneNumber = user.PhoneNumber;
         order.ReceiverName = user.Firstname + user.Lastname;
+        order.PaymentMethod = receiver.PaymentMethod;
 
         //get cart
         var jsoncart = HttpContext.Session.GetString("cart");
@@ -74,6 +75,7 @@ public class
         order.Address = receiver.Address;
         order.PhoneNumber = receiver.PhoneNumber;
         order.ReceiverName = receiver.ReceiverName;
+        order.PaymentMethod = receiver.PaymentMethod;
         //get cart
         var jsoncart = HttpContext.Session.GetString("cart");
         Carts = JsonConvert.DeserializeObject<List<Carts>>(jsoncart);

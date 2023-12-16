@@ -16,7 +16,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label>Sort Order:</label>
-                                    <select class="select2" style="width: 100%;">
+                                    <select class="select2" name="sortdirection" style="width: 100%;">
                                         <option selected value="@SortDirection.Asc">ASC</option>
                                         <option value="@SortDirection.Desc">DESC</option>
                                     </select>
@@ -25,7 +25,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label>Order By:</label>
-                                    <select class="select2" style="width: 100%;">
+                                    <select class="select2" name="sortfield" style="width: 100%;">
                                         <option selected value="@UserSortField.Username">@UserSortField.Username</option>
                                         <option value="@UserSortField.Email">@UserSortField.Email</option>
                                         <option value="@UserSortField.Status">@UserSortField.Status</option>
@@ -36,7 +36,7 @@
                         </div>
                         <div class="form-group">
                             <div class="input-group input-group-lg">
-                                <input type="search" class="form-control form-control-lg" placeholder="Username" name="Username" value="Lorem ipsum">
+                                <input type="search" class="form-control form-control-lg" placeholder="Username" name="username">
                                 <div class="input-group-append">
                                     <button type="submit" class="btn btn-lg btn-default">
                                         <i class="fa fa-search"></i>

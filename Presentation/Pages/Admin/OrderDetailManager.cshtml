@@ -21,14 +21,15 @@
                     <h2 class="text-primary"> Order Information</h2>
                     <br>
                     <br>
-                    <h5 style="font-weight: bold"> Buyer </h5> <h5> @Model.Order.User.Firstname + @Model.Order.User.Lastname </h5>
+                    <h5 style="font-weight: bold"> Buyer </h5> <h5> @Model.Order.User.Firstname @Model.Order.User.Lastname </h5>
                     <br>
                     <h5 style="font-weight: bold"> Receiver </h5> <h5> @Model.Order.ReceiverName</h5>
                     <br>
-                    <h5 style="font-weight: bold"> Receiving Phone </h5> <h5> @Model.Order.Address</h5>
+                    <h5 style="font-weight: bold"> Receiving Phone </h5> <h5> @Model.Order.PhoneNumber</h5>
                     <br >
                     <h5 style="font-weight: bold"> Receiving Address </h5> <h5> @Model.Order.Address</h5>
                     <br>
+                    <h5 style="font-weight: bold"> Status </h5> <h5> @Model.Order.Status</h5>
                     <div class="row">
                         <div class="col-lm-6" style="margin-right: 20px">
                             <form method="post" asp-page-handler="Cancel">

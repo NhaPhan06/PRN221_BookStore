@@ -1,4 +1,5 @@
 using BusinessLayer.Service;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ModelLayer.Model;
 
@@ -15,9 +16,18 @@ public class OrderManager : PageModel
 
     public IList<Order> Order { get;set; } = default!;
 
-    public async Task OnGetAsync()
+    public async Task<IActionResult> OnGetAsync()
     {
-        var data = _orderService.Get10Orders();
-        Order = data;
+        if (HttpContext.Session.GetString("AdminEmail") != null)
+        {
+            var data = _orderService.Get10Orders();
+            Order = data;
+            return Page();
+        }
+        else
+        {
+            HttpContext.Session.Remove("UserID");
+            return RedirectToPage("../LoginPage");
+        }
     }
 }

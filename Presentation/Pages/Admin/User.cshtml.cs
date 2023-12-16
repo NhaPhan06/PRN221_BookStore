@@ -12,8 +12,11 @@ namespace Presentation.Pages.Admin {
         }
 
         public IList<ModelLayer.Model.User> Users { get; set; } = new List<ModelLayer.Model.User>();
+        [BindProperty(SupportsGet = true)]
         public string Username { get; set; }
+        [BindProperty(SupportsGet = true)]
         public string SortField { get; set; }
+        [BindProperty(SupportsGet = true)]
         public string SortDirection { get; set; }
 
         public async Task<IActionResult> OnGetAsync() {
@@ -26,7 +29,7 @@ namespace Presentation.Pages.Admin {
                     SortDirection = SortDirection
                 };
 
-                var data = await _userService.GetAll();
+                var data = await _userService.GetUsers(getUserDto);
                 Users = data;
                 return Page();
             }
