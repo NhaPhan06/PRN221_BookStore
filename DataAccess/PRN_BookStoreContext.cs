@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using ModelLayer.Model;
 
 namespace DataAccess;
@@ -25,8 +26,13 @@ public partial class PRN_BookStoreContext : DbContext
         if (!optionsBuilder.IsConfigured)
         {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https: //go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-            optionsBuilder.UseSqlServer("server =(local); database = PRN_BookStore;uid=sa;pwd=12345;");
+            optionsBuilder.UseSqlServer(GetConnectionString());
         }
+    }
+
+    private string GetConnectionString() {
+        var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: true, reloadOnChange: true).SetBasePath(Directory.GetCurrentDirectory()).Build();
+        return builder.GetConnectionString("DatabaseConnection");
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
