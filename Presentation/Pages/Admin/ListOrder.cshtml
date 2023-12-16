@@ -1,11 +1,11 @@
 @page
 @using DataAccess.Enum
-@using DataAccess.Model
 @model Presentation.Pages.Admin.ListOrder
 
 @{
     Layout = "Shared/_LayoutAdmin";
 }
+
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
@@ -48,11 +48,11 @@
                                             }
                                             @if (item.Status == OrderStatus.CONFIRM.ToString())
                                             {
-                                                <span class="badge badge-danger">@OrderStatus.CONFIRM.ToString()</span>
+                                                <span class="badge badge-inverse ">@OrderStatus.CONFIRM.ToString()</span>
                                             }
                                             @if (item.Status == OrderStatus.PENDING.ToString())
                                             {
-                                                <span class="badge badge-danger">@OrderStatus.PENDING.ToString()</span>
+                                                <span class="badge badge-default">@OrderStatus.PENDING.ToString()</span>
                                             }
                                         </td>
                                     </tr>

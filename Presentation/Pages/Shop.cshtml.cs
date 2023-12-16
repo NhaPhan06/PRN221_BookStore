@@ -104,7 +104,7 @@ public class Shop : PageModel
         json = JsonConvert.SerializeObject(cartsList);
         HttpContext.Session.SetString("cart", json);
 
-        return Redirect("shop");
+        return  Page();
     }
     
      public IActionResult OnGetLogout()

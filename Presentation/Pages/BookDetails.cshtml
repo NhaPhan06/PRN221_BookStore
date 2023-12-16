@@ -36,7 +36,6 @@
                     <p>@Model.Book.Description</p>
                     <div class="single-product-form">
                         <form method="post" asp-page-handler="AddToCart">
-                            
                             <input placeholder="1" name="quantity" type="number" min="1" max="5">
                             <input type="hidden" name="Id" value="@Model.Book.BookId"/>
                             <button class="btn_nha" type="submit"><i class="fas fa-shopping-cart"></i> Add to Cart</button>

@@ -49,7 +49,5 @@ namespace Presentation.Pages.Admin {
             _userService.UnbanUser(guid);
             return Task.FromResult<IActionResult>(RedirectToPage("./User"));
         }
-        
-        
     }
 }

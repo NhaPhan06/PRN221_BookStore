@@ -8,7 +8,8 @@ using Newtonsoft.Json;
 
 namespace Presentation.Pages;
 
-public class CheckOut : PageModel
+public class 
+    CheckOut : PageModel
 {
     private readonly IOrderService _orderService;
     private readonly IUserService _userService;
